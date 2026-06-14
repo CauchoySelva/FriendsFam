@@ -133,7 +133,8 @@ img{max-width:100%}
 #umbral .con:hover{background:rgba(193,122,74,0.35);box-shadow:0 0 30px rgba(193,122,74,0.3)}
 #umbral .sin{background:transparent;border:1px solid rgba(184,168,144,0.35);color:var(--dim)}
 #umbral .sin:hover{color:var(--cream);border-color:var(--dim)}
-#introVid{position:absolute;inset:0;background:#000;z-index:20}
+#introVid{position:absolute;inset:0;background:#000;z-index:20;pointer-events:none}
+#introVid.live{pointer-events:auto}
 #introVid iframe{position:absolute;top:50%;left:50%;width:100vw;height:56.25vw;min-height:100vh;min-width:177.78vh;transform:translate(-50%,-50%);border:0}
 #skipIntro{position:absolute;bottom:26px;right:26px;z-index:2;background:rgba(0,0,0,0.45);border:1px solid rgba(255,255,255,0.3);border-radius:22px;padding:9px 20px;color:#fff;font-family:var(--bf);font-size:13px;letter-spacing:0.1em;cursor:pointer;backdrop-filter:blur(6px)}
 @keyframes up{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
@@ -1713,7 +1714,7 @@ temáticas latinoamericanas</div></div>
     var center = document.getElementById('umbralCenter');
     if(center) center.remove();
     var wrap = document.getElementById('introVid');
-    if(wrap) wrap.style.opacity = '1';
+    if(wrap){ wrap.style.opacity = '1'; wrap.classList.add('live'); }
     if(introVP){
       try{
         introVP.setVolume(1); introVP.setMuted(false); introVP.play().catch(function(){});
