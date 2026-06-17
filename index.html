@@ -6,610 +6,7 @@
 <title>WA'URO — Ronda Friends &amp; Family</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-<style>
-/* WA'URO — Presentación v2 · sistema visual "Lanzamiento - Concepto" */
-*{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --bg:#15100A; --bg2:#241710; --terra:#C17A4A; --tl:#D4945E; --gold:#D4A843;
-  --ochre:#B5512E; --cream:#E8DCC8; --dim:#B8A890; --bdr:#4A3528;
-  --pbdr:rgba(193,122,74,0.30);
-  --hf:'Cormorant Garamond',Georgia,serif;
-  --bf:'Crimson Text',Georgia,serif;
-  --green:#7FAE87;
-}
-html,body{height:100%}
-body{background:#0B0703;color:var(--cream);font-family:var(--bf);overflow:hidden}
-/* color explícito en contenedores raíz para que no herede el color del tema (Squarespace) */
-#deckchrome,#navui,#navmenu,#umbral,#canvas{color:var(--cream)}
-::selection{background:rgba(193,122,74,0.45)}
-img{max-width:100%}
-
-/* ============ ESCENARIO 1920×1080 ============ */
-.stage{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse 90% 90% at 50% 45%, #1A120B 0%, #0B0703 75%);z-index:10}
-.stagetex{position:absolute;inset:0;z-index:0;pointer-events:none;
-  background-image:url('https://images.squarespace-cdn.com/content/67a29672e45a656b8be53344/51a4102d-9cbe-486f-bf6a-0589e4f46855/Petroglifos2.png?content-type=image%2Fpng');
-  background-size:760px;background-repeat:repeat;opacity:0.12;mix-blend-mode:screen}
-#canvas{position:relative;width:1920px;height:1080px;background:var(--bg);overflow:hidden;flex:0 0 auto}
-#canvas>.tex{position:absolute;inset:0;z-index:0;pointer-events:none;
-  background-image:url('https://images.squarespace-cdn.com/content/67a29672e45a656b8be53344/51a4102d-9cbe-486f-bf6a-0589e4f46855/Petroglifos2.png?content-type=image%2Fpng');
-  background-size:760px;background-repeat:repeat;opacity:0.12;mix-blend-mode:screen}
-#canvas>.vig{position:absolute;inset:0;z-index:6;pointer-events:none;background:
-  radial-gradient(ellipse 1200px 800px at 24% 30%, rgba(193,122,74,0.10), transparent 60%),
-  radial-gradient(ellipse 1400px 1000px at 50% 50%, transparent 40%, rgba(0,0,0,0.55) 100%)}
-#canvas>.foot{position:absolute;left:96px;bottom:30px;z-index:7;font-size:15px;letter-spacing:0.22em;color:rgba(184,168,144,0.55);text-transform:uppercase}
-
-/* atmósfera a nivel viewport */
-#embers{position:fixed;inset:0;z-index:20;pointer-events:none}
-.fogv{position:fixed;z-index:19;pointer-events:none;width:140vw;height:90vh;left:-20vw;opacity:0.5;mix-blend-mode:screen;will-change:transform}
-.fogv.a{top:8vh;background:radial-gradient(ellipse 46% 38% at 32% 50%, rgba(150,98,52,0.10), transparent 70%);animation:fogA 75s ease-in-out infinite alternate}
-.fogv.b{top:42vh;background:radial-gradient(ellipse 42% 34% at 68% 50%, rgba(110,84,46,0.09), transparent 70%);animation:fogB 95s ease-in-out infinite alternate}
-@keyframes fogA{from{transform:translateX(-6vw)}to{transform:translateX(9vw)}}
-@keyframes fogB{from{transform:translateX(7vw)}to{transform:translateX(-8vw)}}
-.grain{position:fixed;inset:0;z-index:22;pointer-events:none;opacity:0.05;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.7'/%3E%3C/svg%3E")}
-#petro{position:fixed;inset:0;z-index:21;pointer-events:none;opacity:0;
-  background-image:url('https://images.squarespace-cdn.com/content/67a29672e45a656b8be53344/51a4102d-9cbe-486f-bf6a-0589e4f46855/Petroglifos2.png?content-type=image%2Fpng');
-  background-size:720px;background-repeat:repeat;
-  filter:sepia(1) saturate(3.4) hue-rotate(-28deg) brightness(1.05);mix-blend-mode:screen}
-
-/* río de progreso */
-#rio{position:fixed;left:0;top:0;bottom:0;width:3px;z-index:40;background:rgba(193,122,74,0.10)}
-#rio .fill{position:absolute;top:0;left:0;width:100%;height:0;background:linear-gradient(180deg,var(--terra),var(--gold));box-shadow:0 0 12px rgba(212,168,67,0.5);transition:height 0.7s cubic-bezier(0.22,0.61,0.36,1)}
-#rio .dot{position:absolute;left:50%;top:0;width:9px;height:9px;border-radius:50%;background:var(--gold);transform:translate(-50%,-50%);box-shadow:0 0 14px rgba(212,168,67,0.9);transition:top 0.7s cubic-bezier(0.22,0.61,0.36,1)}
-
-/* ============ CHROME ============ */
-#deckchrome{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:18px clamp(22px,3.5vw,44px);pointer-events:none}
-#deckchrome>*{pointer-events:auto}
-.brand{font-size:11px;letter-spacing:0.34em;color:var(--dim);text-transform:uppercase;font-weight:600}
-.brand b{color:var(--terra);font-weight:700}
-#soundBtn{display:flex;align-items:center;gap:9px;background:rgba(21,16,10,0.6);border:1px solid var(--pbdr);border-radius:30px;padding:8px 14px;cursor:pointer;color:var(--dim);font-family:var(--bf);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;backdrop-filter:blur(6px);transition:color 0.3s,border-color 0.3s}
-#soundBtn:hover{color:var(--cream);border-color:var(--terra)}
-.hgroup{display:flex;align-items:center;gap:12px}
-#menuBtn{display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:30px;border:1px solid var(--pbdr);background:rgba(21,16,10,0.6);cursor:pointer;backdrop-filter:blur(6px);transition:color 0.3s,border-color 0.3s}
-#menuBtn:hover{border-color:var(--terra)}
-#menuBtn .bars{display:flex;flex-direction:column;gap:4px;width:18px}
-#menuBtn .bars i{height:2px;background:var(--terra);border-radius:2px;transition:transform 0.3s ease,opacity 0.3s ease;width:100%}
-#menuBtn.on .bars i:nth-child(1){transform:translateY(6px) rotate(45deg)}
-#menuBtn.on .bars i:nth-child(2){opacity:0}
-#menuBtn.on .bars i:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
-
-/* ============ MENÚ DE NAVEGACIÓN ============ */
-#navmenu{position:fixed;top:0;right:0;bottom:0;width:430px;max-width:88vw;z-index:60;
-  background:linear-gradient(160deg, rgba(28,18,11,0.97), rgba(14,9,5,0.97));
-  border-left:1px solid var(--pbdr);box-shadow:-20px 0 60px rgba(0,0,0,0.5);backdrop-filter:blur(10px);
-  transform:translateX(100%);transition:transform 0.5s cubic-bezier(0.22,0.61,0.36,1);
-  display:flex;flex-direction:column;padding:88px 0 28px}
-#navmenu.open{transform:translateX(0)}
-.nm-head{padding:0 34px 16px;border-bottom:1px solid var(--pbdr);margin-bottom:10px;display:flex;align-items:center;justify-content:space-between}
-#navClose{width:34px;height:34px;border-radius:50%;border:1px solid var(--pbdr);background:rgba(21,16,10,0.6);color:var(--dim);font-size:14px;cursor:pointer;transition:color 0.3s,border-color 0.3s;line-height:1}
-#navClose:hover{color:var(--cream);border-color:var(--terra)}
-.nm-title{font-size:13px;letter-spacing:0.34em;text-transform:uppercase;color:var(--terra);font-weight:600}
-#navlist{flex:1;overflow-y:auto;padding:6px 18px 10px;scrollbar-width:thin;scrollbar-color:rgba(193,122,74,0.4) transparent}
-#navlist::-webkit-scrollbar{width:6px}
-#navlist::-webkit-scrollbar-thumb{background:rgba(193,122,74,0.4);border-radius:3px}
-.navitem{display:flex;align-items:baseline;gap:14px;width:100%;text-align:left;padding:10px 16px;border:0;border-radius:8px;background:transparent;cursor:pointer;transition:background 0.2s ease}
-.navitem:hover{background:rgba(193,122,74,0.12)}
-.navitem.active{background:rgba(193,122,74,0.18)}
-.navitem .ni-n{font-family:var(--hf);font-size:15px;font-weight:700;color:var(--terra);min-width:26px;flex-shrink:0}
-.navitem .ni-l{font-family:var(--hf);font-size:18px;color:var(--dim);line-height:1.2}
-.navitem:hover .ni-l,.navitem.active .ni-l{color:var(--cream)}
-.navitem.active .ni-n{color:var(--gold)}
-.eq{display:flex;align-items:flex-end;gap:2px;height:11px}
-.eq i{width:2px;background:var(--terra);height:3px}
-#soundBtn.on .eq i{animation:eq 1.1s ease-in-out infinite}
-#soundBtn.on .eq i:nth-child(2){animation-delay:0.18s}
-#soundBtn.on .eq i:nth-child(3){animation-delay:0.36s}
-#soundBtn.on .eq i:nth-child(4){animation-delay:0.5s}
-@keyframes eq{0%,100%{height:3px}50%{height:11px}}
-
-#navui{position:fixed;bottom:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:14px clamp(22px,3.5vw,44px);pointer-events:none}
-#navui>*{pointer-events:auto}
-#pgLabel{font-size:11px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(184,168,144,0.55)}
-.navr{display:flex;align-items:center;gap:14px}
-#counter{font-family:var(--hf);font-size:15px;color:var(--dim);letter-spacing:0.12em}
-#counter b{color:var(--terra);font-weight:700}
-.nbtn{width:42px;height:42px;border-radius:50%;border:1px solid var(--pbdr);background:rgba(21,16,10,0.6);color:var(--dim);font-size:17px;cursor:pointer;backdrop-filter:blur(6px);transition:all 0.3s;font-family:var(--bf)}
-.nbtn:hover{color:var(--cream);border-color:var(--terra);background:rgba(193,122,74,0.18)}
-.nbtn:disabled{opacity:0.25;cursor:default}
-
-/* ============ UMBRAL ============ */
-#umbral{position:fixed;inset:0;z-index:100;background:#0B0703;display:flex;align-items:center;justify-content:center;transition:opacity 1.2s ease}
-#umbral.gone{opacity:0;pointer-events:none}
-#umbral .paint{position:absolute;inset:0;opacity:0.16;
-  background-image:url('https://images.squarespace-cdn.com/content/67a29672e45a656b8be53344/51a4102d-9cbe-486f-bf6a-0589e4f46855/Petroglifos2.png?content-type=image%2Fpng');
-  background-size:640px;background-repeat:repeat;
-  filter:sepia(1) saturate(3.4) hue-rotate(-28deg) brightness(1.05);mix-blend-mode:screen;
-  mask-image:radial-gradient(ellipse 70% 60% at 50% 50%, #000 20%, transparent 75%);
-  -webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 50%, #000 20%, transparent 75%)}
-#umbral .center{position:relative;text-align:center;padding:0 24px;z-index:2}
-#umbral .paintcursor{position:absolute;inset:0;opacity:0;pointer-events:none;
-  background-image:url('https://images.squarespace-cdn.com/content/67a29672e45a656b8be53344/51a4102d-9cbe-486f-bf6a-0589e4f46855/Petroglifos2.png?content-type=image%2Fpng');
-  background-size:640px;background-repeat:repeat;
-  filter:sepia(1) saturate(3.4) hue-rotate(-28deg) brightness(1.1);mix-blend-mode:screen}
-#umbral .studio{font-size:12px;letter-spacing:0.42em;color:var(--dim);text-transform:uppercase;margin-bottom:30px;opacity:0;animation:up 1.4s ease 0.3s forwards}
-#umbral .invite{font-family:var(--hf);font-style:italic;font-weight:500;font-size:clamp(22px,3vw,32px);color:var(--cream);line-height:1.5;margin-bottom:44px;opacity:0;animation:up 1.4s ease 0.7s forwards}
-#umbral .doors{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;opacity:0;animation:up 1.4s ease 1.1s forwards}
-#umbral button{font-family:var(--bf);font-size:13px;letter-spacing:0.24em;text-transform:uppercase;padding:15px 30px;border-radius:34px;cursor:pointer;transition:all 0.35s}
-#umbral .con{background:linear-gradient(140deg,rgba(193,122,74,0.25),rgba(193,122,74,0.08));border:1px solid var(--terra);color:var(--cream)}
-#umbral .con:hover{background:rgba(193,122,74,0.35);box-shadow:0 0 30px rgba(193,122,74,0.3)}
-#umbral .sin{background:transparent;border:1px solid rgba(184,168,144,0.35);color:var(--dim)}
-#umbral .sin:hover{color:var(--cream);border-color:var(--dim)}
-#introVid{position:absolute;inset:0;background:#000;z-index:20;pointer-events:none}
-#introVid.live{pointer-events:auto}
-#introVid iframe{position:absolute;top:50%;left:50%;width:100vw;height:56.25vw;min-height:100vh;min-width:177.78vh;transform:translate(-50%,-50%);border:0}
-#skipIntro{position:absolute;bottom:26px;right:26px;z-index:2;background:rgba(0,0,0,0.45);border:1px solid rgba(255,255,255,0.3);border-radius:22px;padding:9px 20px;color:#fff;font-family:var(--bf);font-size:13px;letter-spacing:0.1em;cursor:pointer;backdrop-filter:blur(6px)}
-@keyframes up{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
-
-/* ============ PÁGINAS ============ */
-.pg{position:absolute;inset:0;z-index:1;opacity:0;visibility:hidden;transform:none;
-  transition:opacity 0.6s ease, transform 0.6s cubic-bezier(0.22,0.61,0.36,1), visibility 0.6s}
-.pg.act{opacity:1;visibility:visible;z-index:2}
-.pg.outL{transform:translateX(-110px)}
-.pg.outR{transform:translateX(110px)}
-.pg.preR{transform:translateX(110px);transition:none}
-.pg.preL{transform:translateX(-110px);transition:none}
-
-[data-a]{opacity:0}
-.pg.act [data-a]{animation:aIn 0.9s cubic-bezier(0.22,0.61,0.36,1) both;animation-delay:calc(var(--i,0)*0.14s + 0.25s)}
-@keyframes aIn{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
-
-/* ============ MORPH "EL MERCADO" (fases) ============ */
-.mercado.instant *{transition:none !important;animation:none !important}
-/* títulos: se solapan en el mismo espacio */
-.mercado .shead{position:relative}
-.mercado .titleblock{transition:opacity 0.5s ease, transform 0.6s cubic-bezier(0.22,0.61,0.36,1)}
-.mercado .titleA{animation:aIn 0.9s cubic-bezier(0.22,0.61,0.36,1) both;animation-delay:0.35s}
-.mercado.ph1 .titleA{opacity:0;transform:translateY(-14px);pointer-events:none;animation:none}
-.mercado .titleB{position:absolute;top:34px;left:0;right:0;opacity:0;transform:translateY(14px);pointer-events:none}
-.mercado.ph1 .titleB{opacity:1;transform:none;pointer-events:auto}
-/* indicador de subcapítulo */
-.mercado .sbars .sb{background:rgba(193,122,74,0.25);transition:background 0.4s ease,box-shadow 0.4s ease}
-.mercado.ph0 .sb1{background:var(--gold);box-shadow:0 0 8px rgba(212,168,67,0.6)}
-.mercado.ph1 .sb1{background:var(--terra)}
-.mercado.ph1 .sb2{background:var(--gold);box-shadow:0 0 8px rgba(212,168,67,0.6)}
-.mercado .scnB{display:none}
-.mercado.ph1 .scnA{display:none}
-.mercado.ph1 .scnB{display:inline}
-/* línea introductoria — colapsa en fase 2 */
-.mercado .introline{max-height:60px;opacity:1;margin-bottom:34px;overflow:hidden;
-  transition:max-height 0.55s ease, opacity 0.4s ease, margin-bottom 0.55s ease}
-.mercado.ph1 .introline,.mercado.ph2 .introline{max-height:0;opacity:0;margin-bottom:0}
-/* barras: la de videojuegos permanece, las demás colapsan */
-.mercado .vbars{display:flex;flex-direction:column}
-.mercado .otherbars{display:flex;flex-direction:column;gap:18px;margin-top:18px;max-height:430px;opacity:1;overflow:hidden;
-  transition:max-height 0.7s cubic-bezier(0.5,0,0.2,1), opacity 0.45s ease, margin-top 0.6s ease}
-.mercado.ph1 .otherbars{max-height:0;opacity:0;margin-top:0}
-.mercado .gamebar{transition:transform 0.7s cubic-bezier(0.22,0.61,0.36,1)}
-/* grupo TAM/SAM/SOM — se despliega desde la barra de videojuegos */
-.mercado .tssgroup{display:flex;flex-direction:column;gap:16px;max-height:0;opacity:0;margin-top:0;overflow:hidden;
-  border-left:2px solid rgba(193,122,74,0);padding-left:0;
-  transition:max-height 0.85s cubic-bezier(0.5,0,0.2,1) 0.1s, opacity 0.5s ease 0.2s, margin-top 0.6s ease, padding-left 0.6s ease 0.2s, border-color 0.5s ease 0.3s}
-.mercado.ph1 .tssgroup{max-height:760px;opacity:1;margin-top:22px;border-left-color:rgba(193,122,74,0.45);padding-left:26px}
-.mercado .ssublabel{font-family:var(--hf);font-style:italic;font-size:18px;color:var(--gold);margin-bottom:2px}
-.mercado .tssgroup .tssrow{transform:translateY(-18px);opacity:0;transition:transform 0.6s cubic-bezier(0.22,0.61,0.36,1), opacity 0.6s ease}
-.mercado.ph1 .tssgroup .tssrow{transform:none;opacity:1}
-.mercado.ph1 .tssgroup .tssrow:nth-child(2){transition-delay:0.38s}
-.mercado.ph1 .tssgroup .tssrow:nth-child(3){transition-delay:0.52s}
-.mercado.ph1 .tssgroup .tssrow:nth-child(4){transition-delay:0.66s}
-/* en fase 2 compactamos un poco las filas para que quepan junto a la barra */
-.mercado.ph1 .tssrow{padding:18px 28px}
-.mercado.ph1 .tssrow .val{font-size:36px}
-.mercado.ph1 .gamebar .btrack{height:38px;transition:height 0.6s ease}
-
-/* ---- FASE C (La Tendencia): se mantiene SAM, se despliega tendencia ---- */
-/* títulos */
-.mercado .titleC{position:absolute;top:34px;left:0;right:0;opacity:0;transform:translateY(14px);pointer-events:none}
-.mercado.ph2 .titleA,.mercado.ph2 .titleB{opacity:0;transform:translateY(-14px);pointer-events:none;animation:none}
-.mercado.ph2 .titleC{opacity:1;transform:none;pointer-events:auto}
-.mercado.ph2 .sb1,.mercado.ph2 .sb2{background:var(--terra)}
-.mercado.ph2 .sb3{background:var(--gold);box-shadow:0 0 8px rgba(212,168,67,0.6)}
-.mercado.ph1 .scnA,.mercado.ph2 .scnA,.mercado.ph2 .scnB{display:none}
-.mercado .scnC{display:none}
-.mercado.ph2 .scnC{display:inline}
-.mercado.ph1 .scnB{display:inline}
-/* en fase C la barra de Videojuegos desaparece — SAM toma el relevo */
-.mercado.ph2 .vbars{max-height:0 !important;opacity:0;margin:0;overflow:hidden;transition:max-height 0.6s ease, opacity 0.45s ease, margin 0.6s ease}
-.mercado .vbars{transition:max-height 0.6s ease, opacity 0.45s ease, margin 0.6s ease}
-/* el grupo TSS pierde la indentación y el rótulo en fase C */
-.mercado.ph2 .tssgroup{max-height:none;opacity:1;margin-top:18px;border-left-color:transparent;padding-left:0;max-width:58%}
-.mercado.ph2 .ssublabel{max-height:0;opacity:0;margin:0;overflow:hidden}
-.mercado .ssublabel{transition:max-height 0.5s ease,opacity 0.4s ease,margin 0.5s ease}
-/* TAM y SOM colapsan; SAM permanece */
-.mercado.ph2 .row-tam,.mercado.ph2 .row-som{max-height:0;opacity:0;margin:0;padding-top:0;padding-bottom:0;overflow:hidden}
-.mercado .row-tam,.mercado .row-som{max-height:400px;overflow:hidden;transition:max-height 0.6s cubic-bezier(0.5,0,0.2,1),opacity 0.45s ease,padding 0.5s ease,margin 0.5s ease}
-/* SAM se vuelve la barra puente: fila compacta en fase C */
-.mercado.ph2 .row-sam{padding:12px 22px;opacity:1;transform:none}
-.mercado.ph2 .row-sam .tssval{font-size:27px}
-.mercado.ph2 .row-sam .rowdetail{max-height:0;opacity:0;margin:0;overflow:hidden}
-.mercado .row-sam .rowdetail{max-height:300px;overflow:hidden;transition:max-height 0.5s ease,opacity 0.4s ease,margin 0.5s ease}
-.mercado.ph2 .row-sam{border:1px solid rgba(216,154,94,0.55);background:rgba(216,154,94,0.08)}
-/* bloque tendencia: oculto hasta fase C */
-.mercado .tendblock{max-height:0;opacity:0;margin-top:0;overflow:hidden;
-  transition:max-height 0.85s cubic-bezier(0.5,0,0.2,1) 0.15s, opacity 0.55s ease 0.3s, margin-top 0.6s ease}
-.mercado.ph2 .tendblock{max-height:560px;opacity:1;margin-top:16px;max-width:58%}
-.mercado.ph2 .sbody{margin-top:-34px}
-/* cajas de stats más legibles en la tendencia — tonos oscuros */
-.mercado .tend-stats .stat{background:rgba(60,34,18,0.85);border-color:rgba(193,122,74,0.6)}
-.mercado .tend-stats .stat.gold{background:rgba(60,34,18,0.85);border-color:rgba(212,168,67,0.65)}
-.mercado .tend-stats .stat.green{background:rgba(28,42,28,0.85);border-color:rgba(74,122,82,0.7)}
-.mercado .tend-stats .stat .l{color:var(--cream)}
-/* ============ MORPH "EL PROTOTIPO" (3 fases · timeline continua) ============ */
-.proto3.instant *{transition:none !important;animation:none !important}
-/* títulos / eyebrows / contador por fase */
-.proto3 .title1,.proto3 .eb1{display:none}
-.proto3.ph1 .title0,.proto3.ph2 .title0,.proto3.ph1 .eb0,.proto3.ph2 .eb0{display:none}
-.proto3.ph1 .title1,.proto3.ph2 .title1{display:block}
-.proto3.ph1 .eb1,.proto3.ph2 .eb1{display:block}
-.proto3 .scn1,.proto3 .scn2{display:none}
-.proto3.ph1 .scn0,.proto3.ph2 .scn0{display:none}
-.proto3.ph1 .scn1{display:inline}
-.proto3.ph2 .scn2{display:inline}
-/* barras del subcapítulo */
-.proto3 .sbars .sb{background:rgba(193,122,74,0.25);transition:background 0.4s ease,box-shadow 0.4s ease}
-.proto3.ph0 .pb1{background:var(--gold);box-shadow:0 0 8px rgba(212,168,67,0.6)}
-.proto3.ph1 .pb1{background:var(--terra)}
-.proto3.ph1 .pb2{background:var(--gold);box-shadow:0 0 8px rgba(212,168,67,0.6)}
-.proto3.ph2 .pb1,.proto3.ph2 .pb2{background:var(--terra)}
-.proto3.ph2 .pb3{background:var(--gold);box-shadow:0 0 8px rgba(212,168,67,0.6)}
-/* labels de línea de tiempo atenuados después de Prototipo */
-.nlabel.faded{opacity:0.4}
-/* ---- FASE 0 · capítulo jugable ---- */
-.proto3 .capphase{position:absolute;inset:0;z-index:2;pointer-events:none}
-.proto3 .cap-info,.proto3 .cap-river{transition:opacity 0.55s ease, transform 0.65s cubic-bezier(0.22,0.61,0.36,1)}
-.proto3.ph1 .cap-info,.proto3.ph2 .cap-info{opacity:0;transform:translateX(70px)}
-.proto3.ph1 .cap-river,.proto3.ph2 .cap-river{opacity:0;transform:translateY(40px)}
-
-/* ============ ANIMACIÓN DE SALIDA "EL PROBLEMA" → frase central ============ */
-.problema.instant *{transition:none !important;animation:none !important}
-/* el entorno se desvanece primero */
-.problema.beatout .pb-fade{animation:pbOut 0.45s ease forwards;pointer-events:none}
-@keyframes pbOut{to{opacity:0}}
-/* la frase se mueve a centro vía transform (el JS calcula el desplazamiento); no se reposiciona */
-.problema.beatout .primeros-wrap{position:relative;z-index:6}
-.problema.beatout .primeros-wrap h1{animation:none;will-change:transform}
-.proto3 .cap-info{position:absolute;left:600px;right:60px;top:50px;bottom:-60px;width:auto}
-.proto3 .cap-info img{width:100%;height:100%;object-fit:contain;object-position:right bottom;filter:drop-shadow(0 20px 50px rgba(0,0,0,0.55))}
-.proto3 .cap-river{position:absolute;left:430px;top:368px;width:360px;height:560px}
-.proto3 .cap-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.proto3 .cap-lbl{position:absolute;width:400px;text-align:right;transform:translateY(-50%)}
-.proto3 .cap-lbl b{display:block;font-family:var(--hf);font-size:25px;font-weight:700;color:var(--tl);line-height:1.05;text-shadow:0 2px 14px rgba(0,0,0,0.6)}
-.proto3 .cap-lbl small{display:block;margin-top:4px;font-size:18px;color:var(--dim);line-height:1.44}
-/* ---- FASE 1·2 · ruta + break-even ---- */
-.proto3 .protowrap{display:none;flex-direction:column;gap:14px;flex:1;min-height:0;justify-content:center;
-  width:100%;margin-left:0;transition:width 0.7s cubic-bezier(0.22,0.61,0.36,1), margin-left 0.7s cubic-bezier(0.22,0.61,0.36,1)}
-.proto3.ph1 .protowrap,.proto3.ph2 .protowrap{display:flex}
-.proto3 .pn1,.proto3 .pn2{max-height:200px;opacity:1;overflow:hidden;
-  transition:opacity 0.35s ease, max-height 0.55s cubic-bezier(0.5,0,0.2,1) 0.3s, margin 0.55s ease 0.3s, padding 0.55s ease 0.3s}
-.proto3.ph2 .pn1,.proto3.ph2 .pn2{max-height:0;opacity:0;margin:0;padding-top:0;padding-bottom:0;border-width:0}
-.proto3 .beblock{max-height:0;opacity:0;overflow:hidden;
-  transition:max-height 0.6s cubic-bezier(0.5,0,0.2,1) 0.95s, opacity 0.5s ease 1.05s}
-.proto3.ph2 .beblock{max-height:480px;opacity:1}
-.proto3.ph2 .protowrap{width:740px;margin-left:0;margin-right:auto;justify-content:flex-start}
-.proto3 .sosten{transition:border-color 0.4s ease,background 0.4s ease}
-/* fase II/VI: numerales comprimidos a la izquierda, imagen a la derecha */
-.proto3.ph1 .protowrap{width:740px;margin-right:auto}
-.proto3 .proto-img{position:absolute;right:0;top:50px;bottom:-60px;width:46%;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.4s ease;z-index:3}
-.proto3.ph1 .proto-img,.proto3.ph2 .proto-img{opacity:1}
-.proto3 .proto-img img{max-width:100%;max-height:100%;object-fit:contain;display:block}
-.proto3 .proto-img2{display:none}
-.proto3.ph2 .proto-img2{opacity:1}
-.proto3 .proto-img2 img{max-width:100%;max-height:100%;object-fit:contain;display:block}
-.proto3 .proto-img-ph{width:100%;height:100%;border:1px dashed rgba(193,122,74,0.5);border-radius:10px;background:repeating-linear-gradient(45deg, rgba(193,122,74,0.06) 0 12px, transparent 12px 24px);display:flex;align-items:center;justify-content:center}
-.proto3 .proto-img-ph span{font-family:monospace;font-size:14px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(184,168,144,0.7)}
-
-/* cajas de stats oscuras y legibles — El Problema (¿Y Latinoamérica?) */
-#p-problema .statrow .stat{background:rgba(60,34,18,0.85);border-color:rgba(193,122,74,0.6)}
-#p-problema .statrow .stat.gold{background:rgba(60,34,18,0.85);border-color:rgba(212,168,67,0.65)}
-#p-problema .statrow .stat.red{background:rgba(52,24,18,0.88);border-color:rgba(160,64,48,0.7)}
-#p-problema .statrow .stat .l{color:var(--cream)}
-.mercado .tend-left{display:flex;flex-direction:column;gap:12px;min-width:0}
-.mercado .tend-intro{font-size:16px;margin-bottom:2px}
-.mercado .comps-col{display:flex;flex-direction:column;gap:10px}
-.mercado .tend-stats{margin-top:4px}
-/* imagen: ocupa todo el lado derecho, sin borde, sin recorte */
-.mercado .tend-img{position:absolute;top:0;right:0;bottom:0;width:40%;opacity:0;pointer-events:none;z-index:1;transition:opacity 0.7s ease 0.35s}
-.mercado.ph2 .tend-img{opacity:1}
-.mercado .tend-img img{width:100%;height:100%;object-fit:contain;object-position:center bottom;display:block}
-.mercado .tendblock .comp{transform:translateY(12px);opacity:0;transition:transform 0.5s ease,opacity 0.5s ease}
-.mercado.ph2 .tendblock .comp{transform:none;opacity:1}
-.mercado.ph2 .tendblock .comp:nth-child(1){transition-delay:0.4s}
-.mercado.ph2 .tendblock .comp:nth-child(2){transition-delay:0.5s}
-.mercado.ph2 .tendblock .comp:nth-child(3){transition-delay:0.6s}
-.mercado.ph2 .tendblock .comp:nth-child(4){transition-delay:0.7s}
-
-/* layout estándar */
-.lay{position:absolute;inset:72px 96px 80px;display:flex;flex-direction:column;z-index:2}
-.shead{margin-bottom:30px}
-.sbody{flex:1;display:flex;flex-direction:column;justify-content:center;min-height:0}
-
-/* ============ TIPOGRAFÍA ============ */
-.eyebrow{font-size:19px;letter-spacing:0.34em;color:var(--terra);text-transform:uppercase;font-weight:600}
-h1.t{font-family:var(--hf);font-size:84px;font-weight:700;line-height:0.98;color:var(--cream);margin-top:6px}
-h1.t em{font-style:italic;font-weight:500;color:var(--tl)}
-h1.t.sm{font-size:64px}
-.lead{font-size:19px;line-height:1.55;color:var(--cream)}
-.lead b,.lead .hl{color:var(--tl);font-weight:600}
-.dimtext{color:var(--dim)}
-.note{font-size:18.5px;color:var(--dim);font-style:italic}
-
-/* subcapítulos */
-.subcap{display:flex;align-items:center;gap:14px;margin-bottom:18px}
-.subcap .scl{font-family:var(--hf);font-style:italic;font-size:22px;color:var(--gold)}
-.subcap .sbars{display:flex;gap:6px}
-.subcap .sb{width:40px;height:3px;border-radius:2px;background:rgba(193,122,74,0.25)}
-.subcap .sb.on{background:var(--terra)}
-.subcap .sb.cur{background:var(--gold);box-shadow:0 0 8px rgba(212,168,67,0.6)}
-.subcap .scn{font-size:14px;letter-spacing:0.2em;color:var(--dim)}
-
-/* ============ COMPONENTES ============ */
-.panel{border:1px solid var(--pbdr);background:linear-gradient(160deg, rgba(46,29,20,0.88), rgba(28,16,10,0.82));border-radius:10px;padding:30px 34px;backdrop-filter:blur(4px)}
-.panel.gold{border-color:rgba(212,168,67,0.38)}
-.panel.green{border-color:rgba(74,122,82,0.5);background:linear-gradient(160deg, rgba(34,46,32,0.7), rgba(20,28,18,0.65))}
-.panel h3{font-family:var(--hf);font-size:31px;font-weight:700;color:var(--tl);line-height:1.05}
-.panel.gold h3{color:var(--gold)}
-.panel .phsub{font-size:16px;color:var(--terra);font-weight:600;letter-spacing:0.04em;margin-top:4px}
-.panel p{font-size:16.5px;line-height:1.55;color:var(--dim)}
-.panel p b{color:var(--cream)}
-
-.bullets{display:flex;flex-direction:column;gap:13px}
-.b-row{display:flex;gap:14px;align-items:flex-start}
-.b-dot{flex-shrink:0;width:8px;height:8px;border-radius:50%;background:var(--terra);margin-top:9px}
-.b-row b{font-family:var(--hf);font-size:20.5px;font-weight:700;color:var(--tl)}
-.b-row p{font-size:16px;color:var(--dim);line-height:1.42}
-
-/* personajes laterales */
-.char{position:absolute;right:-30px;bottom:0;height:1010px;width:auto;object-fit:contain;z-index:1;
-  -webkit-mask-image:linear-gradient(to left, #000 62%, transparent 98%);
-  mask-image:linear-gradient(to left, #000 62%, transparent 98%);
-  filter:saturate(0.92) contrast(1.02)}
-.char-glow{position:absolute;right:60px;bottom:-140px;width:760px;height:760px;border-radius:50%;background:radial-gradient(circle, rgba(212,168,67,0.13), transparent 65%);pointer-events:none;z-index:1}
-@media (prefers-reduced-motion: no-preference){
-  .pg.act .char{animation:charIn 1.4s ease 0.4s both}
-  @keyframes charIn{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
-}
-
-/* barras horizontales (industria) */
-.vbars{display:flex;flex-direction:column;gap:18px;max-width:1500px}
-.brow{display:grid;grid-template-columns:300px 1fr;align-items:center;gap:22px}
-.bname{text-align:right;font-size:24px;font-family:var(--hf);font-weight:600;color:var(--cream)}
-.bname small{display:block;font-family:var(--bf);font-size:14px;color:var(--dim)}
-.btrack{height:48px;background:rgba(74,53,40,0.35);border-radius:10px;position:relative;overflow:visible}
-.bfill{height:100%;width:0;border-radius:10px;background:rgba(184,168,144,0.3);transition:width 1.3s cubic-bezier(0.22,0.61,0.36,1);transition-delay:var(--d,0s);position:relative}
-.bfill.hero{background:linear-gradient(90deg,#8B5A2B,var(--terra) 60%,var(--tl));box-shadow:0 0 30px rgba(193,122,74,0.35)}
-.pg.act .bfill{width:var(--w)}
-.bval{position:absolute;top:50%;transform:translateY(-50%);font-family:var(--hf);font-size:26px;font-weight:700;color:var(--cream);left:calc(var(--w) + 18px);white-space:nowrap}
-.bval.in{left:auto;right:18px;color:#160C05;font-size:30px}
-
-/* TAM/SAM/SOM — formato fila etiqueta + barra + valor (estilo escenarios) */
-.tsshd{display:grid;grid-template-columns:360px 1fr 150px;align-items:center;gap:22px}
-.tsslbl .tag{display:block;font-size:16px;letter-spacing:0.26em;font-weight:700;margin-bottom:3px}
-.tsslbl small{font-size:15px;color:var(--dim);line-height:1.25;display:block}
-.tssbar{height:22px;background:rgba(74,53,40,0.35);border-radius:11px;overflow:hidden}
-.tssbar i{display:block;height:100%;border-radius:11px;width:0;transition:width 1.3s cubic-bezier(0.22,0.61,0.36,1);transition-delay:var(--d,0s)}
-.pg.act .tssbar i{width:var(--w)}
-.tssval{font-family:var(--hf);font-size:30px;font-weight:700;text-align:right}
-.tssrow .rowdetail{margin-top:14px}
-.tssrow{border:1px solid var(--pbdr);background:linear-gradient(160deg, rgba(46,29,20,0.7), rgba(28,16,10,0.6));border-radius:10px;padding:24px 32px}
-.tssrow .hd{display:flex;align-items:baseline;gap:18px;margin-bottom:10px}
-.tssrow .tag{font-size:17px;letter-spacing:0.3em;font-weight:700}
-.tssrow .val{font-family:var(--hf);font-size:42px;font-weight:700;color:var(--cream);line-height:1}
-.tssrow .sub{font-size:18px;color:var(--dim)}
-.tssrow .tbar{height:10px;border-radius:3px;background:rgba(74,53,40,0.4);margin-bottom:12px;overflow:hidden}
-.tssrow .tbar i{display:block;height:100%;width:0;border-radius:3px;transition:width 1.4s cubic-bezier(0.22,0.61,0.36,1);transition-delay:var(--d,0s)}
-.pg.act .tssrow .tbar i{width:100%}
-.tssrow .det{font-size:16px;line-height:1.5;color:var(--dim)}
-.tssrow .det b{color:var(--cream)}
-.minis{display:flex;gap:40px;flex-wrap:wrap}
-.mini{text-align:center}
-.mini .v{font-family:var(--hf);font-size:30px;font-weight:700;color:var(--terra);line-height:1.05}
-.mini .l{font-size:18px;color:var(--dim);margin-top:3px;white-space:pre-line;line-height:1.35}
-
-/* stats */
-.statrow{display:flex;gap:18px}
-.stat{flex:1;text-align:center;padding:24px 16px;border-radius:10px;border:1px solid rgba(193,122,74,0.3);background:rgba(193,122,74,0.07)}
-.stat.gold{border-color:rgba(212,168,67,0.35);background:rgba(212,168,67,0.07)}
-.stat.red{border-color:rgba(160,64,48,0.4);background:rgba(160,64,48,0.09)}
-.stat.green{border-color:rgba(74,122,82,0.4);background:rgba(74,122,82,0.09)}
-.stat .v{font-family:var(--hf);font-size:46px;font-weight:700;color:var(--terra);line-height:1}
-.stat.gold .v{color:var(--gold)}.stat.red .v{color:#C66B52}.stat.green .v{color:var(--green)}
-.stat .l{font-size:15px;color:var(--dim);margin-top:8px;white-space:pre-line;line-height:1.4}
-
-/* comps */
-.comp{display:flex;justify-content:space-between;align-items:center;gap:14px;border:1px solid var(--pbdr);background:linear-gradient(160deg, rgba(46,29,20,0.8), rgba(28,16,10,0.7));border-radius:10px;padding:16px 24px}
-.comp .n{font-family:var(--hf);font-size:24px;font-weight:700;color:var(--cream)}
-.comp .s{font-size:14.5px;color:var(--dim)}
-.comp .r{text-align:right;flex-shrink:0}
-.comp .r .v{font-family:var(--hf);font-size:27px;font-weight:700;color:var(--gold);line-height:1.05}
-.comp .r .d{font-size:17.5px;color:var(--dim)}
-
-/* equipo */
-.team{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.member{border:1px solid var(--pbdr);background:linear-gradient(160deg, rgba(46,29,20,0.85), rgba(28,16,10,0.8));border-radius:10px;overflow:hidden;display:flex;flex-direction:column}
-.member .ph{width:100%;height:320px;overflow:hidden;flex-shrink:0}
-.member .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 12%}
-.member .in{padding:15px 18px}
-.member .nm{font-family:var(--hf);font-size:24px;font-weight:700;color:var(--cream);line-height:1.05}
-.member .rl{font-size:15px;color:var(--terra);letter-spacing:0.07em;font-weight:700;text-transform:uppercase;margin:6px 0 9px;line-height:1.35}
-.member p{font-size:17.5px;color:var(--dim);line-height:1.5}
-.allies{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.ally{display:flex;gap:16px;align-items:center;border:1px solid var(--pbdr);background:linear-gradient(160deg, rgba(46,29,20,0.85), rgba(28,16,10,0.8));border-radius:10px;padding:14px 18px}
-.ally img{width:108px;height:108px;border-radius:10px;object-fit:cover;object-position:50% 18%;flex-shrink:0}
-.ally img.contain{object-fit:contain;background:rgba(232,220,200,0.92);padding:6px}
-.ally .nm{font-family:var(--hf);font-size:21px;font-weight:700;color:var(--cream)}
-.ally p{font-size:17.5px;color:var(--dim);line-height:1.46}
-
-/* video full-bleed */
-.pgvid .vid{position:absolute;inset:0;z-index:1;background:#000}
-.pgvid .vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0;pointer-events:none}
-.pgvid .vid video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.pgvid .shade{position:absolute;inset:0;z-index:2;background:linear-gradient(180deg, rgba(8,5,2,0.5) 0%, transparent 26%, transparent 52%, rgba(8,5,2,0.72) 100%)}
-.pgvid .ttl{position:absolute;left:96px;top:72px;z-index:3}
-.pgvid .low{position:absolute;left:96px;bottom:84px;z-index:3;max-width:860px}
-.pgvid .lowr{position:absolute;right:96px;bottom:84px;z-index:3;display:flex;gap:16px}
-.pgvid .thumb{width:300px;border-radius:8px;border:1px solid var(--pbdr);display:block}
-.vsound{position:absolute;top:72px;right:96px;z-index:5;display:flex;align-items:center;gap:9px;background:rgba(21,16,10,0.6);border:1px solid var(--pbdr);border-radius:30px;padding:9px 16px;cursor:pointer;color:var(--dim);font-family:var(--bf);font-size:14px;letter-spacing:0.14em;text-transform:uppercase;backdrop-filter:blur(6px);transition:color 0.3s,border-color 0.3s}
-.vsound:hover{color:var(--cream);border-color:var(--terra)}
-.vsound::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--dim)}
-.vsound.on{color:var(--cream);border-color:var(--terra)}
-.vsound.on::before{background:var(--terra);box-shadow:0 0 10px var(--terra)}
-
-/* video embebido (no full) */
-.media{position:relative;border-radius:10px;overflow:hidden;background:#000;border:1px solid var(--pbdr)}
-.media iframe{position:absolute;top:50%;left:50%;width:101%;aspect-ratio:16/9;min-height:101%;min-width:179%;transform:translate(-50%,-50%);border:0;pointer-events:none}
-.media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-
-/* metodología */
-.pillars{display:flex;gap:16px;align-items:stretch;justify-content:center}
-.pillar{flex:0 1 340px;border:1px solid var(--pbdr);background:linear-gradient(160deg, rgba(46,29,20,0.85), rgba(28,16,10,0.8));border-radius:10px;padding:20px 24px;text-align:center}
-.pillar .t{font-family:var(--hf);font-size:24px;font-weight:700;color:var(--cream)}
-.pillar .d{font-size:15px;color:var(--dim);margin-top:4px;line-height:1.4}
-.plus{font-family:var(--hf);font-size:34px;font-weight:700;color:var(--terra);align-self:center}
-.chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
-.chip{font-size:16px;font-weight:600;color:var(--tl);padding:11px 24px;border-radius:32px;border:1px solid rgba(193,122,74,0.5);background:rgba(193,122,74,0.1)}
-
-/* tracción */
-.checks{display:flex;flex-direction:column;gap:8px}
-.check{display:flex;gap:16px;align-items:flex-start;border:1px solid var(--pbdr);background:linear-gradient(160deg, rgba(46,29,20,0.85), rgba(28,16,10,0.8));border-radius:10px;padding:10px 20px}
-.check .ic{font-family:var(--hf);font-size:22px;font-weight:700;color:var(--green);flex-shrink:0;width:22px;line-height:1.2}
-.check.next .ic{color:var(--gold)}
-.check .t{font-family:var(--hf);font-size:21px;font-weight:700;color:var(--cream);line-height:1.1}
-.check .d{font-size:16.5px;color:var(--dim);margin-top:1px}
-.check .i{font-size:17.5px;color:var(--tl);margin-top:2px}
-
-/* río / ruta (subcap prototipo) */
-.routewrap{position:relative;height:240px;margin:6px 0 10px}
-.routewrap svg{position:absolute;left:0;top:0;width:100%;height:auto}
-.node{position:absolute;transform:translate(-50%,0)}
-.ndot{width:17px;height:17px;border-radius:50%;border:2.5px solid var(--terra);background:var(--terra);margin:0 auto;box-shadow:0 0 0 7px rgba(193,122,74,0.13)}
-.ndot.hollow{background:transparent}
-.ndot.gold{border-color:var(--gold);box-shadow:0 0 0 7px rgba(212,168,67,0.14)}
-.nlabel{margin-top:9px;text-align:center;width:190px;margin-left:calc(50% - 95px);font-size:17px;color:var(--cream);line-height:1.25}
-.nlabel small{display:block;color:var(--dim);font-size:17.5px;margin-top:2px}
-.nlabel b{font-family:var(--hf);font-size:21px;font-weight:700;color:var(--tl);line-height:1.05;display:block}
-.nlabel.goldc b{color:var(--gold)}
-.nlabel span{display:block;font-size:14px;color:var(--terra);font-weight:600;margin-top:3px}
-.nlabel.goldc span{color:var(--gold)}
-@media (prefers-reduced-motion: no-preference){
-  .routewrap svg path.dash{stroke-dasharray:9 9;animation:flow 30s linear infinite}
-  .cap-svg path.dash{stroke-dasharray:9 9;animation:flow 26s linear infinite}
-  @keyframes flow{to{stroke-dashoffset:-360}}
-}
-/* nodo destacado del prototipo (foco de esta ronda) */
-.ndot.proto{width:26px;height:26px;border-color:var(--gold);background:var(--gold);box-shadow:0 0 0 9px rgba(212,168,67,0.18), 0 0 24px rgba(212,168,67,0.6)}
-.nlabel.big{width:240px;margin-left:calc(50% - 120px)}
-.nlabel.big b{font-size:29px}
-.nlabel.big span{font-size:16px}
-
-/* numerales */
-.num3{display:flex;gap:18px;align-items:flex-start;border:1px solid var(--pbdr);background:linear-gradient(160deg, rgba(46,29,20,0.85), rgba(28,16,10,0.8));border-radius:10px;padding:18px 24px}
-.num3 .n{font-family:var(--hf);font-size:30px;font-weight:700;color:var(--terra);flex-shrink:0;min-width:42px;line-height:1.05}
-.num3 .t{font-family:var(--hf);font-size:21px;font-weight:700;color:var(--cream);margin-bottom:3px;line-height:1.1}
-.num3 p{font-size:14.5px;color:var(--dim);line-height:1.48}
-.num3.accent{border-color:rgba(212,168,67,0.4)}
-
-/* timeline vertical */
-.vtl{display:flex;flex-direction:column}
-.vtl .it{display:flex;gap:18px}
-.vtl .rail{display:flex;flex-direction:column;align-items:center;flex-shrink:0}
-.vtl .dotv{width:15px;height:15px;border-radius:50%;background:var(--terra);margin-top:6px;box-shadow:0 0 14px rgba(193,122,74,0.5)}
-.vtl .ln{width:2px;flex:1;min-height:16px;background:rgba(193,122,74,0.3)}
-.vtl .bd{padding-bottom:26px}
-.vtl .t{font-family:var(--hf);font-size:26px;font-weight:700;color:var(--terra);margin-bottom:4px}
-.vtl p{font-size:17px;color:var(--cream);line-height:1.5;max-width:620px}
-
-/* breakeven */
-.bebar{height:40px;border-radius:7px;display:flex;align-items:center;padding-left:16px;margin-bottom:5px}
-.bebar b{font-family:var(--hf);font-size:24px;font-weight:700;color:#160C05}
-
-/* gantt */
-#gantt{border:1px solid var(--pbdr);background:linear-gradient(160deg, rgba(46,29,20,0.7), rgba(28,16,10,0.6));border-radius:10px;padding:18px 26px}
-#gantt svg{width:100%;display:block}
-#gantt text{font-family:var(--bf)}
-.granrow{cursor:pointer}
-
-/* presupuesto */
-.budget{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.bcat{border:1px solid var(--pbdr);background:linear-gradient(160deg, rgba(46,29,20,0.85), rgba(28,16,10,0.8));border-radius:10px;padding:20px 24px}
-.bcat .hd2{display:flex;justify-content:space-between;margin-bottom:8px;align-items:baseline}
-.bcat .cn{font-size:17px;font-weight:600;color:var(--cream)}
-.bcat .ca{font-family:var(--hf);font-size:24px;font-weight:700;color:var(--terra)}
-.bcat .trk{height:6px;background:rgba(74,53,40,0.4);border-radius:3px;margin-bottom:9px;overflow:hidden}
-.bcat .trk i{display:block;height:100%;background:var(--terra);border-radius:3px;width:0;transition:width 1.2s ease 0.5s}
-.pg.act .bcat .trk i{width:var(--w)}
-.bcat .cd{font-size:17px;color:var(--dim);line-height:1.4}
-.roster div{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px solid rgba(193,122,74,0.16);font-size:16.5px}
-.roster div:last-child{border-bottom:0}
-.roster span{color:var(--cream)}
-.roster small{color:var(--dim);font-size:17.5px;text-align:right}
-
-/* tablas */
-.tbl{border-radius:8px;overflow:hidden;border:1px solid rgba(212,168,67,0.3)}
-.tbl .hd,.tbl .rw{display:grid;grid-template-columns:1.2fr 1fr 1fr;padding:9px 16px;align-items:center}
-.tbl .hd{background:rgba(212,168,67,0.14)}
-.tbl .hd div{font-size:16px;font-weight:700;letter-spacing:0.05em;color:var(--gold)}
-.tbl .rw{border-top:1px solid rgba(193,122,74,0.18)}
-.tbl .rw:nth-child(odd){background:rgba(46,29,20,0.5)}
-.tbl .rw .a{font-family:var(--hf);font-size:17px;font-weight:700;color:var(--cream)}
-.tbl .rw .b{font-size:16px;color:var(--dim);text-align:right}
-.tbl .rw .c{font-family:var(--hf);font-size:18px;font-weight:700;color:var(--gold);text-align:right}
-.tbl .hd div:nth-child(2),.tbl .hd div:nth-child(3){text-align:right}
-
-/* cocrea */
-.tabs{display:flex;gap:14px}
-.tab{flex:1;padding:16px 22px;border-radius:8px;cursor:pointer;border:1px solid var(--pbdr);background:linear-gradient(160deg, rgba(46,29,20,0.85), rgba(28,16,10,0.8));font-family:var(--hf);font-size:21px;font-weight:700;color:var(--dim);transition:all 0.25s;text-align:center}
-.tab.on{background:rgba(193,122,74,0.22);border-color:var(--terra);color:var(--cream)}
-.hide{display:none !important}
-.cocrea-cols{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:stretch}
-.cc-row{display:grid;grid-template-columns:54px 1fr 96px;align-items:center;gap:14px}
-.cc-row .cc-t{font-family:var(--hf);font-size:20px;font-weight:700;color:var(--cream)}
-.cc-row .cc-bar{height:16px;background:rgba(74,53,40,0.4);border-radius:8px;overflow:hidden}
-.cc-row .cc-bar i{display:block;height:100%;border-radius:8px;background:linear-gradient(90deg,#3F6B47,var(--green));transition:width 1.1s cubic-bezier(0.22,0.61,0.36,1)}
-.cc-row .cc-s{font-family:var(--hf);font-size:19px;font-weight:700;color:var(--green);text-align:right}
-#p-cocrea .panel h3{font-size:25px}
-#p-cocrea #cocreaFooter{padding:16px 26px}
-/* presupuesto · imagen alta a la derecha */
-.budget-img{position:absolute;right:60px;top:0;bottom:0;width:600px;display:flex;align-items:flex-end;justify-content:center;z-index:1;pointer-events:none}
-.budget-img img{max-width:100%;max-height:100%;object-fit:contain;object-position:center bottom;
-  -webkit-mask-image:linear-gradient(to top, transparent 1%, #000 16%);mask-image:linear-gradient(to top, transparent 1%, #000 16%)}
-.budget-img-ph{width:470px;height:84%;border:1px dashed rgba(193,122,74,0.5);border-radius:10px;background:repeating-linear-gradient(45deg, rgba(193,122,74,0.06) 0 12px, transparent 12px 24px);display:flex;align-items:center;justify-content:center;text-align:center}
-.budget-img-ph span{font-family:var(--bf);font-size:14px;color:var(--dim);letter-spacing:0.08em;padding:0 20px}
-/* propuesta · espacio para imagen a la derecha */
-#p-propuesta .shead, #p-propuesta .propbody{max-width:1330px}
-.prop-img{position:absolute;right:0;top:64px;bottom:60px;width:330px;display:flex;align-items:center;justify-content:center;z-index:1;pointer-events:none}
-.prop-img img{max-width:100%;max-height:100%;object-fit:contain;object-position:center;
-  -webkit-mask-image:linear-gradient(to top, transparent 1%, #000 14%);mask-image:linear-gradient(to top, transparent 1%, #000 14%)}
-.prop-img-ph{width:300px;height:80%;border:1px dashed rgba(193,122,74,0.5);border-radius:10px;background:repeating-linear-gradient(45deg, rgba(193,122,74,0.06) 0 12px, transparent 12px 24px);display:flex;align-items:center;justify-content:center;text-align:center}
-.prop-img-ph span{font-family:var(--bf);font-size:14px;color:var(--dim);letter-spacing:0.08em;padding:0 20px}
-.fadein{animation:aIn 0.7s cubic-bezier(0.22,0.61,0.36,1) both}
-.greenbar{padding:14px 20px;background:rgba(74,122,82,0.18);border-radius:8px;text-align:center}
-.greenbar b{font-family:var(--hf);font-size:24px;font-weight:700;color:var(--green)}
-.greenbar span{font-size:14.5px;color:var(--dim);display:block}
-
-/* portada */
-#p-portada h1.big{font-family:var(--hf);font-weight:700;font-size:190px;line-height:0.88;letter-spacing:0.01em;margin:10px 0 0;
-  background:linear-gradient(168deg,#F2E8D0 30%,#D4945E 78%,#B5713C 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-#p-portada .sub{font-size:23px;color:var(--dim);max-width:600px;line-height:1.65;margin-top:30px}
-#p-portada .sub b{color:var(--tl);font-weight:600}
-#p-portada .chipff{display:inline-flex;flex-direction:column;gap:3px;margin-top:44px;padding:18px 34px;border:1px solid var(--pbdr);border-radius:8px;background:rgba(36,23,16,0.6);backdrop-filter:blur(4px)}
-#p-portada .chipff b{font-family:var(--hf);font-size:26px;font-weight:700;color:var(--terra)}
-#p-portada .chipff span{font-size:16px;color:var(--dim);letter-spacing:0.08em}
-
-/* gracias */
-#p-gracias .lay{align-items:center;text-align:center;justify-content:center}
-#p-gracias img.icon{height:170px;width:auto;margin-bottom:26px}
-#p-gracias h1.big{font-family:var(--hf);font-size:120px;font-weight:700;line-height:0.95;margin:8px 0 20px;
-  background:linear-gradient(168deg,#F2E8D0 30%,#D4945E 78%,#B5713C 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-#p-gracias p{color:var(--dim);font-size:21px;line-height:1.7;max-width:680px}
-#p-gracias .web{font-size:17px;color:var(--terra);margin-top:30px;letter-spacing:0.05em}
-
-@media (prefers-reduced-motion:reduce){
-  .fogv{animation:none}
-  [data-a]{opacity:1}
-  .pg.act [data-a]{animation:none}
-  .pg{transition:opacity 0.3s ease}
-  .pg.outL,.pg.outR,.pg.preR,.pg.preL{transform:none}
-}
-
-</style>
+<link rel="stylesheet" href="wauro-presentacion-v2.css?v=81">
 <script src="https://player.vimeo.com/api/player.js"></script>
 </head>
 <body>
@@ -626,8 +23,7 @@ h1.t.sm{font-size:64px}
   <div class="paint"></div>
   <div class="paintcursor"></div>
   <div class="center" id="umbralCenter">
-    <div class="studio">La Selva Game Studio</div>
-    <p class="invite">Hay una historia que la selva ha guardado<br>durante más de un siglo.</p>
+    <img class="studio-logo" src="https://images.squarespace-cdn.com/content/67a29672e45a656b8be53344/fc77b3e8-2781-4355-8dc1-55d4e40a1df9/LaSelva3.png?content-type=image%2Fpng" alt="La Selva Game Studio">
     <div class="doors">
       <button class="con" id="startIntro">Empecemos el viaje</button>
     </div>
@@ -690,28 +86,28 @@ h1.t.sm{font-size:64px}
     <div class="shead">
       <div class="subcap" data-a style="--i:0"><span class="scl">El Mercado</span><span class="sbars"><i class="sb sb1"></i><i class="sb sb2"></i><i class="sb sb3"></i></span><span class="scn scnA">I / III</span><span class="scn scnB">II / III</span><span class="scn scnC">III / III</span></div>
       <div class="titleblock titleA">
-        <div class="eyebrow">Contexto</div>
+        
         <h1 class="t sm">La Industria Más Grande<br>del <em>Entretenimiento</em></h1>
       </div>
       <div class="titleblock titleB">
-        <div class="eyebrow">Nuestro segmento</div>
+        
         <h1 class="t sm">¿Dónde Jugamos <em>Nosotros</em>?</h1>
       </div>
       <div class="titleblock titleC">
-        <div class="eyebrow">La tendencia</div>
+        
         <h1 class="t sm">Los Videojuegos Culturales Son <em>el Futuro</em></h1>
       </div>
     </div>
     <div class="sbody">
       <p class="lead introline" data-a style="--i:2">Los videojuegos generan más que <span class="hl">todas las otras industrias del entretenimiento juntas</span>.</p>
       <div class="vbars" data-a style="--i:3">
-        <div class="brow gamebar"><div class="bname">Videojuegos</div><div class="btrack"><div class="bfill hero" style="--w:100%;--d:0.3s"></div><span class="bval in">$290B</span></div></div>
+        <div class="brow gamebar"><div class="bname">Videojuegos</div><div class="btrack"><div class="bfill hero" style="--w:100%;--d:0.3s"></div><span class="bval in">US$290 mil M</span></div></div>
         <div class="otherbars">
-          <div class="brow"><div class="bname">Cine<small>taquilla + home</small></div><div class="btrack"><div class="bfill" style="--w:34.5%;--d:0.45s"></div><span class="bval" style="--w:34.5%">$100B</span></div></div>
-          <div class="brow"><div class="bname">Streaming de video</div><div class="btrack"><div class="bfill" style="--w:27.6%;--d:0.6s"></div><span class="bval" style="--w:27.6%">$80B</span></div></div>
-          <div class="brow"><div class="bname">Mundial FIFA 2026</div><div class="btrack"><div class="bfill" style="--w:27.6%;--d:0.75s"></div><span class="bval" style="--w:27.6%">$80B</span></div></div>
-          <div class="brow"><div class="bname">Música grabada</div><div class="btrack"><div class="bfill" style="--w:10%;--d:0.9s"></div><span class="bval" style="--w:10%">$29B</span></div></div>
-          <div class="brow"><div class="bname">Libros<small>ficción</small></div><div class="btrack"><div class="bfill" style="--w:9%;--d:1.05s"></div><span class="bval" style="--w:9%">$26B</span></div></div>
+          <div class="brow"><div class="bname">Cine<small>taquilla + home</small></div><div class="btrack"><div class="bfill" style="--w:34.5%;--d:0.45s"></div><span class="bval" style="--w:34.5%">US$100 mil M</span></div></div>
+          <div class="brow"><div class="bname">Streaming de video</div><div class="btrack"><div class="bfill" style="--w:27.6%;--d:0.6s"></div><span class="bval" style="--w:27.6%">US$80 mil M</span></div></div>
+          <div class="brow"><div class="bname">Mundial FIFA 2026</div><div class="btrack"><div class="bfill" style="--w:27.6%;--d:0.75s"></div><span class="bval" style="--w:27.6%">US$80 mil M</span></div></div>
+          <div class="brow"><div class="bname">Música grabada</div><div class="btrack"><div class="bfill" style="--w:10%;--d:0.9s"></div><span class="bval" style="--w:10%">US$29 mil M</span></div></div>
+          <div class="brow"><div class="bname">Libros<small>ficción</small></div><div class="btrack"><div class="bfill" style="--w:9%;--d:1.05s"></div><span class="bval" style="--w:9%">US$26 mil M</span></div></div>
         </div>
       </div>
       <div class="tssgroup">
@@ -720,21 +116,19 @@ h1.t.sm{font-size:64px}
           <div class="tsshd">
             <div class="tsslbl"><span class="tag" style="color:var(--terra)">TAM</span><small>PC + Consola · 1.58B jugadores</small></div>
             <div class="tssbar"><i style="--w:100%;--d:0.5s;background:linear-gradient(90deg,#8B5A2B,var(--terra))"></i></div>
-            <div class="tssval" style="color:var(--terra)">$88.3B</div>
+            <div class="tssval" style="color:var(--terra)">US$88,3 mil M</div>
           </div>
-          <div class="rowdetail" style="display:flex;gap:50px;align-items:center">
-            <p class="det" style="flex:1">En 2025, PC y consola combinaron <b>$88.3B</b> en ingresos entre 1.58B jugadores. Acción-aventura solo en PC representa $7.15B, creciendo 5% anual mientras battle royale disminuye. Los títulos premium single-player representan $42.3B del total y el tiempo de juego de aventura creció +6% interanual.</p>
-            <div class="minis"><div class="mini"><div class="v">$7.15B</div><div class="l">Acción-aventura PC</div></div><div class="mini"><div class="v">$42.3B</div><div class="l">Single-player premium</div></div><div class="mini"><div class="v">+5%</div><div class="l">Crecimiento anual</div></div></div>
+          <div class="rowdetail" style="display:flex;justify-content:center">
+            <div class="minis"><div class="mini"><div class="v">US$42,3 mil M</div><div class="l">Single-player premium</div></div><div class="mini"><div class="v">+5%</div><div class="l">Crecimiento anual</div></div></div>
           </div>
         </div>
         <div class="tssrow row-sam">
           <div class="tsshd">
             <div class="tsslbl"><span class="tag" style="color:var(--tl)">SAM</span><small>Acción-Aventura Narrativa Single-Player</small></div>
             <div class="tssbar"><i style="--w:64%;--d:0.8s;background:linear-gradient(90deg,#9C6A3E,var(--tl))"></i></div>
-            <div class="tssval" style="color:var(--tl)">~$5B</div>
+            <div class="tssval" style="color:var(--tl)">~US$5 mil M</div>
           </div>
-          <div class="rowdetail" style="display:flex;gap:50px;align-items:center">
-            <p class="det" style="flex:1">El segmento donde compite Wa'uro: juegos de acción-aventura donde <b>la narrativa es central a la experiencia</b>, single-player, en PC y consola. Aproximadamente 100–200 títulos se lanzan anualmente. Es el género que más crece en Steam y donde los estudios independientes compiten de tú a tú con los grandes.</p>
+          <div class="rowdetail" style="display:flex;justify-content:center">
             <div class="minis"><div class="mini"><div class="v">5M+</div><div class="l">Expedition 33</div></div><div class="mini"><div class="v">4M+</div><div class="l">Sifu · 3 semanas</div></div><div class="mini"><div class="v">4M+</div><div class="l">Stray en Steam</div></div></div>
           </div>
         </div>
@@ -742,11 +136,10 @@ h1.t.sm{font-size:64px}
           <div class="tsshd">
             <div class="tsslbl"><span class="tag" style="color:var(--gold)">SOM</span><small>Captura Esperada Año 1</small></div>
             <div class="tssbar"><i style="--w:38%;--d:1.1s;background:linear-gradient(90deg,#8B6914,var(--gold))"></i></div>
-            <div class="tssval" style="color:var(--gold)">$3–15M</div>
+            <div class="tssval" style="color:var(--gold)">$12.000–60.000M COP</div>
           </div>
-          <div class="rowdetail" style="display:flex;gap:50px;align-items:center">
-            <p class="det" style="flex:1">Los juegos en Steam con un <b>vehículo de marketing dedicado</b> (festivales, Steam Next Fest, influencers) consistentemente superan las 100K copias. Los debuts premium culturalmente auténticos de estudios nuevos han demostrado capturas de 150K–500K unidades en su primer año.</p>
-            <div class="minis"><div class="mini"><div class="v">$29.99</div><div class="l">Precio base</div></div><div class="mini"><div class="v">164K</div><div class="l">Break-even</div></div><div class="mini"><div class="v">70%</div><div class="l">Retención self-pub</div></div></div>
+          <div class="rowdetail" style="display:flex;justify-content:center">
+            <div class="minis"><div class="mini"><div class="v">US$29.99</div><div class="l">Precio base</div></div><div class="mini"><div class="v">164K</div><div class="l">Break-even</div></div><div class="mini"><div class="v">70%</div><div class="l">Retención self-pub</div></div></div>
           </div>
         </div>
       </div>
@@ -754,9 +147,9 @@ h1.t.sm{font-size:64px}
         <div class="tend-left">
           <p class="lead tend-intro">Los juegos narrativos con enfoque cultural atraviesan un auge nunca antes visto, incluso desde estudios independientes:</p>
           <div class="comps-col">
-            <div class="comp"><div><div class="n">Black Myth: Wukong</div><div class="s">Mitología china · Game Science</div></div><div class="r"><div class="v">25M copias</div><div class="d">~$1,600M USD</div></div></div>
-            <div class="comp"><div><div class="n">Clair Obscur: Expedition 33</div><div class="s">Folclor francés · Sandfall Interactive</div></div><div class="r"><div class="v">8M copias</div><div class="d">&lt;$10M · 9 premios TGA</div></div></div>
-            <div class="comp"><div><div class="n">Sifu</div><div class="s">Artes marciales kung-fu · Sloclap</div></div><div class="r"><div class="v">4M+ copias</div><div class="d">1M en 3 semanas a $35</div></div></div>
+            <div class="comp"><div><div class="n">Black Myth: Wukong</div><div class="s">Mitología china · Game Science</div></div><div class="r"><div class="v">25M copias</div><div class="d">~US$1.600 M</div></div></div>
+            <div class="comp"><div><div class="n">Clair Obscur: Expedition 33</div><div class="s">Folclor francés · Sandfall Interactive</div></div><div class="r"><div class="v">8M copias</div><div class="d">&lt;US$10M · 9 premios TGA</div></div></div>
+            <div class="comp"><div><div class="n">Sifu</div><div class="s">Artes marciales kung-fu · Sloclap</div></div><div class="r"><div class="v">4M+ copias</div><div class="d">1M en 3 semanas a US$35</div></div></div>
             <div class="comp"><div><div class="n">Never Alone</div><div class="s">Mito inuit de Alaska · Upper One Games</div></div><div class="r"><div class="v">2M copias</div><div class="d">Peabody Award</div></div></div>
           </div>
           <div class="statrow tend-stats">
@@ -777,16 +170,15 @@ h1.t.sm{font-size:64px}
     <div class="pb-grid" style="display:grid;grid-template-columns:1.05fr 0.95fr;gap:50px;align-items:center;flex:1;min-height:0">
       <div>
         <div class="shead pb-fade" style="margin-bottom:20px">
-          <div class="eyebrow" data-a style="--i:0">El problema</div>
+          
           <h1 class="t" data-a style="--i:1">¿Y <em>Latinoamérica</em>?</h1>
         </div>
-        <p class="lead pb-fade" data-a style="--i:2; margin-bottom:18px">China tiene Black Myth. Francia tiene Expedition 33. Polonia tiene The Witcher. Alaska tiene Never Alone.</p>
-        <div class="pb-fade" data-a style="--i:3; font-family:var(--hf); font-size:52px; font-weight:700; color:var(--terra); line-height:1.05; margin-bottom:14px">Latinoamérica está quedada</div>
-        <p class="dimtext pb-fade" data-a style="--i:4; font-size:18px; line-height:1.6; max-width:680px; margin-bottom:30px">Nadie ha producido el primer videojuego premium que se base en la riqueza cultural de la región para crear una experiencia de juego única.</p>
+        <p class="lead pb-fade" data-a style="--i:2; margin-bottom:24px">China tiene Black Myth. Francia tiene Expedition 33. Polonia tiene The Witcher. Alaska tiene Never Alone.</p>
+        <div class="pb-fade" data-a style="--i:3; font-family:var(--hf); font-size:62px; font-weight:700; color:var(--terra); line-height:1.06; margin-bottom:30px">Nadie ha producido el videojuego <em style="font-style:italic;color:var(--tl)">insignia</em> latinoamericano.</div>
         <div class="statrow pb-fade" data-a style="--i:5; max-width:760px">
-          <div class="stat"><div class="v" style="font-size:38px">600M+</div><div class="l">Jugadores en LATAM
+          <div class="stat"><div class="v" style="font-size:38px">372M+</div><div class="l">Jugadores en LATAM
 sin un juego que los represente</div></div>
-          <div class="stat gold"><div class="v" style="font-size:38px">$3,700M</div><div class="l">Mercado PC + Consola
+          <div class="stat gold"><div class="v" style="font-size:38px">US$3.700 M</div><div class="l">Mercado PC + Consola
 LATAM 2024</div></div>
           <div class="stat red"><div class="v" style="font-size:38px">0</div><div class="l">Juegos premium sobre
 temáticas latinoamericanas</div></div>
@@ -802,11 +194,24 @@ temáticas latinoamericanas</div></div>
   </div>
 </section>
 
+<!-- ============ CAPÍTULO · LA HISTORIA ============ -->
+<section class="pg chapter" id="p-cap-historia" data-screen-label="Capítulo · La Historia">
+  <div class="cap-figure"><div class="cap-num">I</div><img class="cap-char" src="https://images.squarespace-cdn.com/content/67a29672e45a656b8be53344/a212523e-47b6-480e-897a-d11c4d0bc125/WauroBaston.png?content-type=image%2Fpng" alt="Wa'uro"></div>
+  <div class="lay">
+    <div class="captext">
+      <div class="cap-kicker" data-a style="--i:0">Capítulo Primero</div>
+      <h1 class="cap-title" data-a style="--i:1">La <em>Historia</em></h1>
+      <div class="cap-div" data-a style="--i:2"></div>
+      <p class="cap-sub" data-a style="--i:3">Historia, mito y resistencia en la Amazonía de la fiebre del caucho — creado junto a sus custodios culturales.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ============ 06 EL EQUIPO ============ -->
 <section class="pg" id="p-equipo" data-screen-label="El Equipo">
   <div class="lay">
     <div class="shead" style="margin-bottom:24px">
-      <div class="eyebrow" data-a style="--i:0">El equipo</div>
+      
       <h1 class="t sm" data-a style="--i:1">Quiénes <em>Somos</em></h1>
     </div>
     <div class="sbody" style="justify-content:flex-start;gap:20px">
@@ -814,22 +219,22 @@ temáticas latinoamericanas</div></div>
         <div class="member">
           <div class="ph"><img src="https://images.squarespace-cdn.com/content/67a29672e45a656b8be53344/3f1cc742-f6e5-46f0-a8df-9f9bd6a1a10a/Santiago.png?content-type=image%2Fpng" alt="Santiago Angulo"></div>
           <div class="in"><div class="nm">Santiago Angulo</div><div class="rl">Dir. Creativo y Técnico</div>
-          <p>Más de diez años en videojuegos, XR y narrativas digitales. Cofundó Vúho y Apollo Entertainment, liderando proyectos para Disney, Manchester City, José Delbo, Diplo y Val Kilmer. Dirige la visión creativa, la narrativa, la estrategia tecnológica y el producto.</p></div>
+          <p>10+ años creando videojuegos, XR y narrativas digitales. 2 empresas de entretenimiento internacionales fundadas y exitosamente vendidas.</p></div>
         </div>
         <div class="member">
           <div class="ph"><img src="https://images.squarespace-cdn.com/content/67a29672e45a656b8be53344/8e3053be-7952-49e2-a64d-7fc13cb24d2b/Daniel.png?content-type=image%2Fpng" alt="Daniel Kraus"></div>
           <div class="in"><div class="nm">Daniel Kraus</div><div class="rl">Dir. Investigación y Relaciones</div>
-          <p>Doctorando en Antropología Social (Cambridge), especialista en la Amazonía colombiana. Tras 7+ años con comunidades Tukano del Vaupés, lidera la investigación, la co-creación comunitaria y los procesos de consentimiento cultural que garantizan la integridad ética de Wa'uro.</p></div>
+          <p>8 años trabajando en la Amazonia. 2.600M COP recaudados para el Vaupés. PhD y MPhil en Antropología Social, University of Cambridge.</p></div>
         </div>
         <div class="member">
           <div class="ph"><img src="https://images.squarespace-cdn.com/content/67a29672e45a656b8be53344/a0b25169-37b4-4e2b-b8aa-10f1b5456194/Edward.png?content-type=image%2Fpng" alt="Edward Leal"></div>
           <div class="in"><div class="nm">Edward Leal</div><div class="rl">Director de Arte</div>
-          <p>Artista 3D especializado en personajes y desarrollo visual. Con amplia experiencia en Blender, ZBrush y flujos en tiempo real, transforma la investigación histórica y cultural en personajes, entornos y una identidad visual única inspirada en las cosmologías amazónicas.</p></div>
+          <p>6+ años haciendo arte 3D especializado en assets fotorrealistas. Ganador y finalista en varias competencias internacionales de arte digital.</p></div>
         </div>
         <div class="member">
           <div class="ph"><img src="https://images.squarespace-cdn.com/content/67a29672e45a656b8be53344/04cb159d-8013-4ebb-9e8f-cdb96eb823b3/DSC_3457.jpg?content-type=image%2Fjpeg" alt="Familia Guerrero"></div>
           <div class="in"><div class="nm">Familia Guerrero</div><div class="rl">Asesores Culturales · Tukano</div>
-          <p>Descendientes directos de Yu'upuri Wa'uro. Luis Ángel Guerrero, patriarca, otorgó el permiso escrito de PI y es el enlace con la comunidad. La familia actúa en performance y voz y valida culturalmente — cuatro generaciones de historia oral alimentan la narrativa.</p></div>
+          <p>Reconocidos líderes y sabedores del Vaupés, con amplia trayectoria en proyectos sociales, organizativos y culturales. Custodios legítimos de la historia de Yu'upuri Wa'uro.</p></div>
         </div>
       </div>
       <div style="display:flex;align-items:center;gap:14px" data-a style="--i:3">
@@ -851,7 +256,7 @@ temáticas latinoamericanas</div></div>
   <button class="vsound"><span>Activar sonido</span></button>
   <div class="shade"></div>
   <div class="ttl" data-a style="--i:0">
-    <div class="eyebrow">El proyecto</div>
+    
     <h1 class="t" style="font-size:72px">Wa'uro: Historia, Mito<br>y <em>Resistencia</em></h1>
   </div>
   <div class="low panel" data-a style="--i:1; max-width:900px">
@@ -864,12 +269,24 @@ temáticas latinoamericanas</div></div>
   <div class="vid"><iframe data-lsrc="https://player.vimeo.com/video/1200305743?background=1&autoplay=1&loop=1&muted=1&autopause=0&playsinline=1&dnt=1" allow="autoplay; fullscreen; picture-in-picture" title="Creando junto a los Tukano"></iframe></div>
   <div class="shade"></div>
   <div class="ttl" data-a style="--i:0">
-    <div class="eyebrow">De dónde viene todo</div>
+    
     <h1 class="t" style="font-size:72px">Creando Junto<br>a los <em>Tukano</em></h1>
   </div>
-  <div class="low panel" data-a style="--i:1; max-width:960px">
-    <h3 style="margin-bottom:8px">Nuestro proceso</h3>
-    <p style="font-size:16px;color:var(--cream);line-height:1.6">Tras siete años de trabajo junto a los Tukano del Vaupés, Wa'uro se desarrolla bajo un modelo de <b style="color:var(--tl)">coautoría, no de extracción cultural</b>. Con consulta previa, acuerdos formales y la guía de la familia Guerrero, custodios de la historia, la comunidad participa en la creación, revisión y aprobación de cada decisión, además de actuar y grabar en territorio. El resultado: una experiencia arraigada en la historia del Vaupés, construida con tradición oral, investigación etnográfica y fuentes históricas, y recreada con fotogrametría, captura de movimiento y grabación de campo.</p>
+  <div class="low panel" data-a style="--i:1; max-width:900px">
+    <p style="font-size:25px;color:var(--cream);line-height:1.45"><b style="color:var(--tl)">Nuestro proceso:</b> 7 años de trabajo colaborativo, hoy un proyecto de innovación cultural compartido.</p>
+  </div>
+</section>
+
+<!-- ============ CAPÍTULO · LA METODOLOGÍA ============ -->
+<section class="pg chapter" id="p-cap-metodologia" data-screen-label="Capítulo · La Metodología">
+  <div class="cap-figure"><div class="cap-num">II</div><img class="cap-char" src="https://images.squarespace-cdn.com/content/67a29672e45a656b8be53344/9fe43009-0ebe-420d-8549-e5c5d2ba8fb7/Tucu_Chill.png?content-type=image%2Fpng" alt="Tucú"></div>
+  <div class="lay">
+    <div class="captext">
+      <div class="cap-kicker" data-a style="--i:0">Capítulo Segundo</div>
+      <h1 class="cap-title" data-a style="--i:1">La <em>Metodología</em></h1>
+      <div class="cap-div" data-a style="--i:2"></div>
+      <p class="cap-sub" data-a style="--i:3">Cómo construimos un videojuego AAA con rigor, respeto y junto a sus custodios culturales.</p>
+    </div>
   </div>
 </section>
 
@@ -877,7 +294,7 @@ temáticas latinoamericanas</div></div>
 <section class="pg" id="p-metintro" data-screen-label="Metodología">
   <div class="lay" style="align-items:center;text-align:center">
     <div class="shead" style="margin-bottom:18px">
-      <div class="eyebrow" data-a style="--i:0">Una metodología única</div>
+      
       <h1 class="t sm" data-a style="--i:1">Sostenibilidad Económica,<br>Social y <em>Cultural</em></h1>
     </div>
     <p class="lead" data-a style="--i:2; max-width:980px; margin-bottom:16px">¿Cómo crear un videojuego que represente estas historias con <b>rigor y respeto</b>, involucre a sus custodios culturales y sea <b>económicamente viable</b>?</p>
@@ -908,10 +325,10 @@ temáticas latinoamericanas</div></div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:stretch;flex:1;min-height:0">
       <div style="display:flex;flex-direction:column;justify-content:center">
         <div class="shead" style="margin-bottom:18px">
-          <div class="eyebrow" data-a style="--i:0">Metodología</div>
+          
           <h1 class="t sm" data-a style="--i:1">Creación de <em>Personajes</em></h1>
         </div>
-        <p class="lead" data-a style="--i:2; font-size:17px; margin-bottom:22px">Muchas historias, seres y protagonistas de la tradición oral Tukano <b>nunca han tenido representación visual</b>. Los desarrollamos mediante un proceso iterativo de investigación, diseño y validación con la comunidad. El resultado es un acervo único — desde seres mitológicos como Tucú hasta personajes históricos de la fiebre del caucho — que genera activos para el videojuego, producciones audiovisuales y una enciclopedia digital de personajes amazónicos.</p>
+        <p class="lead" data-a style="--i:2; font-size:21px; margin-bottom:22px">Un proceso iterativo de investigación, diseño y validación <b>con la comunidad</b> para crear personajes que <b style="color:var(--tl)">nunca han tenido representación visual</b>.</p>
         <div data-a style="--i:3">
           <img src="https://images.squarespace-cdn.com/content/67a29672e45a656b8be53344/ad78b0c0-8b54-40f1-81ee-f344809c8eaa/Characters.png?content-type=image%2Fpng" alt="Personajes de Wa'uro" style="width:100%;border-radius:10px;border:1px solid var(--pbdr)">
         </div>
@@ -928,11 +345,11 @@ temáticas latinoamericanas</div></div>
   <div class="vid"><iframe data-lsrc="https://player.vimeo.com/video/1200204142?background=1&autoplay=1&loop=1&muted=1&autopause=0&playsinline=1&dnt=1" allow="autoplay; fullscreen; picture-in-picture" title="Mecánicas de juego"></iframe></div>
   <div class="shade"></div>
   <div class="ttl" data-a style="--i:0">
-    <div class="eyebrow">Metodología</div>
+    
     <h1 class="t" style="font-size:72px">Mecánicas de <em>Juego</em></h1>
   </div>
   <div class="low panel" data-a style="--i:1; max-width:820px">
-    <p style="font-size:16.5px;color:var(--cream);line-height:1.6">Traducimos la cosmovisión Tukano en sistemas de juego. El carayurú, la medicina tradicional, los viajes de yagé, la espiritualidad y las tensiones derivadas de los procesos de evangelización se convierten en mecánicas, progresión y toma de decisiones. <b style="color:var(--tl)">La cultura no es un decorado: es la base de la experiencia jugable.</b></p>
+    <p style="font-size:20px;color:var(--cream);line-height:1.5">Traducimos la cosmovisión Tukano en sistemas de juego: <b style="color:var(--tl)">la cultura no es un decorado, es la base de la experiencia jugable.</b></p>
   </div>
   <div class="lowr" data-a style="--i:2">
     <img class="thumb" style="width:760px;border:none;border-radius:0" src="https://images.squarespace-cdn.com/content/67a29672e45a656b8be53344/f13b8bb2-aa38-4276-b3fa-f668ef655fef/skilltree2.png?content-type=image%2Fpng" alt="Árbol de habilidades">
@@ -945,10 +362,10 @@ temáticas latinoamericanas</div></div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:stretch;flex:1;min-height:0">
       <div style="display:flex;flex-direction:column;justify-content:center">
         <div class="shead" style="margin-bottom:18px">
-          <div class="eyebrow" data-a style="--i:0">Metodología</div>
+          
           <h1 class="t sm" data-a style="--i:1"><em>Mocap</em></h1>
         </div>
-        <p class="lead" data-a style="--i:2; font-size:17px; margin-bottom:22px">Captura de movimiento basada en video e inteligencia artificial para registrar actuaciones de la comunidad <b>directamente en territorio</b> y convertirlas en animaciones editables en Unreal Engine. Documentamos danzas, ceremonias, expresiones y conocimientos difíciles de preservar por otros medios, construyendo una <b>biblioteca digital de actuaciones en lengua Tukano</b> para el juego y para la conservación cultural.</p>
+        <p class="lead" data-a style="--i:2; font-size:21px; margin-bottom:22px"><b style="color:var(--tl)">IA + video simple</b> garantizan que las comunidades sean los actores de su propia historia y que sus expresiones culturales se preserven con fidelidad.</p>
         <div data-a style="--i:3">
           <img src="https://images.squarespace-cdn.com/content/67a29672e45a656b8be53344/5e978a14-8dae-4c42-9546-68da12a8807c/MocapPipeline.png?content-type=image%2Fpng" alt="Pipeline de mocap" style="width:100%;border-radius:10px;border:1px solid var(--pbdr)">
         </div>
@@ -966,7 +383,7 @@ temáticas latinoamericanas</div></div>
   <button class="vsound"><span>Activar sonido</span></button>
   <div class="shade"></div>
   <div class="low" data-a style="--i:0">
-    <div class="eyebrow">Metodología · Mocap</div>
+    
     <h1 class="t" style="font-size:64px">Actuaciones Grabadas<br><em>en Territorio</em></h1>
   </div>
 </section>
@@ -977,10 +394,10 @@ temáticas latinoamericanas</div></div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:stretch;flex:1;min-height:0">
       <div style="display:flex;flex-direction:column;justify-content:center">
         <div class="shead" style="margin-bottom:18px">
-          <div class="eyebrow" data-a style="--i:0">Metodología</div>
+          
           <h1 class="t sm" data-a style="--i:1">Fotogrametría y<br><em>Reconstrucción</em></h1>
         </div>
-        <p class="lead" data-a style="--i:2; font-size:17px; margin-bottom:22px">Combinamos fotogrametría, escaneo 3D y modelado digital para crear una biblioteca de alta fidelidad del patrimonio material del Vaupés. Además de documentar objetos, arquitectura, paisajes y sitios culturales que aún existen, trabajamos junto a la comunidad para <b>reconstruir digitalmente artefactos, espacios y elementos que han desaparecido</b> o se han transformado, contribuyendo a su preservación para futuras generaciones.</p>
+        <p class="lead" data-a style="--i:2; font-size:21px; margin-bottom:22px">Combinamos fotogrametría, escaneo 3D y modelado digital para crear una <b style="color:var(--tl)">biblioteca de alta fidelidad del patrimonio material del Vaupés</b>.</p>
         <div class="media" data-a style="--i:3; aspect-ratio:16/9">
           <video data-lsrc="https://static1.squarespace.com/static/67a29672e45a656b8be53344/t/69deddcdcb4a191c9c1e448e/1776213487690/Crown.mp4" muted loop playsinline></video>
         </div>
@@ -996,7 +413,7 @@ temáticas latinoamericanas</div></div>
 <section class="pg" id="p-objetos" data-screen-label="Objetos Reconstruidos">
   <div class="lay">
     <div class="shead" style="margin-bottom:14px">
-      <div class="eyebrow" data-a style="--i:0">Metodología · Fotogrametría</div>
+      
       <h1 class="t sm" data-a style="--i:1">El Patrimonio Material, <em>Reconstruido</em></h1>
     </div>
     <div class="sbody" data-a style="--i:2; align-items:center">
@@ -1011,11 +428,11 @@ temáticas latinoamericanas</div></div>
   <button class="vsound"><span>Activar sonido</span></button>
   <div class="shade"></div>
   <div class="ttl" data-a style="--i:0">
-    <div class="eyebrow">Metodología</div>
+    
     <h1 class="t" style="font-size:72px"><em>Música</em></h1>
   </div>
   <div class="low panel" data-a style="--i:1; max-width:820px">
-    <p style="font-size:16.5px;color:var(--cream);line-height:1.6">Registramos cantos, instrumentos y prácticas musicales tradicionales junto a músicos Tukano para construir una banda sonora original inspirada en el paisaje sonoro amazónico. Estos registros funcionan a la vez como insumo creativo para el videojuego y como ejercicio de conservación, <b style="color:var(--tl)">documentando expresiones musicales que hoy enfrentan riesgos de desaparición</b>.</p>
+    <p style="font-size:20px;color:var(--cream);line-height:1.5">Construir una <b style="color:var(--tl)">banda sonora original</b> basada 100% en el paisaje sonoro del Vaupés.</p>
   </div>
 </section>
 
@@ -1025,21 +442,33 @@ temáticas latinoamericanas</div></div>
   <img class="char" style="right:auto;left:80px;height:1000px;-webkit-mask-image:none;mask-image:none" src="https://images.squarespace-cdn.com/content/67a29672e45a656b8be53344/9fe43009-0ebe-420d-8549-e5c5d2ba8fb7/Tucu_Chill.png?content-type=image%2Fpng" alt="Tucú">
   <div class="lay" style="left:480px;justify-content:center">
     <div class="shead" style="margin-bottom:18px">
-      <div class="eyebrow" data-a style="--i:0">Tracción</div>
+      
       <h1 class="t sm" data-a style="--i:1">Lo Que Hemos <em>Logrado</em></h1>
     </div>
     <div class="sbody" style="flex:0 0 auto;justify-content:flex-start">
       <div class="checks">
-        <div class="check" data-a style="--i:2"><div class="ic">✓</div><div><div class="t">Becas — Trinity College + King's e-Lab (Cambridge, UK)</div><div class="i">Validación académica internacional</div></div></div>
+        <div class="check" data-a style="--i:2"><div class="ic">✓</div><div><div class="t">Becas — Trinity College + King's e-Lab (Cambridge) + MinCulturas</div><div class="i">Validación académica internacional y nacional</div></div></div>
         <div class="check" data-a style="--i:3"><div class="ic">✓</div><div><div class="t">7 años de trabajo de campo con los Tukano del Vaupés</div><div class="i">Acceso exclusivo · consulta previa completada</div></div></div>
         <div class="check" data-a style="--i:4"><div class="ic">✓</div><div><div class="t">+20.000 followers en redes</div><div class="i">Audiencia temprana y validación de mercado</div></div></div>
         <div class="check" data-a style="--i:5"><div class="ic">✓</div><div><div class="t">Metodologías listas — personajes, entornos y mecánicas</div><div class="i">Pipeline comprobado en el contexto colombiano y amazónico</div></div></div>
         <div class="check" data-a style="--i:6"><div class="ic">✓</div><div><div class="t">Creación inicial del gameloop y el Game Design Document</div><div class="i">Base jugable y de diseño definida</div></div></div>
-        <div class="check" data-a style="--i:7"><div class="ic">✓</div><div><div class="t">Guión escrito y validado culturalmente</div><div class="i">Listo para ser convertido en la experiencia jugable</div></div></div>
-        <div class="check" data-a style="--i:8"><div class="ic">✓</div><div><div class="t">Mentores: Kevin Lin (Twitch) + Dr. Simran Chana (Cambridge)</div><div class="i">Credibilidad y acceso a redes globales</div></div></div>
+        <div class="check" data-a style="--i:7"><div class="ic">✓</div><div><div class="t">Mentores: Kevin Lin (Twitch) + Dr. Simran Chana (Cambridge)</div><div class="i">Credibilidad y acceso a redes globales</div></div></div>
         <div class="check" data-a style="--i:9"><div class="ic">✓</div><div><div class="t">Prensa — cobertura editorial sin pauta</div><div class="i">Cambio Colombia (feb 2026), Revista Diners (sep 2025, entrevista a los 3 fundadores), Frecuencia Gamer, Tachalo Podcast, Coja Oficio y Liderarse Podcast — ganada orgánicamente por la fuerza de la propuesta cultural</div></div></div>
         <div class="check next" data-a style="--i:10"><div class="ic">→</div><div><div class="t">Aplicando a CoCrea (MinCulturas)</div><div class="i">Representante de CoCrea en la presentación</div></div></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CAPÍTULO · EL PROTOTIPO ============ -->
+<section class="pg chapter" id="p-cap-prototipo" data-screen-label="Capítulo · El Prototipo">
+  <div class="cap-figure"><div class="cap-num">III</div><img class="cap-char" src="https://images.squarespace-cdn.com/content/67a29672e45a656b8be53344/b368e147-0f15-47f0-94d7-f0115057939e/Cauchero.png?content-type=image%2Fpng" alt="Cauchero"></div>
+  <div class="lay">
+    <div class="captext">
+      <div class="cap-kicker" data-a style="--i:0">Capítulo Tercero</div>
+      <h1 class="cap-title" data-a style="--i:1">El <em>Prototipo</em></h1>
+      <div class="cap-div" data-a style="--i:2"></div>
+      <p class="cap-sub" data-a style="--i:3">Cómo demostrar el mercado.</p>
     </div>
   </div>
 </section>
@@ -1095,14 +524,14 @@ temáticas latinoamericanas</div></div>
     </div>
     <!-- FASE 1·2 · Ruta + Break-even -->
     <div class="protowrap">
-      <div class="num3 pn1" data-a style="--i:3"><div class="n">01</div><div><div class="t">Identidad artística y técnica</div><p>La primera experiencia jugable demuestra de qué trata la historia, cómo funcionan las mecánicas y cómo desarrollamos cada elemento — ambientes, personajes, sonido y narrativa. Nuestra carta de presentación ante publishers y aliados.</p></div></div>
-      <div class="num3 pn2" data-a style="--i:4"><div class="n">02</div><div><div class="t">Vehículo de marketing</div><p>La forma más efectiva de atraer a una productora es probar que el mercado existe: wishlists en Steam. El 15–20% compra en el lanzamiento y hasta el 50% en el primer año; cada wishlist impulsa el algoritmo y genera efecto en cadena. Acompañado de estrategia en redes y un teaser cinemático.</p></div></div>
-      <div class="num3 accent pn3 sosten" data-a style="--i:5"><div class="n">03</div><div><div class="t">Sostenibilidad financiera</div><p>Con tracción medible en wishlists desde el prototipo, la inversión de la siguiente ronda se justifica sola — ya no es una apuesta, es demanda comprobada.</p></div></div>
+      <div class="num3 pn1" data-a style="--i:3"><div class="n">01</div><div><div class="t">Identidad artística y técnica</div></div></div>
+      <div class="num3 pn2" data-a style="--i:4"><div class="n">02</div><div><div class="t">Vehículo de marketing</div></div></div>
+      <div class="num3 accent pn3 sosten" data-a style="--i:5"><div class="n">03</div><div><div class="t">Sostenibilidad financiera</div></div></div>
       <div class="panel gold beblock">
         <h3 style="font-size:26px">La ruta al break-even</h3>
         <div style="display:flex;gap:40px;margin:12px 0 4px">
-          <div><div style="font-family:var(--hf);font-size:34px;font-weight:700;color:var(--green);line-height:1">$3.45M</div><div style="font-size:15px;color:var(--dim);margin-top:2px">Costo desarrollo</div></div>
-          <div><div style="font-family:var(--hf);font-size:34px;font-weight:700;color:var(--green);line-height:1">$29.99</div><div style="font-size:15px;color:var(--dim);margin-top:2px">Precio base</div></div>
+          <div><div style="font-family:var(--hf);font-size:34px;font-weight:700;color:var(--green);line-height:1">$13.800M COP</div><div style="font-size:15px;color:var(--dim);margin-top:2px">Costo desarrollo</div></div>
+          <div><div style="font-family:var(--hf);font-size:34px;font-weight:700;color:var(--green);line-height:1">US$29.99</div><div style="font-size:15px;color:var(--dim);margin-top:2px">Precio base</div></div>
         </div>
         <p class="note" style="margin-top:8px">~50% de los wishlisters compran durante el primer año.</p>
         <div style="margin-top:16px;display:flex;flex-direction:column;gap:14px">
@@ -1112,12 +541,12 @@ temáticas latinoamericanas</div></div>
             <div style="font-family:var(--hf);font-size:25px;font-weight:700;color:var(--terra);text-align:right">328K</div>
           </div>
           <div style="display:grid;grid-template-columns:240px 1fr 110px;align-items:center;gap:16px">
-            <div style="font-family:var(--hf);font-size:21px;font-weight:700">Copias para break-even<small style="display:block;font-family:var(--bf);font-size:13.5px;font-weight:400;color:var(--dim)">a $29.99 cada una</small></div>
+            <div style="font-family:var(--hf);font-size:21px;font-weight:700">Copias para break-even<small style="display:block;font-family:var(--bf);font-size:13.5px;font-weight:400;color:var(--dim)">a US$29.99 cada una</small></div>
             <div style="height:21px;background:rgba(74,53,40,0.35);border-radius:11px;overflow:hidden"><div style="height:100%;border-radius:11px;background:linear-gradient(90deg,#8B6914,var(--gold));width:50%"></div></div>
             <div style="font-family:var(--hf);font-size:25px;font-weight:700;color:var(--gold);text-align:right">164K</div>
           </div>
         </div>
-        <div style="margin-top:18px;padding-top:14px;border-top:1px solid rgba(212,168,67,0.22)">
+        <div style="margin-top:14px;padding-top:12px;border-top:1px solid rgba(212,168,67,0.22)">
           <div style="font-size:13px;letter-spacing:0.18em;text-transform:uppercase;color:var(--terra);font-weight:700;margin-bottom:10px">Casos de éxito · wishlists</div>
           <div style="display:flex;gap:30px;flex-wrap:wrap">
             <div><b style="font-family:var(--hf);font-size:20px;color:var(--cream)">Manor Lords</b><span style="display:block;font-size:13.5px;color:var(--dim)">~3M wishlists · un solo desarrollador</span></div>
@@ -1138,7 +567,7 @@ temáticas latinoamericanas</div></div>
       <div class="subcap" data-a style="--i:0"><span class="scl">El Prototipo</span><span class="sbars"><i class="sb on"></i><i class="sb on"></i><i class="sb on"></i><i class="sb cur"></i><i class="sb"></i><i class="sb"></i></span><span class="scn">IV / VI</span></div>
       <div style="display:flex;align-items:baseline;gap:30px">
         <div>
-          <div class="eyebrow" data-a style="--i:0">¿Cómo lo hacemos?</div>
+          
           <h1 class="t sm" data-a style="--i:1; font-size:54px">Cronograma</h1>
         </div>
         <p class="note" data-a style="--i:2">Haz click en cada categoría para ver sub-tareas y dependencias</p>
@@ -1163,12 +592,12 @@ temáticas latinoamericanas</div></div>
   <div class="lay">
     <div class="shead" style="margin-bottom:14px">
       <div class="subcap" data-a style="--i:0"><span class="scl">El Prototipo</span><span class="sbars"><i class="sb on"></i><i class="sb on"></i><i class="sb on"></i><i class="sb on"></i><i class="sb cur"></i><i class="sb"></i></span><span class="scn">V / VI</span></div>
-      <div class="eyebrow" data-a style="--i:0">¿Cómo lo hacemos?</div>
+      
       <h1 class="t sm" data-a style="--i:1">Presupuesto</h1>
       <div style="display:flex;align-items:baseline;gap:18px;margin-top:12px" data-a style="--i:2">
         <span style="font-size:17px;letter-spacing:0.3em;color:var(--terra);font-weight:700">TOTAL</span>
         <span style="font-family:var(--hf);font-size:44px;font-weight:700;color:var(--terra);line-height:1">~$800M COP</span>
-        <span style="font-size:18px;color:var(--dim)">11 personas pico · ~$222K USD</span>
+        <span style="font-size:18px;color:var(--dim)">11 personas pico · 12 meses</span>
       </div>
     </div>
     <div class="sbody" style="justify-content:center">
@@ -1230,12 +659,12 @@ temáticas latinoamericanas</div></div>
   <div class="lay">
     <div class="shead" style="margin-bottom:8px">
       <div class="subcap" data-a style="--i:0"><span class="scl">El Prototipo</span><span class="sbars"><i class="sb on"></i><i class="sb on"></i><i class="sb on"></i><i class="sb on"></i><i class="sb on"></i><i class="sb cur"></i></span><span class="scn">VI / VI</span></div>
-      <div class="eyebrow" data-a style="--i:0">Después del prototipo</div>
+      
       <h1 class="t sm" data-a style="--i:1">Del Prototipo al <em>Lanzamiento</em></h1>
       <div style="display:flex;align-items:baseline;gap:18px;margin-top:12px" data-a style="--i:2">
-        <span style="font-size:17px;letter-spacing:0.3em;color:var(--gold);font-weight:700">SOM</span>
-        <span style="font-family:var(--hf);font-size:44px;font-weight:700;color:var(--gold);line-height:1">$3–15M</span>
-        <span style="font-size:18px;color:var(--dim)">captura esperada · año 1</span>
+        <span style="font-size:17px;letter-spacing:0.3em;color:var(--gold);font-weight:700">SEED</span>
+        <span style="font-family:var(--hf);font-size:44px;font-weight:700;color:var(--gold);line-height:1">$8.000–14.000M COP</span>
+        <span style="font-size:18px;color:var(--dim)">Seed Round / Publisher · producción completa</span>
       </div>
     </div>
     <div class="routewrap" data-a style="--i:2; width:1340px; height:200px; margin:0 0 14px">
@@ -1246,13 +675,12 @@ temáticas latinoamericanas</div></div>
       <div class="node" style="left:2.5%;top:112px"><div class="ndot"></div><div class="nlabel" style="font-size:15px">Bases del juego<small>últimos 12 meses</small></div></div>
       <div class="node" style="left:21%;top:86px"><div class="ndot"></div><div class="nlabel" style="font-size:15px">Ronda F&amp;F<small>hoy</small></div></div>
       <div class="node" style="left:35.5%;top:112px"><div class="ndot"></div><div class="nlabel" style="font-size:15px">Prototipo jugable<small>12 meses</small></div></div>
-      <div class="node" style="left:60%;top:78px"><div class="ndot hollow"></div><div class="nlabel"><b>Seed Round / Publisher</b><span>14–16 meses</span><small>$2–3.5M producción completa</small></div></div>
+      <div class="node" style="left:60%;top:78px"><div class="ndot hollow"></div><div class="nlabel"><b>Seed Round / Publisher</b><span>14–16 meses</span><small>$8.000–14.000M COP producción completa</small></div></div>
       <div class="node" style="left:97%;top:112px"><div class="ndot hollow gold"></div><div class="nlabel goldc"><b>Lanzamiento</b><span>36–42 meses</span><small>Steam, Epic, consolas</small></div></div>
     </div>
     <div style="display:flex;gap:26px;align-items:stretch">
       <div class="panel" data-a style="--i:3; width:610px; flex-shrink:0">
         <h3>Seed Round / Publisher</h3>
-        <div class="phsub">El siguiente capítulo del estudio</div>
         <p style="font-size:16.5px;line-height:1.5;color:var(--cream);margin-top:12px">Al completar el prototipo, levantamos una ronda seed o cerramos una alianza con un publisher — lo que más convenga — para financiar el juego completo.</p>
         <div class="bullets" style="margin-top:14px">
           <div class="b-row"><div class="b-dot"></div><div><b>Objetivo</b><p>Escalar el prototipo a una experiencia de 4–5 horas, con una estrategia sólida de lanzamiento.</p></div></div>
@@ -1262,22 +690,23 @@ temáticas latinoamericanas</div></div>
       </div>
       <div class="panel gold" data-a style="--i:4; width:680px; flex-shrink:0">
         <h3>Lanzamiento · escenarios año 1</h3>
-        <p class="note" style="margin-top:6px">Cada copia se vende a $29.99; Steam retiene el 30% → recibimos ≈ $21 netos por copia.</p>
+        <div style="display:flex;align-items:baseline;gap:14px;margin-top:8px"><span style="font-family:var(--hf);font-size:46px;font-weight:700;color:var(--gold);line-height:1">US$21</span><span style="font-size:19px;color:var(--cream)">netos por copia</span></div>
+        <p class="note" style="margin-top:4px">US$29.99 bruto − 30% comisión Steam. Ingresos en COP (TC ~4.000).</p>
         <div style="margin-top:18px;display:flex;flex-direction:column;gap:14px">
           <div style="display:grid;grid-template-columns:130px 1fr 95px;align-items:center;gap:16px">
             <div style="font-family:var(--hf);font-size:21px;font-weight:700">Pesimista<small style="display:block;font-family:var(--bf);font-size:13.5px;font-weight:400;color:var(--dim)">150K copias</small></div>
             <div style="height:21px;background:rgba(74,53,40,0.35);border-radius:11px;overflow:hidden"><div style="height:100%;border-radius:11px;background:linear-gradient(90deg,#8B6914,var(--gold));width:20%"></div></div>
-            <div style="font-family:var(--hf);font-size:25px;font-weight:700;color:var(--gold);text-align:right">~$3M</div>
+            <div style="font-family:var(--hf);font-size:25px;font-weight:700;color:var(--gold);text-align:right">~$12.000M</div>
           </div>
           <div style="display:grid;grid-template-columns:130px 1fr 95px;align-items:center;gap:16px">
             <div style="font-family:var(--hf);font-size:21px;font-weight:700">Realista<small style="display:block;font-family:var(--bf);font-size:13.5px;font-weight:400;color:var(--dim)">300K copias</small></div>
             <div style="height:21px;background:rgba(74,53,40,0.35);border-radius:11px;overflow:hidden"><div style="height:100%;border-radius:11px;background:linear-gradient(90deg,#8B6914,var(--gold));width:40%"></div></div>
-            <div style="font-family:var(--hf);font-size:25px;font-weight:700;color:var(--gold);text-align:right">~$6M</div>
+            <div style="font-family:var(--hf);font-size:25px;font-weight:700;color:var(--gold);text-align:right">~$25.000M</div>
           </div>
           <div style="display:grid;grid-template-columns:130px 1fr 95px;align-items:center;gap:16px">
             <div style="font-family:var(--hf);font-size:21px;font-weight:700">Optimista<small style="display:block;font-family:var(--bf);font-size:13.5px;font-weight:400;color:var(--dim)">500K + consola</small></div>
             <div style="height:21px;background:rgba(74,53,40,0.35);border-radius:11px;overflow:hidden"><div style="height:100%;border-radius:11px;background:linear-gradient(90deg,#8B6914,var(--gold));width:100%"></div></div>
-            <div style="font-family:var(--hf);font-size:25px;font-weight:700;color:var(--gold);text-align:right">~$15M</div>
+            <div style="font-family:var(--hf);font-size:25px;font-weight:700;color:var(--gold);text-align:right">~$60.000M</div>
           </div>
         </div>
         <div style="margin-top:18px;padding-top:14px;border-top:1px solid rgba(212,168,67,0.22);display:flex;gap:26px;flex-wrap:wrap">
@@ -1291,33 +720,44 @@ temáticas latinoamericanas</div></div>
   </div>
 </section>
 
+<!-- ============ CAPÍTULO · LA RONDA ============ -->
+<section class="pg chapter" id="p-cap-ronda" data-screen-label="Capítulo · La Ronda">
+  <div class="cap-figure"><div class="cap-num">IV</div><img class="cap-char" src="https://images.squarespace-cdn.com/content/67a29672e45a656b8be53344/46358a96-9b70-4451-a75a-987855b8ca37/Baron.png?content-type=image%2Fpng" alt="Barón del caucho"></div>
+  <div class="lay">
+    <div class="captext">
+      <div class="cap-kicker" data-a style="--i:0">Capítulo Cuarto</div>
+      <h1 class="cap-title" data-a style="--i:1">La <em>Ronda</em></h1>
+      <div class="cap-div" data-a style="--i:2"></div>
+      <p class="cap-sub" data-a style="--i:3">La oportunidad de entrar temprano en el primer videojuego premium de Latinoamérica.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ============ 23 LA PROPUESTA ============ -->
 <section class="pg" id="p-propuesta" data-screen-label="La Propuesta">
   <div class="lay">
     <div class="shead" style="margin-bottom:14px">
-      <div class="eyebrow" data-a style="--i:0">La propuesta</div>
+      
       <h1 class="t sm" data-a style="--i:1">Ronda <em>Friends &amp; Family</em></h1>
     </div>
     <div class="sbody" style="justify-content:center;gap:16px">
       <div style="display:grid;grid-template-columns:0.92fr 1.08fr;gap:20px;align-items:center">
         <!-- EL ASK -->
         <div style="display:flex;flex-direction:column;gap:13px">
-          <div class="panel" data-a style="--i:2; text-align:center; padding:22px 28px; border-color:rgba(193,122,74,0.5); background:rgba(193,122,74,0.12)">
+          <div class="panel" data-a style="--i:2; text-align:center; padding:26px 28px; border-color:rgba(193,122,74,0.5); background:rgba(193,122,74,0.12)">
             <div style="font-size:14px;color:var(--dim);letter-spacing:0.18em">ESTAMOS LEVANTANDO</div>
-            <div style="font-family:var(--hf);font-size:64px;font-weight:700;color:var(--terra);margin:4px 0;line-height:1">Hasta $800M</div>
-            <div style="font-size:18px;color:var(--cream)">COP (~$222K USD) · para el prototipo en 12 meses</div>
+            <div style="font-family:var(--hf);font-size:76px;font-weight:700;color:var(--terra);margin:6px 0 0;line-height:1">$800M <span style="font-size:32px;color:var(--cream)">COP</span></div>
           </div>
-          <div class="panel" data-a style="--i:3; padding:14px 22px"><h3 style="font-size:21px;margin-bottom:1px">Ticket mínimo <span style="color:var(--terra)">$30M COP</span></h3><p style="font-size:15px;color:var(--dim);line-height:1.35">Monto mínimo para participar con un porcentaje de la empresa.</p></div>
-          <div class="panel" data-a style="--i:3; padding:14px 22px"><h3 style="font-size:21px;margin-bottom:1px">Donación</h3><p style="font-size:15px;color:var(--dim);line-height:1.35">Por debajo de $30M, cualquier monto se recibe como <b style="color:var(--cream)">donación</b> — con incentivo tributario, sin participación.</p></div>
-          <div class="panel green" data-a style="--i:3; padding:14px 22px"><h3 style="font-size:21px;margin-bottom:1px;color:var(--green)">Todos reciben CoCrea</h3><p style="font-size:15px;color:var(--cream);line-height:1.35">Sin importar el monto, <b>recuperas entre el 31% y el 64%</b> de tu inversión vía menor impuesto de renta.</p></div>
+          <div class="panel green" data-a style="--i:3; padding:14px 22px"><h3 style="font-size:21px;margin-bottom:2px;color:var(--green)">CoCrea — todos recuperan 31%–64%</h3><p style="font-size:15px;color:var(--cream);line-height:1.35">Sin importar el monto, recuperas entre el 31% y el 64% de tu inversión vía menor impuesto de renta.</p></div>
+          <div class="panel" data-a style="--i:3; padding:16px 22px"><h3 style="font-size:21px;margin:0">Inversión + Incentivo · Ticket <span style="color:var(--terra)">$30M COP</span></h3></div>
+          <div class="panel" data-a style="--i:3; padding:16px 22px"><h3 style="font-size:21px;margin:0">Donación + Incentivo Tributario · Debajo de <span style="color:var(--terra)">$30M</span></h3></div>
         </div>
         <!-- EL INSTRUMENTO -->
         <div class="panel" data-a style="--i:4; display:flex; flex-direction:column; padding:20px 26px">
           <div style="font-size:13px;letter-spacing:0.18em;text-transform:uppercase;color:var(--terra);font-weight:700">El instrumento</div>
-          <h3 style="font-size:25px;margin:2px 0 8px">Nota convertible</h3>
-          <p style="font-size:15.5px;color:var(--dim);line-height:1.4;margin-bottom:12px">Un préstamo que, en vez de pagarse en dinero, se <b style="color:var(--tl)">convierte en acciones</b> en tu seed round. En F&amp;F evita ponerle un precio a La Selva hoy — <b style="color:var(--cream)">se fija cuando haya más información</b>.</p>
+          <p style="font-size:15.5px;color:var(--dim);line-height:1.4;margin:8px 0 12px"><b style="color:var(--cream)">SAFEs: dinero a cambio de notas convertibles en acciones.</b> En vez de ponerle un precio a La Selva hoy, tu aporte <b style="color:var(--tl)">se convierte en acciones</b> en la seed round — el precio se fija cuando haya más información.</p>
           <div style="display:grid;grid-template-columns:1fr 20px 1fr 20px 1fr;align-items:stretch;margin-bottom:14px">
-            <div style="background:rgba(46,29,20,0.6);border:1px solid var(--pbdr);border-radius:8px;padding:10px 12px"><div style="font-size:11.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--terra);font-weight:700">Hoy · F&amp;F</div><div style="font-size:14px;color:var(--cream);line-height:1.3;margin-top:3px">Invierte $50M · firma una nota (pagaré)</div></div>
+            <div style="background:rgba(46,29,20,0.6);border:1px solid var(--pbdr);border-radius:8px;padding:10px 12px"><div style="font-size:11.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--terra);font-weight:700">Hoy · F&amp;F</div><div style="font-size:14px;color:var(--cream);line-height:1.3;margin-top:3px">Invierte $50M COP · firma una nota (pagaré)</div></div>
             <div style="display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--terra)">→</div>
             <div style="background:rgba(46,29,20,0.6);border:1px solid var(--pbdr);border-radius:8px;padding:10px 12px"><div style="font-size:11.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--terra);font-weight:700">14–16m · Seed</div><div style="font-size:14px;color:var(--cream);line-height:1.3;margin-top:3px">Un fondo valora la empresa · hay precio</div></div>
             <div style="display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--terra)">→</div>
@@ -1325,7 +765,7 @@ temáticas latinoamericanas</div></div>
           </div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
             <div style="background:rgba(46,29,20,0.6);border:1px solid var(--pbdr);border-radius:8px;padding:12px 16px"><div style="font-family:var(--hf);font-size:18px;font-weight:700;color:var(--cream)"><span style="color:var(--terra)">1 ·</span> Descuento ~20%</div><p style="font-size:14px;color:var(--dim);line-height:1.35;margin-top:2px">Compra al 80% del precio del seed. Recompensa entrar antes.</p></div>
-            <div style="background:rgba(46,29,20,0.6);border:1px solid var(--pbdr);border-radius:8px;padding:12px 16px"><div style="font-family:var(--hf);font-size:18px;font-weight:700;color:var(--cream)"><span style="color:var(--terra)">2 ·</span> Techo (cap)</div><p style="font-size:14px;color:var(--dim);line-height:1.35;margin-top:2px">Precio máximo de conversión. Cap $1.5M aunque el seed valore $5M → más acciones.</p></div>
+            <div style="background:rgba(46,29,20,0.6);border:1px solid var(--pbdr);border-radius:8px;padding:12px 16px"><div style="font-family:var(--hf);font-size:18px;font-weight:700;color:var(--cream)"><span style="color:var(--terra)">2 ·</span> Techo (cap)</div><p style="font-size:14px;color:var(--dim);line-height:1.35;margin-top:2px">Precio máximo de conversión. Cap $6.000M aunque el seed valore $20.000M → más acciones.</p></div>
           </div>
           <div style="margin-top:auto;padding:11px 16px;border-radius:8px;background:rgba(74,122,82,0.16);border:1px solid rgba(74,122,82,0.4);text-align:center"><span style="font-size:15.5px;color:var(--cream)">Convierte al <b style="color:var(--green)">menor de los dos</b> — siempre lo mejor para el inversionista temprano.</span></div>
         </div>
@@ -1342,7 +782,7 @@ temáticas latinoamericanas</div></div>
 <section class="pg" id="p-cocrea" data-screen-label="CoCrea">
   <div class="lay">
     <div class="shead" style="margin-bottom:14px">
-      <div class="eyebrow" data-a style="--i:0">Incentivo tributario</div>
+      
       <h1 class="t sm" data-a style="--i:1; font-size:54px">CoCrea: Tu Inversión Cuesta <em>Menos de lo que Parece</em></h1>
     </div>
     <div class="sbody" style="justify-content:center;gap:16px">
@@ -1401,10 +841,8 @@ temáticas latinoamericanas</div></div>
 <section class="pg" id="p-gracias" data-screen-label="Gracias">
   <div class="lay">
     <img class="icon" data-a style="--i:0; align-self:center" src="https://images.squarespace-cdn.com/content/67a29672e45a656b8be53344/e752eb5c-38f0-486d-b74b-7c8f05d643c3/Icon.png?content-type=image%2Fpng" alt="La Selva Game Studio">
-    <div class="eyebrow" data-a style="--i:1; letter-spacing:0.3em">La Selva Game Studio</div>
-    <h1 class="big" data-a style="--i:2">Gracias</h1>
-    <p data-a style="--i:3">Por acompañarnos a contar esta historia. Construyamos juntos el primer videojuego premium nacido de la Amazonía.</p>
-    <div class="web" data-a style="--i:4">estudiolaselva.com</div>
+    <h1 class="t" data-a style="--i:2; text-align:center; font-size:64px; max-width:1180px; margin:18px auto 0; text-wrap:balance">Construyamos el primer videojuego <em>premium</em> de América Latina</h1>
+    <div class="web" data-a style="--i:4; margin-top:26px">estudiolaselva.com</div>
   </div>
 </section>
 
@@ -1412,549 +850,6 @@ temáticas latinoamericanas</div></div>
 </div>
 </div>
 
-<script>
-/* WA'URO — Presentación v2 · motor */
-(function(){
-  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var pages = Array.prototype.slice.call(document.querySelectorAll('.pg'));
-  var total = pages.length;
-  var cur = -1;
-  var navLock = 0;
-
-  /* modelo de pasos: cada fase de una página es un paso */
-  var steps = [];
-  pages.forEach(function(pg, i){
-    var n = parseInt(pg.getAttribute('data-phases') || '1', 10);
-    for(var k=0; k<n; k++) steps.push({pi:i, ph:k});
-  });
-  var totalSteps = steps.length;
-  var curStep = -1;
-
-  /* ---------- ESCALADO DEL LIENZO 1920×1080 ---------- */
-  var canvas = document.getElementById('canvas');
-  function fit(){
-    var s = Math.min(innerWidth/1920, innerHeight/1080);
-    canvas.style.transform = 'scale('+s+')';
-  }
-  canvas.style.transformOrigin = 'center center';
-  fit(); addEventListener('resize', fit);
-
-  /* ---------- MEDIA LAZY ---------- */
-  var soundPlayers = {};
-  function getPlayer(ifr){
-    var id = ifr.getAttribute('data-sound');
-    if(!soundPlayers[id] && window.Vimeo){ try{ soundPlayers[id] = new window.Vimeo.Player(ifr); soundPlayers[id].setLoop(true); }catch(e){} }
-    return soundPlayers[id];
-  }
-  function loadMedia(pg){
-    pg.querySelectorAll('[data-lsrc]').forEach(function(el){
-      if(!el.getAttribute('src')) el.setAttribute('src', el.getAttribute('data-lsrc'));
-    });
-    pg.querySelectorAll('video').forEach(function(v){ v.play && v.play().catch(function(){}); });
-    var sv = pg.querySelector('iframe[data-sound]');
-    if(sv && window.Vimeo){ try{ var p = getPlayer(sv); if(p) p.play().catch(function(){}); }catch(e){} }
-  }
-  function unloadMedia(pg){
-    pg.querySelectorAll('video').forEach(function(v){ v.pause && v.pause(); });
-    var sv = pg.querySelector('iframe[data-sound]');
-    if(sv){
-      var p = soundPlayers[sv.getAttribute('data-sound')];
-      if(p){ try{ p.setMuted(true); p.pause(); }catch(e){} }
-      var btn = pg.querySelector('.vsound'); if(btn){ btn.classList.remove('on'); btn.querySelector('span').textContent = 'Activar sonido'; }
-    }
-  }
-  document.addEventListener('click', function(e){
-    var btn = e.target.closest && e.target.closest('.vsound');
-    if(!btn) return;
-    var pg = btn.closest('.pg'); if(!pg) return;
-    var sv = pg.querySelector('iframe[data-sound]'); if(!sv) return;
-    var p = getPlayer(sv); if(!p) return;
-    var on = btn.classList.toggle('on');
-    try{ p.setMuted(!on); if(on){ p.setVolume(1); p.play().catch(function(){}); } }catch(e2){}
-    btn.querySelector('span').textContent = on ? 'Silenciar' : 'Activar sonido';
-  });
-
-  /* ---------- PAGER ---------- */
-  var counter = document.getElementById('counter');
-  var pgLabel = document.getElementById('pgLabel');
-  var rioFill = document.querySelector('#rio .fill');
-  var rioDot = document.querySelector('#rio .dot');
-  var btnPrev = document.getElementById('btnPrev');
-  var btnNext = document.getElementById('btnNext');
-
-  function pad2(n){ return (n<10?'0':'')+n; }
-
-  /* ---------- estado del beat de salida (El Problema) ---------- */
-  var beatTimers = [];
-  var beatH1 = null, beatPg = null;
-  function resetBeatStyles(){
-    if(beatH1){ ['transition','transform','transform-origin','opacity'].forEach(function(p){ beatH1.style.removeProperty(p); }); }
-    if(beatPg){ ['transition','opacity','visibility'].forEach(function(p){ beatPg.style.removeProperty(p); }); }
-  }
-  function clearBeat(){
-    for(var i=0;i<beatTimers.length;i++) clearTimeout(beatTimers[i]);
-    beatTimers = [];
-    resetBeatStyles();
-    var prob = document.getElementById('p-problema');
-    if(prob) prob.classList.remove('beatout');
-    beatH1 = null; beatPg = null;
-  }
-
-  function applyPhase(pg, ph){
-    if(!pg.hasAttribute('data-phases')) return;
-    pg.classList.remove('ph0','ph1','ph2','ph3');
-    pg.classList.add('ph'+ph);
-  }
-
-  function go(si){
-    if(si < 0) si = 0;
-    if(si > totalSteps-1) si = totalSteps-1;
-    if(si === curStep) return;
-    clearBeat();
-    var dir = si > curStep ? 1 : -1;
-    var prev = curStep >= 0 ? steps[curStep] : null;
-    var next = steps[si];
-    curStep = si;
-
-    if(!prev || prev.pi !== next.pi){
-      /* cambio de página */
-      pages.forEach(function(p){ p.classList.remove('outL','outR','preL','preR','beatout'); });
-      /* ¿salida especial con beat? (El Problema → El Equipo, hacia adelante) */
-      var doBeat = prev && dir > 0 && pages[prev.pi].id === 'p-problema' && pages[next.pi].id === 'p-equipo' && !reduced;
-      if(prev){
-        var old = pages[prev.pi];
-        if(doBeat){
-          /* mantiene la 05 activa y corre su animación de salida (beat) */
-          old.classList.add('beatout');
-          unloadMedia(old);
-          (function(o){ setTimeout(function(){ o.classList.remove('act','beatout'); }, 3300); })(old);
-        } else {
-          old.classList.remove('act');
-          old.classList.add(dir > 0 ? 'outL' : 'outR');
-          unloadMedia(old);
-          (function(o){ setTimeout(function(){ o.classList.remove('outL','outR'); }, 700); })(old);
-        }
-      }
-      var pg = pages[next.pi];
-      loadMedia(pg);
-      if(doBeat){
-        /* la frase se traslada (sin reposicionar) desde su sitio al centro del lienzo */
-        var wrap = old.querySelector('.primeros-wrap');
-        var h1 = wrap ? wrap.querySelector('h1') : null;
-        old.classList.add('beatout');
-        if(h1){
-          var cr = canvas.getBoundingClientRect();
-          var scl = cr.width / 1920;
-          var pr = h1.getBoundingClientRect();
-          var dx = ((cr.left + cr.width/2) - (pr.left + pr.width/2)) / scl;
-          var dy = ((cr.top + cr.height/2) - (pr.top + pr.height/2)) / scl;
-          var tEnd = 'translate('+dx.toFixed(1)+'px,'+dy.toFixed(1)+'px) scale(1.6)';
-          h1.style.transition = 'transform 0.8s cubic-bezier(0.33,0,0.2,1)';
-          h1.style.transform = tEnd;
-          beatH1 = h1;
-          /* llega rápido, descansa un poco y luego se desvanece */
-          beatTimers.push(setTimeout(function(){
-            h1.style.transition = 'transform 0.45s ease, opacity 0.45s ease';
-            h1.style.opacity = '0';
-            h1.style.transform = 'translate('+dx.toFixed(1)+'px,'+(dy-18).toFixed(1)+'px) scale(1.6)';
-          }, 1250));
-        }
-        unloadMedia(old);
-        /* el equipo aparece con fundido cuando la frase ya se está yendo (sin depender de rAF) */
-        applyPhase(pg, next.ph);
-        beatPg = pg;
-        pg.style.opacity = '0';
-        pg.style.visibility = 'visible';
-        beatTimers.push(setTimeout(function(){
-          pg.classList.add('act');
-          pg.style.transition = 'opacity 0.7s ease';
-          pg.style.opacity = '1';
-        }, 1600));
-        beatTimers.push(setTimeout(function(){
-          old.classList.remove('act','beatout');
-          resetBeatStyles();
-          beatH1 = null; beatPg = null;
-        }, 2500));
-      } else {
-        /* fija la fase ANTES de mostrar, sin animar el morph al entrar */
-        pg.classList.add('instant');
-        applyPhase(pg, next.ph);
-        if(curStep > 0 || dir < 0){
-          pg.classList.add(dir > 0 ? 'preR' : 'preL');
-          void pg.offsetWidth;
-          pg.classList.remove('preR','preL');
-        }
-        pg.classList.add('act');
-        (function(p){ requestAnimationFrame(function(){ requestAnimationFrame(function(){ p.classList.remove('instant'); }); }); })(pg);
-      }
-    } else {
-      /* misma página: cambio de fase (morph animado) */
-      applyPhase(pages[next.pi], next.ph);
-    }
-
-    var pgc = pages[next.pi];
-    counter.innerHTML = '<b>'+pad2(si+1)+'</b> / '+pad2(totalSteps);
-    pgLabel.textContent = pgc.getAttribute('data-label-'+next.ph) || pgc.getAttribute('data-screen-label') || '';
-    var pct = totalSteps>1 ? (si/(totalSteps-1))*100 : 0;
-    rioFill.style.height = pct.toFixed(2)+'%';
-    rioDot.style.top = pct.toFixed(2)+'%';
-    btnPrev.disabled = si===0;
-    btnNext.disabled = si===totalSteps-1;
-    try{ history.replaceState(null,'','#'+(si+1)); }catch(e){}
-    if(window.__updMenu) window.__updMenu(si);
-    /* precarga el video de la siguiente diapositiva */
-    var nx = steps[si+1];
-    if(nx && (!prev || steps[si].pi !== nx.pi)){
-      var npg = pages[nx.pi];
-      npg.querySelectorAll('[data-lsrc]').forEach(function(el){ if(!el.getAttribute('src')) el.setAttribute('src', el.getAttribute('data-lsrc')); });
-    }
-  }
-  function nav(d){
-    var now = Date.now();
-    if(now - navLock < 600) return;
-    navLock = now;
-    go(curStep + d);
-  }
-  btnPrev.addEventListener('click', function(){ nav(-1); });
-  btnNext.addEventListener('click', function(){ nav(1); });
-
-  /* ---------- MENÚ DE NAVEGACIÓN ---------- */
-  var menuBtn = document.getElementById('menuBtn');
-  var navmenu = document.getElementById('navmenu');
-  var navlist = document.getElementById('navlist');
-  var menuItems = [];
-  steps.forEach(function(s, i){
-    var pg = pages[s.pi];
-    var label = pg.getAttribute('data-label-'+s.ph) || pg.getAttribute('data-screen-label') || '';
-    var item = document.createElement('button');
-    item.className = 'navitem';
-    item.innerHTML = '<span class="ni-n">'+pad2(i+1)+'</span><span class="ni-l"></span>';
-    item.querySelector('.ni-l').textContent = label;
-    item.addEventListener('click', function(){ closeMenu(); go(i); });
-    navlist.appendChild(item);
-    menuItems.push(item);
-  });
-  function updateMenuActive(si){
-    for(var i=0;i<menuItems.length;i++){ menuItems[i].classList.toggle('active', i===si); }
-  }
-  window.__updMenu = updateMenuActive;
-  function openMenu(){ navmenu.classList.add('open'); menuBtn.classList.add('on'); }
-  function closeMenu(){ navmenu.classList.remove('open'); menuBtn.classList.remove('on'); }
-  menuBtn.addEventListener('click', function(){ navmenu.classList.contains('open') ? closeMenu() : openMenu(); });
-  var navCloseBtn = document.getElementById('navClose');
-  if(navCloseBtn) navCloseBtn.addEventListener('click', closeMenu);
-  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeMenu(); });
-
-  document.addEventListener('keydown', function(e){
-    if(e.metaKey || e.ctrlKey || e.altKey) return;
-    if(document.getElementById('umbral')) return;
-    if(e.key==='ArrowRight' || e.key==='ArrowDown' || e.key===' ' || e.key==='PageDown'){ e.preventDefault(); nav(1); }
-    else if(e.key==='ArrowLeft' || e.key==='ArrowUp' || e.key==='PageUp'){ e.preventDefault(); nav(-1); }
-    else if(e.key==='Home'){ e.preventDefault(); go(0); }
-    else if(e.key==='End'){ e.preventDefault(); go(totalSteps-1); }
-  });
-
-  var wheelAcc = 0, wheelT = null;
-  document.addEventListener('wheel', function(e){
-    if(document.getElementById('umbral')) return;
-    wheelAcc += e.deltaY;
-    clearTimeout(wheelT);
-    wheelT = setTimeout(function(){ wheelAcc = 0; }, 240);
-    if(Math.abs(wheelAcc) > 100){
-      nav(wheelAcc > 0 ? 1 : -1);
-      wheelAcc = 0;
-    }
-  }, {passive:true});
-
-  var tx0 = null, ty0 = null;
-  document.addEventListener('touchstart', function(e){ tx0 = e.touches[0].clientX; ty0 = e.touches[0].clientY; }, {passive:true});
-  document.addEventListener('touchend', function(e){
-    if(ty0 === null || document.getElementById('umbral')){ tx0 = ty0 = null; return; }
-    var dx = tx0 - e.changedTouches[0].clientX;
-    var dy = ty0 - e.changedTouches[0].clientY;
-    var sx = tx0, sy = ty0;
-    tx0 = ty0 = null;
-    /* ignora toques sobre elementos interactivos (gantt, menú, botones, tabs) */
-    var t = e.target;
-    if(t && t.closest && t.closest('#gantt, #navmenu, #navui, header, .navitem, button, a, .tab, .granrow')) return;
-    /* solo navega con un swipe deliberado (no un toque) */
-    var d = Math.abs(dx) > Math.abs(dy) ? dx : dy;
-    if(Math.abs(d) > 80) nav(d > 0 ? 1 : -1);
-  }, {passive:true});
-
-  /* ---------- UMBRAL / INTRO ---------- */
-  var umbral = document.getElementById('umbral');
-  function closeUmbral(){
-    if(!umbral) return;
-    umbral.classList.add('gone');
-    setTimeout(function(){ if(umbral){ umbral.remove(); umbral = null; } }, 1400);
-  }
-  /* precarga el video de intro apenas se abre el landing (oculto y muteado) */
-  var introVP = null;
-  function buildIntro(){
-    if(!umbral || document.getElementById('introVid')) return;
-    var wrap = document.createElement('div');
-    wrap.id = 'introVid';
-    wrap.style.opacity = '0';
-    wrap.innerHTML = '<iframe src="https://player.vimeo.com/video/1200263316?autoplay=1&muted=1&controls=0&autopause=0&playsinline=1&dnt=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" title="Intro Wa\u0027uro"></iframe>'+
-      '<button id="skipIntro">Saltar \u2192</button>';
-    umbral.insertBefore(wrap, umbral.firstChild);
-    document.getElementById('skipIntro').addEventListener('click', closeUmbral);
-    if(window.Vimeo){
-      try{ introVP = new window.Vimeo.Player(wrap.querySelector('iframe')); introVP.on('ended', closeUmbral); }catch(e){}
-    }
-  }
-  buildIntro();
-
-  function playIntroVideo(){
-    try{
-      var el = document.documentElement;
-      if(el.requestFullscreen){ el.requestFullscreen().catch(function(){}); }
-    }catch(e){}
-    var center = document.getElementById('umbralCenter');
-    if(center) center.remove();
-    var wrap = document.getElementById('introVid');
-    if(wrap){ wrap.style.opacity = '1'; wrap.classList.add('live'); }
-    if(introVP){
-      try{
-        introVP.setVolume(1); introVP.setMuted(false); introVP.play().catch(function(){});
-        var unmute = function(){ try{ introVP.setVolume(1); introVP.setMuted(false); }catch(e){} };
-        introVP.ready().then(unmute).catch(function(){});
-        document.addEventListener('pointerdown', unmute, {once:true});
-        document.addEventListener('keydown', unmute, {once:true});
-      }catch(e){}
-    }
-  }
-  document.getElementById('startIntro').addEventListener('click', playIntroVideo);
-  var skipBtn = document.getElementById('skipToCover');
-  if(skipBtn) skipBtn.addEventListener('click', closeUmbral);
-
-  /* ---------- AMBIENTE SONORO GENERATIVO ---------- */
-  /* Placeholder: reemplazar por grabaciones de campo del Vaupés en la versión final */
-  var actx = null, master = null, soundOn = false, chirpTimer = null;
-  var soundBtn = document.getElementById('soundBtn');
-  function startAudio(){
-    if(soundOn) return;
-    if(!actx){
-      try{ actx = new (window.AudioContext||window.webkitAudioContext)(); }catch(e){ return; }
-      master = actx.createGain(); master.gain.value = 0; master.connect(actx.destination);
-      var len = actx.sampleRate * 4, buf = actx.createBuffer(1, len, actx.sampleRate), d = buf.getChannelData(0), last = 0;
-      for(var i=0;i<len;i++){ var w = Math.random()*2-1; last = (last + 0.02*w)/1.02; d[i] = last*3.2; }
-      var river = actx.createBufferSource(); river.buffer = buf; river.loop = true;
-      var lp = actx.createBiquadFilter(); lp.type='lowpass'; lp.frequency.value = 320; lp.Q.value = 0.4;
-      var rg = actx.createGain(); rg.gain.value = 0.5;
-      river.connect(lp); lp.connect(rg); rg.connect(master); river.start();
-      var leaves = actx.createBufferSource(); leaves.buffer = buf; leaves.loop = true; leaves.playbackRate.value = 1.7;
-      var bp = actx.createBiquadFilter(); bp.type='bandpass'; bp.frequency.value = 2400; bp.Q.value = 0.6;
-      var lg = actx.createGain(); lg.gain.value = 0.045;
-      leaves.connect(bp); bp.connect(lg); lg.connect(master); leaves.start();
-      var lfo = actx.createOscillator(); lfo.frequency.value = 0.07;
-      var lfoG = actx.createGain(); lfoG.gain.value = 0.025;
-      lfo.connect(lfoG); lfoG.connect(lg.gain); lfo.start();
-    }
-    if(actx.state === 'suspended') actx.resume();
-    master.gain.cancelScheduledValues(actx.currentTime);
-    master.gain.linearRampToValueAtTime(0.3, actx.currentTime + 2.5);
-    soundOn = true;
-    soundBtn.classList.add('on');
-    scheduleChirp();
-  }
-  function stopAudio(){
-    if(!soundOn || !actx) return;
-    master.gain.cancelScheduledValues(actx.currentTime);
-    master.gain.linearRampToValueAtTime(0, actx.currentTime + 0.8);
-    soundOn = false;
-    soundBtn.classList.remove('on');
-    clearTimeout(chirpTimer);
-  }
-  function scheduleChirp(){
-    if(!soundOn) return;
-    chirpTimer = setTimeout(function(){
-      if(soundOn && actx){
-        var n = 2 + Math.floor(Math.random()*3);
-        var base = 1900 + Math.random()*1700;
-        for(var c=0;c<n;c++){
-          (function(c){
-            var t = actx.currentTime + c*0.16;
-            var o = actx.createOscillator(); o.type='sine';
-            o.frequency.setValueAtTime(base, t);
-            o.frequency.exponentialRampToValueAtTime(base*1.35, t+0.05);
-            o.frequency.exponentialRampToValueAtTime(base*0.9, t+0.12);
-            var g = actx.createGain();
-            g.gain.setValueAtTime(0, t);
-            g.gain.linearRampToValueAtTime(0.05, t+0.02);
-            g.gain.exponentialRampToValueAtTime(0.0001, t+0.14);
-            o.connect(g); g.connect(master);
-            o.start(t); o.stop(t+0.16);
-          })(c);
-        }
-      }
-      scheduleChirp();
-    }, 3500 + Math.random()*6500);
-  }
-  soundBtn.addEventListener('click', function(){ soundOn ? stopAudio() : startAudio(); });
-
-  /* ---------- BRASAS ---------- */
-  var cv = document.getElementById('embers'), ctx2 = cv.getContext('2d'), P = [];
-  function sizeCv(){ cv.width = innerWidth; cv.height = innerHeight; }
-  sizeCv(); addEventListener('resize', sizeCv);
-  var COUNT = reduced ? 0 : (innerWidth < 700 ? 20 : 44);
-  for(var i=0;i<COUNT;i++){
-    P.push({x:Math.random()*innerWidth, y:Math.random()*innerHeight,
-      r:0.7+Math.random()*1.8, s:0.1+Math.random()*0.34,
-      drift:(Math.random()-0.5)*0.17, ph:Math.random()*Math.PI*2,
-      gold:Math.random()<0.35});
-  }
-  if(COUNT>0)(function tick(t){
-    ctx2.clearRect(0,0,cv.width,cv.height);
-    for(var i=0;i<P.length;i++){
-      var p = P[i];
-      p.y -= p.s; p.x += p.drift + Math.sin(t*0.0005 + p.ph)*0.12;
-      if(p.y < -8){ p.y = cv.height + 8; p.x = Math.random()*cv.width; }
-      var a = 0.22 + 0.26*Math.abs(Math.sin(t*0.001 + p.ph));
-      ctx2.beginPath();
-      ctx2.fillStyle = p.gold ? 'rgba(220,176,80,'+a+')' : 'rgba(200,126,76,'+a+')';
-      ctx2.shadowBlur = 5;
-      ctx2.shadowColor = p.gold ? 'rgba(212,168,67,0.6)' : 'rgba(193,122,74,0.5)';
-      ctx2.arc(p.x, p.y, p.r, 0, 7);
-      ctx2.fill();
-    }
-    ctx2.shadowBlur = 0;
-    requestAnimationFrame(tick);
-  })(0);
-
-  /* ---------- CURSOR RUPESTRE ---------- */
-  var petro = document.getElementById('petro');
-  if(!reduced && matchMedia('(pointer:fine)').matches){
-    var R = 150, mtx=-3000, mty=-3000, mpx=-3000, mpy=-3000, intensity=0, lx=null, ly=null;
-    addEventListener('mousemove', function(e){
-      mtx=e.clientX; mty=e.clientY;
-      if(lx!==null){ intensity = Math.min(1, intensity + Math.hypot(e.clientX-lx, e.clientY-ly)*0.011); }
-      lx=e.clientX; ly=e.clientY;
-    });
-    (function ptick(){
-      mpx += (mtx-mpx)*0.15; mpy += (mty-mpy)*0.15; intensity *= 0.955;
-      var m = 'radial-gradient(circle '+R+'px at '+mpx.toFixed(0)+'px '+mpy.toFixed(0)+'px, #000 0%, #000 28%, transparent 72%)';
-      petro.style.webkitMaskImage = m; petro.style.maskImage = m;
-      petro.style.opacity = (0.24*intensity).toFixed(3);
-      /* mismo efecto sobre la capa de cursor del umbral (landing), sin tocar el fondo estático */
-      var up = document.querySelector('#umbral .paintcursor');
-      if(up){ up.style.webkitMaskImage = m; up.style.maskImage = m; up.style.opacity = (0.45*intensity).toFixed(3); }
-      requestAnimationFrame(ptick);
-    })();
-  }
-
-  /* ---------- CRONOGRAMA (Gantt interactivo) ---------- */
-  var ganttBars = [
-    {l:"Pre-producción",s:0,e:3,c:"#B07040",subs:[["Revisión narrativa",0,1.5],["Concept art",0.5,2.5],["Pipeline UE5+GASP",0,2],["Blockout ambientes",1.5,3]],deps:[[0,3],[2,3]]},
-    {l:"Arte Entornos",s:2,e:10,c:"#7A9E6F",subs:[["Selva nocturna",2,5],["Maloca+alrededores",2.5,6],["Zona combate",4,7],["Fotogrametría Vaupés",3,5],["Polish+iluminación",7,10]],deps:[[0,4],[1,4],[2,4]]},
-    {l:"Arte Personajes",s:2,e:9,c:"#D4945E",subs:[["10 personajes detallados",2,6],["MetaHuman comunidad",3,7],["UV/tex/groom",5,7],["Rigging",6,8],["Variantes",7,9]],deps:[[0,2],[1,2],[2,3],[3,4]]},
-    {l:"Programación",s:3,e:9,c:"#6B8EAD",subs:[["Locomotion+traversal",3,5],["Caza+stealth+arco",4,6],["Combate macana",5,7],["NPC+diálogos+IA",5,7.5],["Ceremonia yagé",6,8],["Integración+flujo",7.5,9]],deps:[[0,1],[1,2],[2,5],[4,5]]},
-    {l:"Animación",s:4,e:10,c:"#C4A265",subs:[["Locomotion+traversal (~20)",4,6],["Caza+combate (~15)",5,7],["Culturales (casabe etc)",5,8],["Cinemáticas (~25)",6,9],["Placeholder Mixamo (~65)",4,6]],deps:[[0,1],[1,3]]},
-    {l:"Cinemáticas",s:5,e:10,c:"#E8A040",subs:[["Storyboard (10)",5,6],["Blocking+cámara",6,7.5],["Sequencer",7,9],["Iluminación+VFX",8,10]],deps:[[0,1],[1,2],[2,3]]},
-    {l:"Música+Sound",s:2,e:10,c:"#8B7EC8",subs:[["Soundscape selva",2,4],["Efectos de sonido (~141)",3,7],["Composición 6 tracks",4,8],["Instrumentos Tukano",5,7],["Mezcla final",8,10]],deps:[[0,1],[2,4],[3,4]]},
-    {l:"Cultural+VO",s:0,e:12,c:"#D4A843",subs:[["Consultor cultural",0,12],["Viaje campo #1",3,4],["Viaje campo #2",6,7],["Viaje campo #3",9,10],["VO Tukano (~176 líneas)",5,7],["VO sesión 2",9,10]],deps:[[1,4],[2,5]]},
-    {l:"Marketing",s:2,e:12,c:"#C17A4A",subs:[["Redes sociales",2,12],["Teaser cinemático",6,9],["Steam page+wishlists",9,11],["Documental BTS",3,12]],deps:[[1,2]]},
-    {l:"Polish+Entrega",s:9,e:12,c:"#943828",subs:[["QA+bugs",9,11.5],["Optimización",10,11.5],["Demo build final",11,12]],deps:[[0,1],[1,2]]}
-  ];
-  var ganttOpen = -1;
-  var ganttEl = document.getElementById('gantt');
-  function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
-  function darken(hex, f){
-    var h = hex.replace('#',''); if(h.length===3){h=h[0]+h[0]+h[1]+h[1]+h[2]+h[2];}
-    var r=parseInt(h.slice(0,2),16), g=parseInt(h.slice(2,4),16), b=parseInt(h.slice(4,6),16);
-    r=Math.round(r*f); g=Math.round(g*f); b=Math.round(b*f);
-    return 'rgb('+r+','+g+','+b+')';
-  }
-  function lighten(hex, f){
-    var h = hex.replace('#',''); if(h.length===3){h=h[0]+h[0]+h[1]+h[1]+h[2]+h[2];}
-    var r=parseInt(h.slice(0,2),16), g=parseInt(h.slice(2,4),16), b=parseInt(h.slice(4,6),16);
-    r=Math.min(255,Math.round(r+(255-r)*f)); g=Math.min(255,Math.round(g+(255-g)*f)); b=Math.min(255,Math.round(b+(255-b)*f));
-    return 'rgb('+r+','+g+','+b+')';
-  }
-  function renderGantt(){
-    var dur=12, leftW=250, colW=116, subH=26, barH=36;
-    var milestones=[[3,"Blockout"],[6,"Alpha"],[9,"Beta"],[11,"Demo"]];
-    var rows=[], y=0;
-    ganttBars.forEach(function(bar,bi){
-      rows.push({type:"bar",bar:bar,bi:bi,y:y}); y+=barH;
-      if(ganttOpen===bi && bar.subs){
-        bar.subs.forEach(function(sub){ rows.push({type:"sub",sub:sub,bi:bi,y:y,pbar:bar}); y+=subH; });
-        y+=6;
-      }
-    });
-    var svgH=y+44, svgW=leftW+dur*colW+12;
-    var s='<svg viewBox="0 0 '+svgW+' '+svgH+'" xmlns="http://www.w3.org/2000/svg">';
-    s+='<defs>';
-    ganttBars.forEach(function(b,bi){
-      s+='<linearGradient id="grad'+bi+'" x1="0" y1="0" x2="1" y2="0">'+
-        '<stop offset="0" stop-color="'+darken(b.c,0.5)+'"></stop>'+
-        '<stop offset="1" stop-color="'+lighten(b.c,0.12)+'"></stop>'+
-        '</linearGradient>';
-    });
-    s+='</defs>';
-    for(var i=0;i<dur;i++){
-      s+='<text x="'+(leftW+i*colW+colW/2)+'" y="'+(svgH-24)+'" text-anchor="middle" fill="#B8A890" font-size="13">M'+(i+1)+'</text>';
-    }
-    milestones.forEach(function(ms){
-      s+='<line x1="'+(leftW+ms[0]*colW)+'" y1="0" x2="'+(leftW+ms[0]*colW)+'" y2="'+(svgH-40)+'" stroke="rgba(193,122,74,0.3)" stroke-width="1" stroke-dasharray="4,4"></line>';
-      s+='<text x="'+(leftW+ms[0]*colW)+'" y="'+(svgH-6)+'" text-anchor="middle" fill="#C17A4A" font-size="12" font-weight="700">'+ms[1]+'</text>';
-    });
-    var trackX=leftW+2, trackW=dur*colW-4;
-    rows.forEach(function(row){
-      if(row.type==="bar"){
-        var bar=row.bar, isOpen=ganttOpen===row.bi;
-        s+='<g class="granrow" data-bi="'+row.bi+'">';
-        s+='<rect x="0" y="'+row.y+'" width="'+svgW+'" height="'+barH+'" fill="transparent"></rect>';
-        s+='<text x="'+(leftW-12)+'" y="'+(row.y+23)+'" text-anchor="end" fill="'+(isOpen?'#E8DCC8':'#B8A890')+'" font-size="15" font-weight="'+(isOpen?'700':'400')+'">'+esc(bar.l)+' '+(isOpen?'\u25B4':'\u25BE')+'</text>';
-        /* pista oscura redondeada (todo el ancho) */
-        s+='<rect x="'+trackX+'" y="'+(row.y+6)+'" width="'+trackW+'" height="24" rx="12" fill="rgba(74,53,40,0.35)"></rect>';
-        /* barra pastilla con degradado dorado */
-        s+='<rect x="'+(leftW+bar.s*colW+2)+'" y="'+(row.y+6)+'" width="'+((bar.e-bar.s)*colW-4)+'" height="24" rx="12" fill="url(#grad'+row.bi+')" opacity="'+(isOpen?1:0.92)+'"'+(isOpen?' stroke="#E8DCC8" stroke-width="1.5"':'')+'></rect>';
-        s+='</g>';
-      } else {
-        var sub=row.sub, pbar=row.pbar;
-        s+='<text x="'+(leftW-8)+'" y="'+(row.y+17)+'" text-anchor="end" fill="rgba(184,168,144,0.65)" font-size="12">'+esc(sub[0])+'</text>';
-        s+='<rect x="'+trackX+'" y="'+(row.y+4)+'" width="'+trackW+'" height="17" rx="8.5" fill="rgba(74,53,40,0.28)"></rect>';
-        s+='<rect x="'+(leftW+sub[1]*colW+3)+'" y="'+(row.y+4)+'" width="'+Math.max((sub[2]-sub[1])*colW-6,10)+'" height="17" rx="8.5" fill="url(#grad'+row.bi+')" opacity="0.7"></rect>';
-      }
-    });
-    if(ganttOpen>=0 && ganttBars[ganttOpen].deps){
-      var subRows=rows.filter(function(r){return r.type==="sub"});
-      ganttBars[ganttOpen].deps.forEach(function(d){
-        var from=subRows[d[0]], to=subRows[d[1]];
-        if(!from||!to) return;
-        var x1=leftW+from.sub[2]*colW-3, y1=from.y+12;
-        var x2=leftW+to.sub[1]*colW+3, y2=to.y+12;
-        var mx=(x1+x2)/2;
-        s+='<path d="M'+x1+','+y1+' C'+mx+','+y1+' '+mx+','+y2+' '+x2+','+y2+'" stroke="rgba(193,122,74,0.45)" stroke-width="1.2" fill="none"></path>';
-        s+='<polygon points="'+x2+','+y2+' '+(x2-5)+','+(y2-3)+' '+(x2-5)+','+(y2+3)+'" fill="rgba(193,122,74,0.6)"></polygon>';
-      });
-    }
-    s+='</svg>';
-    ganttEl.innerHTML = s;
-    ganttEl.querySelectorAll('.granrow').forEach(function(g){
-      g.addEventListener('click', function(e){
-        e.stopPropagation();
-        var bi = parseInt(g.getAttribute('data-bi'),10);
-        ganttOpen = (ganttOpen===bi) ? -1 : bi;
-        renderGantt();
-      });
-    });
-  }
-  renderGantt();
-
-  /* ---------- COCREA ---------- */
-  /* Empresa y Persona Natural ahora se muestran siempre (sin pestañas). */
-
-  /* ---------- ARRANQUE ---------- */
-  var startAt = 0;
-  var h = parseInt((location.hash||'').replace('#',''),10);
-  if(!isNaN(h) && h>=1 && h<=totalSteps) startAt = h-1;
-  go(startAt);
-  if(startAt > 0){ closeUmbral(); }
-})();
-
-</script>
+<script src="wauro-presentacion-v2.js?v=81"></script>
 </body>
 </html>
