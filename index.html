@@ -171,9 +171,9 @@ img{max-width:100%}
 .mercado.ph1 .scnA{display:none}
 .mercado.ph1 .scnB{display:inline}
 /* línea introductoria — colapsa en fase 2 */
-.mercado .introline{max-height:60px;opacity:1;margin-bottom:34px;overflow:hidden;
+.mercado .introline{max-height:130px;opacity:1;margin-bottom:34px;overflow:hidden;
   transition:max-height 0.55s ease, opacity 0.4s ease, margin-bottom 0.55s ease}
-.mercado.ph1 .introline,.mercado.ph2 .introline{max-height:0;opacity:0;margin-bottom:0}
+.mercado.ph1 .introline,.mercado.ph2 .introline{max-height:0 !important;opacity:0;margin-bottom:0 !important}
 /* barras: la de videojuegos permanece, las demás colapsan */
 .mercado .vbars{display:flex;flex-direction:column}
 .mercado .otherbars{display:flex;flex-direction:column;gap:18px;margin-top:18px;max-height:430px;opacity:1;overflow:hidden;
@@ -226,8 +226,8 @@ img{max-width:100%}
 /* bloque tendencia: oculto hasta fase C */
 .mercado .tendblock{max-height:0;opacity:0;margin-top:0;overflow:hidden;
   transition:max-height 0.85s cubic-bezier(0.5,0,0.2,1) 0.15s, opacity 0.55s ease 0.3s, margin-top 0.6s ease}
-.mercado.ph2 .tendblock{max-height:560px;opacity:1;margin-top:16px;max-width:58%}
-.mercado.ph2 .sbody{margin-top:-34px}
+.mercado.ph2 .tendblock{max-height:720px;opacity:1;margin-top:14px;max-width:58%}
+.mercado.ph2 .sbody{justify-content:flex-start;margin-top:0}
 /* cajas de stats más legibles en la tendencia — tonos oscuros */
 .mercado .tend-stats .stat{background:rgba(60,34,18,0.85);border-color:rgba(193,122,74,0.6)}
 .mercado .tend-stats .stat.gold{background:rgba(60,34,18,0.85);border-color:rgba(212,168,67,0.65)}
@@ -302,9 +302,9 @@ img{max-width:100%}
 #p-problema .statrow .stat.gold{background:rgba(60,34,18,0.85);border-color:rgba(212,168,67,0.65)}
 #p-problema .statrow .stat.red{background:rgba(52,24,18,0.88);border-color:rgba(160,64,48,0.7)}
 #p-problema .statrow .stat .l{color:var(--cream)}
-.mercado .tend-left{display:flex;flex-direction:column;gap:12px;min-width:0}
+.mercado .tend-left{display:flex;flex-direction:column;gap:9px;min-width:0}
 .mercado .tend-intro{font-size:16px;margin-bottom:2px}
-.mercado .comps-col{display:flex;flex-direction:column;gap:10px}
+.mercado .comps-col{display:flex;flex-direction:column;gap:7px}
 .mercado .tend-stats{margin-top:4px}
 /* imagen: ocupa todo el lado derecho, sin borde, sin recorte */
 .mercado .tend-img{position:absolute;top:0;right:0;bottom:0;width:40%;opacity:0;pointer-events:none;z-index:1;transition:opacity 0.7s ease 0.35s}
@@ -344,7 +344,7 @@ body.vidslide #petro{opacity:0 !important}
 h1.t{font-family:var(--hf);font-size:84px;font-weight:700;line-height:0.98;color:var(--cream);margin-top:6px}
 h1.t em{font-style:italic;font-weight:500;color:var(--tl)}
 h1.t.sm{font-size:64px}
-.lead{font-size:19px;line-height:1.55;color:var(--cream)}
+.lead{font-size:38px;line-height:1.4;color:var(--cream)}
 .lead b,.lead .hl{color:var(--tl);font-weight:600}
 .dimtext{color:var(--dim)}
 .note{font-size:18.5px;color:var(--dim);font-style:italic}
@@ -389,7 +389,7 @@ h1.t.sm{font-size:64px}
 .vbars{display:flex;flex-direction:column;gap:18px;max-width:1500px}
 .brow{display:grid;grid-template-columns:300px 1fr;align-items:center;gap:22px}
 .bname{text-align:right;font-size:24px;font-family:var(--hf);font-weight:600;color:var(--cream)}
-.bname small{display:block;font-family:var(--bf);font-size:14px;color:var(--dim)}
+.bname small{display:block;font-family:var(--bf);font-size:28px;color:var(--dim)}
 .btrack{height:48px;background:rgba(74,53,40,0.35);border-radius:10px;position:relative;overflow:visible}
 .bfill{height:100%;width:0;border-radius:10px;background:rgba(184,168,144,0.3);transition:width 1.3s cubic-bezier(0.22,0.61,0.36,1);transition-delay:var(--d,0s);position:relative}
 .bfill.hero{background:linear-gradient(90deg,#8B5A2B,var(--terra) 60%,var(--tl));box-shadow:0 0 30px rgba(193,122,74,0.35)}
@@ -398,15 +398,15 @@ h1.t.sm{font-size:64px}
 .bval.in{left:auto;right:18px;color:#160C05;font-size:30px}
 
 /* TAM/SAM/SOM — formato fila etiqueta + barra + valor (estilo escenarios) */
-.tsshd{display:grid;grid-template-columns:320px 1fr 264px;align-items:center;gap:22px}
-.tsslbl .tag{display:block;font-size:16px;letter-spacing:0.26em;font-weight:700;margin-bottom:3px}
-.tsslbl small{font-size:15px;color:var(--dim);line-height:1.25;display:block}
+.tsshd{display:grid;grid-template-columns:380px 1fr 264px;align-items:center;gap:22px}
+.tsslbl .tag{display:block;font-size:24px;letter-spacing:0.26em;font-weight:700;margin-bottom:5px}
+.tsslbl small{font-size:23px;color:var(--dim);line-height:1.25;display:block}
 .tssbar{height:22px;background:rgba(74,53,40,0.35);border-radius:11px;overflow:hidden}
 .tssbar i{display:block;height:100%;border-radius:11px;width:0;transition:width 1.3s cubic-bezier(0.22,0.61,0.36,1);transition-delay:var(--d,0s)}
 .pg.act .tssbar i{width:var(--w)}
 .tssval{font-family:var(--hf);font-size:27px;font-weight:700;text-align:right;white-space:nowrap}
 .tssrow .rowdetail{margin-top:14px}
-.tssrow{border:1px solid var(--pbdr);background:linear-gradient(160deg, rgba(46,29,20,0.7), rgba(28,16,10,0.6));border-radius:10px;padding:24px 32px}
+.tssrow{border:1px solid var(--pbdr);background:linear-gradient(160deg, rgba(46,29,20,0.7), rgba(28,16,10,0.6));border-radius:10px;padding:16px 30px}
 .tssrow .hd{display:flex;align-items:baseline;gap:18px;margin-bottom:10px}
 .tssrow .tag{font-size:17px;letter-spacing:0.3em;font-weight:700}
 .tssrow .val{font-family:var(--hf);font-size:42px;font-weight:700;color:var(--cream);line-height:1}
@@ -432,12 +432,12 @@ h1.t.sm{font-size:64px}
 .stat .l{font-size:15px;color:var(--dim);margin-top:8px;white-space:pre-line;line-height:1.4}
 
 /* comps */
-.comp{display:flex;justify-content:space-between;align-items:center;gap:14px;border:1px solid var(--pbdr);background:linear-gradient(160deg, rgba(46,29,20,0.8), rgba(28,16,10,0.7));border-radius:10px;padding:16px 24px}
-.comp .n{font-family:var(--hf);font-size:24px;font-weight:700;color:var(--cream)}
-.comp .s{font-size:14.5px;color:var(--dim)}
+.comp{display:flex;justify-content:space-between;align-items:center;gap:14px;border:1px solid var(--pbdr);background:linear-gradient(160deg, rgba(46,29,20,0.8), rgba(28,16,10,0.7));border-radius:10px;padding:10px 24px}
+.comp .n{font-family:var(--hf);font-size:21px;font-weight:700;color:var(--cream)}
+.comp .s{font-size:13.5px;color:var(--dim)}
 .comp .r{text-align:right;flex-shrink:0}
-.comp .r .v{font-family:var(--hf);font-size:27px;font-weight:700;color:var(--gold);line-height:1.05}
-.comp .r .d{font-size:17.5px;color:var(--dim)}
+.comp .r .v{font-family:var(--hf);font-size:23px;font-weight:700;color:var(--gold);line-height:1.05}
+.comp .r .d{font-size:16px;color:var(--dim)}
 
 /* equipo */
 .team{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
@@ -767,7 +767,7 @@ h1.t.sm{font-size:64px}
       </div>
       <div class="tendblock">
         <div class="tend-left">
-          <p class="lead tend-intro">Los juegos narrativos con enfoque cultural atraviesan un auge nunca antes visto, incluso desde estudios independientes:</p>
+          <p class="lead tend-intro" style="font-size:19px">Los juegos narrativos con enfoque cultural atraviesan un auge nunca antes visto, incluso desde estudios independientes:</p>
           <div class="comps-col">
             <div class="comp"><div><div class="n">Black Myth: Wukong</div><div class="s">Mitología china · Game Science</div></div><div class="r"><div class="v">25M copias</div><div class="d">~US$1.600 M</div></div></div>
             <div class="comp"><div><div class="n">Clair Obscur: Expedition 33</div><div class="s">Folclor francés · Sandfall Interactive</div></div><div class="r"><div class="v">8M copias</div><div class="d">&lt;US$10M · 9 premios TGA</div></div></div>
@@ -859,15 +859,6 @@ temáticas latinoamericanas</div></div>
           <p>Reconocidos líderes y sabedores del Vaupés, con amplia trayectoria en proyectos sociales, organizativos y culturales. Custodios legítimos de la historia de Yu'upuri Wa'uro.</p></div>
         </div>
       </div>
-      <div style="display:flex;align-items:center;gap:14px" data-a style="--i:3">
-        <div style="width:30px;height:2px;background:var(--terra)"></div>
-        <div class="eyebrow" style="font-size:15px">Aliados</div>
-      </div>
-      <div class="allies" data-a style="--i:4">
-        <div class="ally"><img src="https://lh3.googleusercontent.com/d/1ZYpf20-L4ea9ItPTSs1n2Nx3U9TbJcb1=s1200" alt="Kevin Lin"><div><div class="nm">Kevin Lin</div><p>Co-fundador de Twitch (vendido a Amazon por $970M); COO hasta 100M+ usuarios. Asesor en la industria gaming.</p></div></div>
-        <div class="ally"><img src="https://lh3.googleusercontent.com/d/1v3y_zKcDKxglmS3eKumFi8VM32cchkon=s1200" alt="Dr. Simran Chana"><div><div class="nm">Dr. Simran Chana</div><p>Director del Frontier Technologies Lab, Cambridge. Venture partner en deep tech; asesor de la Familia Nobel.</p></div></div>
-        <div class="ally"><img class="contain" src="https://cdn.freebiesupply.com/logos/large/2x/university-of-cambridge-2-logo-png-transparent.png" alt="Universidad de Cambridge"><div><div class="nm">Cambridge</div><p>King's e-Lab &amp; Trinity College.</p></div></div>
-      </div>
     </div>
   </div>
 </section>
@@ -881,8 +872,8 @@ temáticas latinoamericanas</div></div>
     
     <h1 class="t" style="font-size:72px">Wa'uro: Historia, Mito<br>y <em>Resistencia</em></h1>
   </div>
-  <div class="low panel" data-a style="--i:1; max-width:900px">
-    <p style="font-size:17px;color:var(--cream);line-height:1.6">Wa'uro cuenta la historia de <b style="color:var(--tl)">Yu'upuri Wa'uro</b>, un líder indígena Tukano que lucha por proteger a su pueblo durante la transformación de la Amazonía en la era del caucho. Mientras comerciantes, misioneros y fuerzas coloniales alteran el mundo que conoce, Wa'uro debe enfrentar conflictos, tomar decisiones difíciles y navegar una realidad donde la historia, los espíritus y los seres de la mitología amazónica se entrelazan.</p>
+  <div class="low panel" data-a style="--i:1; max-width:1100px">
+    <p style="font-family:var(--hf);font-size:46px;font-weight:600;color:var(--cream);line-height:1.15;text-wrap:balance">Wa'uro, el líder que <em style="font-style:italic;color:var(--tl)">cambió el Vaupés para siempre</em>.</p>
   </div>
 </section>
 
@@ -919,7 +910,7 @@ temáticas latinoamericanas</div></div>
       
       <h1 class="t sm" data-a style="--i:1">Sostenibilidad Económica,<br>Social y <em>Cultural</em></h1>
     </div>
-    <p class="lead" data-a style="--i:2; max-width:980px; margin-bottom:16px">¿Cómo crear un videojuego que represente estas historias con <b>rigor y respeto</b>, involucre a sus custodios culturales y sea <b>económicamente viable</b>?</p>
+    <p class="lead" data-a style="--i:2; font-size:27px; max-width:980px; margin-bottom:16px">¿Cómo crear un videojuego que represente estas historias con <b>rigor y respeto</b>, involucre a sus custodios culturales y sea <b>económicamente viable</b>?</p>
     <div data-a style="--i:3; margin-bottom:18px">
       <img src="https://images.squarespace-cdn.com/content/67a29672e45a656b8be53344/99eee233-967d-4a2d-8e5e-4a66db7001c0/LoopPipeline.png?content-type=image%2Fpng" alt="Pipeline de co-creación" style="max-height:460px;width:auto;border-radius:10px">
     </div>
@@ -1070,13 +1061,18 @@ temáticas latinoamericanas</div></div>
     <div class="sbody" style="flex:0 0 auto;justify-content:flex-start">
       <div class="checks">
         <div class="check" data-a style="--i:2"><div class="ic">✓</div><div><div class="t">Becas — Trinity College + King's e-Lab (Cambridge) + MinCulturas</div><div class="i">Validación académica internacional y nacional</div></div></div>
-        <div class="check" data-a style="--i:3"><div class="ic">✓</div><div><div class="t">7 años de trabajo de campo con los Tukano del Vaupés</div><div class="i">Acceso exclusivo · consulta previa completada</div></div></div>
-        <div class="check" data-a style="--i:4"><div class="ic">✓</div><div><div class="t">+20.000 followers en redes</div><div class="i">Audiencia temprana y validación de mercado</div></div></div>
-        <div class="check" data-a style="--i:5"><div class="ic">✓</div><div><div class="t">Metodologías listas — personajes, entornos y mecánicas</div><div class="i">Pipeline comprobado en el contexto colombiano y amazónico</div></div></div>
-        <div class="check" data-a style="--i:6"><div class="ic">✓</div><div><div class="t">Creación inicial del gameloop y el Game Design Document</div><div class="i">Base jugable y de diseño definida</div></div></div>
-        <div class="check" data-a style="--i:7"><div class="ic">✓</div><div><div class="t">Mentores: Kevin Lin (Twitch) + Dr. Simran Chana (Cambridge)</div><div class="i">Credibilidad y acceso a redes globales</div></div></div>
-        <div class="check" data-a style="--i:9"><div class="ic">✓</div><div><div class="t">Prensa — cobertura editorial sin pauta</div><div class="i">Cambio Colombia (feb 2026), Revista Diners (sep 2025, entrevista a los 3 fundadores), Frecuencia Gamer, Tachalo Podcast, Coja Oficio y Liderarse Podcast — ganada orgánicamente por la fuerza de la propuesta cultural</div></div></div>
-        <div class="check next" data-a style="--i:10"><div class="ic">→</div><div><div class="t">Aplicando a CoCrea (MinCulturas)</div><div class="i">Representante de CoCrea en la presentación</div></div></div>
+        <div class="check" data-a style="--i:3"><div class="ic">✓</div><div><div class="t">+20.000 followers en redes</div><div class="i">Audiencia temprana y validación de mercado</div></div></div>
+        <div class="check" data-a style="--i:4"><div class="ic">✓</div><div><div class="t">Mentores: Kevin Lin (Twitch) + Dr. Simran Chana (Cambridge)</div><div class="i">Credibilidad y acceso a redes globales</div></div></div>
+        <div class="check" data-a style="--i:5"><div class="ic">✓</div><div><div class="t">Prensa — cobertura editorial sin pauta</div><div class="i">Cambio Colombia (feb 2026), Revista Diners (sep 2025, entrevista a los 3 fundadores), Frecuencia Gamer, Tachalo Podcast, Coja Oficio y Liderarse Podcast — ganada orgánicamente por la fuerza de la propuesta cultural</div></div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;margin-top:22px" data-a style="--i:6">
+        <div style="width:30px;height:2px;background:var(--terra)"></div>
+        <div class="eyebrow" style="font-size:15px">Aliados</div>
+      </div>
+      <div class="allies" data-a style="--i:7; margin-top:14px">
+        <div class="ally"><img src="https://lh3.googleusercontent.com/d/1ZYpf20-L4ea9ItPTSs1n2Nx3U9TbJcb1=s1200" alt="Kevin Lin"><div><div class="nm">Kevin Lin</div><p>Co-fundador de Twitch (vendido a Amazon por $970M); COO hasta 100M+ usuarios. Asesor en la industria gaming.</p></div></div>
+        <div class="ally"><img src="https://lh3.googleusercontent.com/d/1v3y_zKcDKxglmS3eKumFi8VM32cchkon=s1200" alt="Dr. Simran Chana"><div><div class="nm">Dr. Simran Chana</div><p>Director del Frontier Technologies Lab, Cambridge. Venture partner en deep tech; asesor de la Familia Nobel.</p></div></div>
+        <div class="ally"><img class="contain" src="https://cdn.freebiesupply.com/logos/large/2x/university-of-cambridge-2-logo-png-transparent.png" alt="Universidad de Cambridge"><div><div class="nm">Cambridge</div><p>King's e-Lab &amp; Trinity College.</p></div></div>
       </div>
     </div>
   </div>
@@ -1099,7 +1095,7 @@ temáticas latinoamericanas</div></div>
 <section class="pg proto3" id="p-ruta" data-phases="3" data-screen-label="El Prototipo" data-label-0="El Prototipo — Capítulo Jugable" data-label-1="El Prototipo — La Ruta" data-label-2="El Prototipo — Break-even">
   <div class="lay">
     <div class="shead" style="margin-bottom:10px;position:relative;z-index:6">
-      <div class="subcap" data-a style="--i:0"><span class="scl">El Prototipo</span><span class="sbars"><i class="sb pb1"></i><i class="sb pb2"></i><i class="sb pb3"></i><i class="sb pb4"></i><i class="sb pb5"></i><i class="sb pb6"></i></span><span class="scn scn0">I / VI</span><span class="scn scn1">II / VI</span><span class="scn scn2">III / VI</span></div>
+      <div class="subcap" data-a style="--i:0"><span class="scn scn0"></span><span class="scn scn1"></span><span class="scn scn2"></span></div>
       <div class="eyebrow eb0" data-a style="--i:0">Qué estamos construyendo</div>
       <div class="eyebrow eb1" data-a style="--i:0">¿Por qué lo construimos?</div>
       <h1 class="t sm title0" data-a style="--i:1">Un Capítulo <em>Jugable</em></h1>
@@ -1182,27 +1178,15 @@ temáticas latinoamericanas</div></div>
   </div>
 </section>
 
-<!-- ============ 20 CRONOGRAMA (Proto III) ============ -->
-<section class="pg" id="p-cronograma" data-screen-label="Cronograma">
+<!-- ============ CAPÍTULO · LA RONDA ============ -->
+<section class="pg chapter" id="p-cap-ronda" data-screen-label="Capítulo · La Ronda">
+  <div class="cap-figure"><div class="cap-num">IV</div><img class="cap-char" src="https://images.squarespace-cdn.com/content/67a29672e45a656b8be53344/46358a96-9b70-4451-a75a-987855b8ca37/Baron.png?content-type=image%2Fpng" alt="Barón del caucho"></div>
   <div class="lay">
-    <div class="shead" style="margin-bottom:14px">
-      <div class="subcap" data-a style="--i:0"><span class="scl">El Prototipo</span><span class="sbars"><i class="sb on"></i><i class="sb on"></i><i class="sb on"></i><i class="sb cur"></i><i class="sb"></i><i class="sb"></i></span><span class="scn">IV / VI</span></div>
-      <div style="display:flex;align-items:baseline;gap:30px">
-        <div>
-          
-          <h1 class="t sm" data-a style="--i:1; font-size:54px">Cronograma</h1>
-        </div>
-        <p class="note" data-a style="--i:2">Haz click en cada categoría para ver sub-tareas y dependencias</p>
-      </div>
-    </div>
-    <div id="gantt" data-a style="--i:2"></div>
-    <div data-a style="--i:3; display:flex; gap:18px; flex-wrap:wrap; margin-top:18px; justify-content:space-around">
-      <div class="mini"><div class="v">3</div><div class="l">Ambientes únicos</div></div>
-      <div class="mini"><div class="v">10</div><div class="l">Personajes detallados</div></div>
-      <div class="mini"><div class="v">78</div><div class="l">Animaciones custom</div></div>
-      <div class="mini"><div class="v">6</div><div class="l">Tracks música</div></div>
-      <div class="mini"><div class="v">10</div><div class="l">Cinemáticas</div></div>
-      <div class="mini"><div class="v">141</div><div class="l">Efectos de sonido</div></div>
+    <div class="captext">
+      <div class="cap-kicker" data-a style="--i:0">Capítulo Cuarto</div>
+      <h1 class="cap-title" data-a style="--i:1">La <em>Ronda</em></h1>
+      <div class="cap-div" data-a style="--i:2"></div>
+      <p class="cap-sub" data-a style="--i:3">La oportunidad de entrar temprano en el primer videojuego premium de Latinoamérica.</p>
     </div>
   </div>
 </section>
@@ -1213,13 +1197,12 @@ temáticas latinoamericanas</div></div>
   <div class="budget-img"><img src="https://images.squarespace-cdn.com/content/67a29672e45a656b8be53344/46358a96-9b70-4451-a75a-987855b8ca37/Baron.png?content-type=image%2Fpng" alt="Barón del caucho"></div>
   <div class="lay">
     <div class="shead" style="margin-bottom:14px">
-      <div class="subcap" data-a style="--i:0"><span class="scl">El Prototipo</span><span class="sbars"><i class="sb on"></i><i class="sb on"></i><i class="sb on"></i><i class="sb on"></i><i class="sb cur"></i><i class="sb"></i></span><span class="scn">V / VI</span></div>
       
       <h1 class="t sm" data-a style="--i:1">Presupuesto</h1>
-      <div style="display:flex;align-items:baseline;gap:18px;margin-top:12px" data-a style="--i:2">
-        <span style="font-size:17px;letter-spacing:0.3em;color:var(--terra);font-weight:700">TOTAL</span>
-        <span style="font-family:var(--hf);font-size:44px;font-weight:700;color:var(--terra);line-height:1">~$800M COP</span>
-        <span style="font-size:18px;color:var(--dim)">11 personas pico · 12 meses</span>
+      <div style="display:flex;align-items:baseline;gap:26px;margin-top:30px" data-a style="--i:2">
+        <span style="font-size:25px;letter-spacing:0.3em;color:var(--gold);font-weight:700">TOTAL</span>
+        <span style="font-family:var(--hf);font-size:66px;font-weight:700;color:var(--gold);line-height:1">~$800M COP</span>
+        <span style="font-size:27px;color:var(--dim)">11 personas pico · 12 meses</span>
       </div>
     </div>
     <div class="sbody" style="justify-content:center">
@@ -1270,6 +1253,14 @@ temáticas latinoamericanas</div></div>
           </div>
         </div>
       </div>
+      <div data-a style="--i:5; display:flex; gap:18px; flex-wrap:wrap; margin-top:22px; justify-content:space-around; max-width:1200px; width:100%">
+        <div class="mini"><div class="v">3</div><div class="l">Ambientes únicos</div></div>
+        <div class="mini"><div class="v">10</div><div class="l">Personajes detallados</div></div>
+        <div class="mini"><div class="v">78</div><div class="l">Animaciones custom</div></div>
+        <div class="mini"><div class="v">6</div><div class="l">Tracks música</div></div>
+        <div class="mini"><div class="v">10</div><div class="l">Cinemáticas</div></div>
+        <div class="mini"><div class="v">141</div><div class="l">Efectos de sonido</div></div>
+      </div>
     </div>
   </div>
 </section>
@@ -1280,12 +1271,12 @@ temáticas latinoamericanas</div></div>
   <img class="char" src="https://images.squarespace-cdn.com/content/67a29672e45a656b8be53344/b368e147-0f15-47f0-94d7-f0115057939e/Cauchero.png?content-type=image%2Fpng" alt="Cauchero">
   <div class="lay">
     <div class="shead" style="margin-bottom:8px">
-      <div class="subcap" data-a style="--i:0"><span class="scl">El Prototipo</span><span class="sbars"><i class="sb on"></i><i class="sb on"></i><i class="sb on"></i><i class="sb on"></i><i class="sb on"></i><i class="sb cur"></i></span><span class="scn">VI / VI</span></div>
+    <div class="shead" style="margin-bottom:8px">
       
       <h1 class="t sm" data-a style="--i:1">Del Prototipo al <em>Lanzamiento</em></h1>
       <div style="display:flex;align-items:baseline;gap:18px;margin-top:12px" data-a style="--i:2">
         <span style="font-size:17px;letter-spacing:0.3em;color:var(--gold);font-weight:700">SEED</span>
-        <span style="font-family:var(--hf);font-size:44px;font-weight:700;color:var(--gold);line-height:1">$8.000–14.000M COP</span>
+        <span style="font-family:var(--hf);font-size:44px;font-weight:700;color:var(--gold);line-height:1">$14.000M COP</span>
         <span style="font-size:18px;color:var(--dim)">Seed Round / Publisher · producción completa</span>
       </div>
     </div>
@@ -1294,13 +1285,13 @@ temáticas latinoamericanas</div></div>
         <path d="M 30,96 C 110,84 190,72 280,76 C 360,80 420,96 470,96" stroke="#C17A4A" stroke-width="3" stroke-linecap="round" opacity="0.85"></path>
         <path class="dash" d="M 470,96 C 620,96 660,70 800,70 C 980,70 1120,100 1290,96" stroke="#C17A4A" stroke-width="2.5" stroke-linecap="round" opacity="0.5"></path>
       </svg>
-      <div class="node" style="left:2.5%;top:112px"><div class="ndot"></div><div class="nlabel" style="font-size:15px">Bases del juego<small>últimos 12 meses</small></div></div>
+      <div class="node" style="left:2.5%;top:112px"><div class="ndot"></div><div class="nlabel" style="font-size:15px">Bases del juego</div></div>
       <div class="node" style="left:21%;top:86px"><div class="ndot"></div><div class="nlabel" style="font-size:15px">Ronda F&amp;F<small>hoy</small></div></div>
-      <div class="node" style="left:35.5%;top:112px"><div class="ndot"></div><div class="nlabel" style="font-size:15px">Prototipo jugable<small>12 meses</small></div></div>
-      <div class="node" style="left:60%;top:78px"><div class="ndot hollow"></div><div class="nlabel"><b>Seed Round / Publisher</b><span>14–16 meses</span><small>$8.000–14.000M COP producción completa</small></div></div>
+      <div class="node" style="left:35.5%;top:112px"><div class="ndot"></div><div class="nlabel" style="font-size:15px">Prototipo jugable</div></div>
+      <div class="node" style="left:60%;top:78px"><div class="ndot hollow"></div><div class="nlabel"><b>Seed Round / Publisher</b><span>14–16 meses</span><small>$14.000M COP producción completa</small></div></div>
       <div class="node" style="left:97%;top:112px"><div class="ndot hollow gold"></div><div class="nlabel goldc"><b>Lanzamiento</b><span>36–42 meses</span><small>Steam, Epic, consolas</small></div></div>
     </div>
-    <div style="display:flex;gap:26px;align-items:stretch">
+    <div style="display:flex;gap:26px;align-items:stretch;margin-top:34px">
       <div class="panel" data-a style="--i:3; width:610px; flex-shrink:0">
         <h3>Seed Round / Publisher</h3>
         <p style="font-size:16.5px;line-height:1.5;color:var(--cream);margin-top:12px">Al completar el prototipo, levantamos una ronda seed o cerramos una alianza con un publisher — lo que más convenga — para financiar el juego completo.</p>
@@ -1342,19 +1333,6 @@ temáticas latinoamericanas</div></div>
   </div>
 </section>
 
-<!-- ============ CAPÍTULO · LA RONDA ============ -->
-<section class="pg chapter" id="p-cap-ronda" data-screen-label="Capítulo · La Ronda">
-  <div class="cap-figure"><div class="cap-num">IV</div><img class="cap-char" src="https://images.squarespace-cdn.com/content/67a29672e45a656b8be53344/46358a96-9b70-4451-a75a-987855b8ca37/Baron.png?content-type=image%2Fpng" alt="Barón del caucho"></div>
-  <div class="lay">
-    <div class="captext">
-      <div class="cap-kicker" data-a style="--i:0">Capítulo Cuarto</div>
-      <h1 class="cap-title" data-a style="--i:1">La <em>Ronda</em></h1>
-      <div class="cap-div" data-a style="--i:2"></div>
-      <p class="cap-sub" data-a style="--i:3">La oportunidad de entrar temprano en el primer videojuego premium de Latinoamérica.</p>
-    </div>
-  </div>
-</section>
-
 <!-- ============ 23 LA PROPUESTA ============ -->
 <section class="pg" id="p-propuesta" data-screen-label="La Propuesta">
   <div class="lay">
@@ -1366,11 +1344,10 @@ temáticas latinoamericanas</div></div>
       <div style="display:grid;grid-template-columns:0.92fr 1.08fr;gap:20px;align-items:center">
         <!-- EL ASK -->
         <div style="display:flex;flex-direction:column;gap:13px">
-          <div class="panel" data-a style="--i:2; text-align:center; padding:26px 28px; border-color:rgba(193,122,74,0.5); background:rgba(193,122,74,0.12)">
+          <div class="panel" data-a style="--i:3; text-align:center; padding:26px 28px; border-color:rgba(193,122,74,0.5); background:rgba(193,122,74,0.12)">
             <div style="font-size:14px;color:var(--dim);letter-spacing:0.18em">ESTAMOS LEVANTANDO</div>
             <div style="font-family:var(--hf);font-size:76px;font-weight:700;color:var(--terra);margin:6px 0 0;line-height:1">$800M <span style="font-size:32px;color:var(--cream)">COP</span></div>
           </div>
-          <div class="panel green" data-a style="--i:3; padding:14px 22px"><h3 style="font-size:21px;margin-bottom:2px;color:var(--green)">CoCrea — todos recuperan 31%–64%</h3><p style="font-size:15px;color:var(--cream);line-height:1.35">Sin importar el monto, recuperas entre el 31% y el 64% de tu inversión vía menor impuesto de renta.</p></div>
           <div class="panel" data-a style="--i:3; padding:16px 22px"><h3 style="font-size:21px;margin:0">Inversión + Incentivo · Ticket <span style="color:var(--terra)">$30M COP</span></h3></div>
           <div class="panel" data-a style="--i:3; padding:16px 22px"><h3 style="font-size:21px;margin:0">Donación + Incentivo Tributario · Debajo de <span style="color:var(--terra)">$30M</span></h3></div>
         </div>
@@ -1395,65 +1372,6 @@ temáticas latinoamericanas</div></div>
       <div class="panel" data-a style="--i:5; border-color:rgba(212,168,67,0.4); display:flex; align-items:center; gap:18px; padding:13px 22px">
         <span style="font-family:var(--hf);font-size:19px;font-weight:700;color:var(--gold);white-space:nowrap">La ronda ya está en marcha</span>
         <p style="font-size:15.5px;color:var(--cream);line-height:1.45;border-left:1px solid var(--pbdr);padding-left:18px">No todo se espera levantar en F&amp;F: ya tenemos agendadas reuniones con <b style="color:var(--tl)">empresas, universidades y entidades culturales</b> para continuar la ronda.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 24 COCREA ============ -->
-<section class="pg" id="p-cocrea" data-screen-label="CoCrea">
-  <div class="lay">
-    <div class="shead" style="margin-bottom:14px">
-      
-      <h1 class="t sm" data-a style="--i:1; font-size:54px">CoCrea: Tu Inversión Cuesta <em>Menos de lo que Parece</em></h1>
-    </div>
-    <div class="sbody" style="justify-content:center;gap:16px">
-      <!-- banda hero: 165% -->
-      <div class="panel" data-a style="--i:2; padding:16px 28px; border-color:rgba(193,122,74,0.5); background:rgba(193,122,74,0.12); display:flex; align-items:center; gap:28px">
-        <div style="display:flex;align-items:baseline;gap:10px;flex-shrink:0"><span style="font-family:var(--hf);font-size:72px;font-weight:700;color:var(--terra);line-height:0.9">165%</span><span style="font-size:17px;color:var(--dim);max-width:130px;line-height:1.3">de tu inversión, deducible</span></div>
-        <p style="font-size:17px;color:var(--cream);line-height:1.5;border-left:1px solid var(--pbdr);padding-left:24px">CoCrea (MinCulturas) impulsa proyectos culturales con un beneficio tributario: <b style="color:var(--tl)">quien invierte paga menos impuesto de renta</b>. Wa'uro califica como videojuego original colombiano con valor cultural — y un representante de CoCrea nos acompañará en la reunión.</p>
-      </div>
-      <div class="cocrea-cols" data-a style="--i:4">
-        <div class="panel" id="detEmpresa">
-          <h3>Empresa <span style="font-size:16px;color:var(--terra)">/ P. Jurídica · tarifa 35%</span></h3>
-          <div style="font-family:var(--hf);font-size:30px;font-weight:700;color:var(--green);line-height:1.05;margin:12px 0 4px">Recuperas ~58% de tu inversión</div>
-          <div style="display:flex;height:34px;border-radius:8px;overflow:hidden;margin:10px 0 16px;border:1px solid rgba(74,122,82,0.4)">
-            <div style="width:58%;background:rgba(74,122,82,0.55);display:flex;align-items:center;justify-content:center;font-family:var(--hf);font-weight:700;font-size:17px;color:#EAF5EC">Recuperas ~58%</div>
-            <div style="width:42%;background:rgba(193,122,74,0.4);display:flex;align-items:center;justify-content:center;font-family:var(--hf);font-weight:700;font-size:17px;color:var(--cream)">Costo real ~42%</div>
-          </div>
-          <div style="font-size:13px;letter-spacing:0.18em;text-transform:uppercase;color:var(--terra);font-weight:700;margin-bottom:8px">Ejemplo</div>
-          <div style="display:flex;align-items:flex-end;gap:20px;margin-bottom:10px">
-            <div><div style="font-size:14px;color:var(--dim)">Inviertes</div><div style="font-family:var(--hf);font-size:38px;font-weight:700;color:var(--cream);line-height:1">$100M</div></div>
-            <div style="font-size:30px;color:var(--terra);padding-bottom:4px">→</div>
-            <div><div style="font-size:14px;color:var(--green)">Te cuesta realmente</div><div style="font-family:var(--hf);font-size:46px;font-weight:700;color:var(--green);line-height:1">~$42.25M</div></div>
-          </div>
-          <p style="font-size:15.5px;color:var(--dim);line-height:1.45">Restas $165M de tu base gravable; al 35% de renta, eso es un ahorro real de ~$57.75M.</p>
-        </div>
-        <div class="panel" id="detPersona">
-          <h3>Persona Natural</h3>
-          <p style="font-size:15.5px;color:var(--dim);margin:6px 0 10px;line-height:1.4">A mayores ingresos, mayor ahorro. Si inviertes $100M, según tu tarifa marginal:</p>
-          <div style="display:flex;flex-direction:column;gap:7px">
-            <div class="cc-row" style="--p:0"><span class="cc-t">0%</span><span class="cc-bar"><i style="width:0%"></i></span><span class="cc-s" style="color:var(--dim)">$100M</span></div>
-            <div class="cc-row"><span class="cc-t">19%</span><span class="cc-bar"><i style="width:31%"></i></span><span class="cc-s">~$68.7M</span></div>
-            <div class="cc-row"><span class="cc-t">28%</span><span class="cc-bar"><i style="width:46%"></i></span><span class="cc-s">~$53.8M</span></div>
-            <div class="cc-row"><span class="cc-t">33%</span><span class="cc-bar"><i style="width:54%"></i></span><span class="cc-s">~$45.5M</span></div>
-            <div class="cc-row"><span class="cc-t">35%</span><span class="cc-bar"><i style="width:58%"></i></span><span class="cc-s">~$42.25M</span></div>
-            <div class="cc-row"><span class="cc-t">37%</span><span class="cc-bar"><i style="width:61%"></i></span><span class="cc-s">~$39M</span></div>
-            <div class="cc-row"><span class="cc-t">39%</span><span class="cc-bar"><i style="width:64%"></i></span><span class="cc-s">~$35.65M</span></div>
-          </div>
-          <p style="font-size:13.5px;color:var(--dim);font-style:italic;margin-top:8px">Tarifa → ahorras → te cuesta $100M. Cifras aproximadas y máximas.</p>
-        </div>
-      </div>
-      <div data-a style="--i:5; text-align:center">
-        <span style="font-family:var(--hf);font-size:36px;font-weight:700;color:var(--cream)">Ganas <span style="font-style:italic;color:var(--gold)">dos veces</span></span>
-        <div style="font-family:var(--hf);font-size:28px;color:var(--cream);margin-top:4px;line-height:1.2">por el ahorro tributario <b style="color:var(--tl)">hoy</b> · por el potencial de Wa'uro <b style="color:var(--tl)">mañana</b></div>
-      </div>
-      <div class="panel" id="cocreaFooter" data-a style="--i:6; border-color:rgba(193,122,74,0.45); display:flex; align-items:center; gap:22px">
-        <p style="font-size:16px;color:var(--cream);line-height:1.5;flex:1"><b style="color:var(--tl)">Lo clave:</b> tu participación en Wa'uro sigue siendo por el monto que invertiste. Es como comprar tu parte del proyecto con un descuento. Eso reduce tu riesgo de entrada de forma enorme, pues recuperas buena parte de tu inversión incluso antes de que el juego salga al mercado.</p>
-        <div style="flex:1;padding:11px 16px;border-radius:8px;background:rgba(74,122,82,0.16);border:1px solid rgba(74,122,82,0.4)">
-          <div style="font-family:var(--hf);font-size:18px;font-weight:700;color:var(--green);margin-bottom:3px">CID transferible</div>
-          <span style="font-size:15.5px;color:var(--cream);line-height:1.45">El certificado que respalda tu beneficio lo puedes <b>vender o ceder</b> a otra persona o empresa — incluso usar una parte y vender otra.</span>
-        </div>
       </div>
     </div>
   </div>
@@ -1934,6 +1852,7 @@ temáticas latinoamericanas</div></div>
     return 'rgb('+r+','+g+','+b+')';
   }
   function renderGantt(){
+    if(!ganttEl) return;
     var dur=12, leftW=250, colW=116, subH=26, barH=36;
     var milestones=[[3,"Blockout"],[6,"Alpha"],[9,"Beta"],[11,"Demo"]];
     var rows=[], y=0;
