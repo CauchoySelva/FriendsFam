@@ -134,6 +134,13 @@ img{max-width:100%}
 #umbral .con:hover{background:rgba(193,122,74,0.35);box-shadow:0 0 30px rgba(193,122,74,0.3)}
 #umbral .sin{background:transparent;border:1px solid rgba(184,168,144,0.35);color:var(--dim)}
 #umbral .sin:hover{color:var(--cream);border-color:var(--dim)}
+#umbralFs{position:absolute;top:24px;left:24px;z-index:30;display:flex;align-items:center;gap:9px;padding:10px 16px;border-radius:24px;background:rgba(0,0,0,0.55);border:1px solid rgba(184,168,144,0.35);color:var(--cream);font-family:var(--bf);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;cursor:pointer;transition:color 0.3s,border-color 0.3s}
+#umbralFs:hover{color:var(--cream);border-color:var(--terra)}
+#umbralFs svg{flex-shrink:0}
+#umbralSound{position:absolute;top:24px;right:24px;z-index:30;display:flex;align-items:center;gap:9px;padding:10px 16px;border-radius:24px;background:rgba(0,0,0,0.55);border:1px solid rgba(184,168,144,0.35);color:var(--cream);font-family:var(--bf);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;cursor:pointer;transition:color 0.3s,border-color 0.3s}
+#umbralSound:hover{color:var(--cream);border-color:var(--terra)}
+#umbralSound.on{color:var(--gold);border-color:var(--terra)}
+#umbralSound svg{flex-shrink:0}
 #introVid{position:absolute;inset:0;background:#000;z-index:20;pointer-events:none}
 #introVid.live{pointer-events:auto}
 #introVid iframe{position:absolute;top:50%;left:50%;width:100vw;height:56.25vw;min-height:100vh;min-width:177.78vh;transform:translate(-50%,-50%);border:0}
@@ -691,6 +698,8 @@ h1.t.sm{font-size:64px}
 <div id="umbral" data-screen-label="Umbral">
   <div class="paint"></div>
   <div class="paintcursor"></div>
+  <button id="umbralFs" title="Pantalla completa" aria-label="Pantalla completa"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V5a1 1 0 0 1 1-1h4M20 9V5a1 1 0 0 0-1-1h-4M4 15v4a1 1 0 0 0 1 1h4M20 15v4a1 1 0 0 1-1 1h-4"></path></svg><span>Pantalla completa</span></button>
+  <button id="umbralSound" title="Activar sonido" aria-label="Activar sonido"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"></path><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a9 9 0 0 1 0 14"></path></svg><span>Activar sonido</span></button>
   <div class="center" id="umbralCenter">
     <img class="studio-logo" src="https://images.squarespace-cdn.com/content/67a29672e45a656b8be53344/fc77b3e8-2781-4355-8dc1-55d4e40a1df9/LaSelva3.png?content-type=image%2Fpng" alt="La Selva Game Studio">
     <div class="doors">
@@ -1264,7 +1273,7 @@ temáticas latinoamericanas</div></div>
             <div style="font-family:var(--hf);font-size:25px;font-weight:700;color:var(--gold);text-align:right">~$12.000M</div>
           </div>
           <div style="display:grid;grid-template-columns:130px 1fr 95px;align-items:center;gap:16px">
-            <div style="font-family:var(--hf);font-size:21px;font-weight:700">Realista<small style="display:block;font-family:var(--bf);font-size:16px;font-weight:400;color:var(--dim)">300K copias</small></div>
+            <div style="font-family:var(--hf);font-size:21px;font-weight:700">Conservador<small style="display:block;font-family:var(--bf);font-size:16px;font-weight:400;color:var(--dim)">300K copias</small></div>
             <div style="height:21px;background:rgba(74,53,40,0.35);border-radius:11px;overflow:hidden"><div style="height:100%;border-radius:11px;background:linear-gradient(90deg,#8B6914,var(--gold));width:40%"></div></div>
             <div style="font-family:var(--hf);font-size:25px;font-weight:700;color:var(--gold);text-align:right">~$25.000M</div>
           </div>
@@ -1321,27 +1330,27 @@ temáticas latinoamericanas</div></div>
             <div style="display:grid;grid-template-columns:200px 1fr 80px;align-items:center;gap:16px">
               <div style="font-family:var(--hf);font-size:20px;font-weight:700">Equipo<small style="display:block;font-family:var(--bf);font-size:12.5px;font-weight:400;color:var(--dim)">3 fundadores + 7 contratados</small></div>
               <div style="height:21px;background:rgba(74,53,40,0.35);border-radius:11px;overflow:hidden"><div style="height:100%;border-radius:11px;background:linear-gradient(90deg,#8B6914,var(--gold));width:100%"></div></div>
-              <div style="font-family:var(--hf);font-size:22px;font-weight:700;color:var(--gold);text-align:right">$450M</div>
+              <div style="font-family:var(--hf);font-size:22px;font-weight:700;color:var(--gold);text-align:right">$420M</div>
             </div>
             <div style="display:grid;grid-template-columns:200px 1fr 80px;align-items:center;gap:16px">
               <div style="font-family:var(--hf);font-size:20px;font-weight:700">Operativos<small style="display:block;font-family:var(--bf);font-size:12.5px;font-weight:400;color:var(--dim)">Hardware, software, 3 viajes</small></div>
-              <div style="height:21px;background:rgba(74,53,40,0.35);border-radius:11px;overflow:hidden"><div style="height:100%;border-radius:11px;background:linear-gradient(90deg,#8B6914,var(--gold));width:29.1%"></div></div>
+              <div style="height:21px;background:rgba(74,53,40,0.35);border-radius:11px;overflow:hidden"><div style="height:100%;border-radius:11px;background:linear-gradient(90deg,#8B6914,var(--gold));width:31.2%"></div></div>
               <div style="font-family:var(--hf);font-size:22px;font-weight:700;color:var(--gold);text-align:right">$131M</div>
             </div>
             <div style="display:grid;grid-template-columns:200px 1fr 80px;align-items:center;gap:16px">
               <div style="font-family:var(--hf);font-size:20px;font-weight:700">Cultural y VO<small style="display:block;font-family:var(--bf);font-size:12.5px;font-weight:400;color:var(--dim)">Consultor, actores y músicos Tukano</small></div>
-              <div style="height:21px;background:rgba(74,53,40,0.35);border-radius:11px;overflow:hidden"><div style="height:100%;border-radius:11px;background:linear-gradient(90deg,#8B6914,var(--gold));width:20.6%"></div></div>
+              <div style="height:21px;background:rgba(74,53,40,0.35);border-radius:11px;overflow:hidden"><div style="height:100%;border-radius:11px;background:linear-gradient(90deg,#8B6914,var(--gold));width:22%"></div></div>
               <div style="font-family:var(--hf);font-size:22px;font-weight:700;color:var(--gold);text-align:right">$92.5M</div>
             </div>
             <div style="display:grid;grid-template-columns:200px 1fr 80px;align-items:center;gap:16px">
               <div style="font-family:var(--hf);font-size:20px;font-weight:700">Marketing<small style="display:block;font-family:var(--bf);font-size:12.5px;font-weight:400;color:var(--dim)">Community manager, redes, eventos, Steam page, teaser</small></div>
-              <div style="height:21px;background:rgba(74,53,40,0.35);border-radius:11px;overflow:hidden"><div style="height:100%;border-radius:11px;background:linear-gradient(90deg,#8B6914,var(--gold));width:21.9%"></div></div>
+              <div style="height:21px;background:rgba(74,53,40,0.35);border-radius:11px;overflow:hidden"><div style="height:100%;border-radius:11px;background:linear-gradient(90deg,#8B6914,var(--gold));width:23.5%"></div></div>
               <div style="font-family:var(--hf);font-size:22px;font-weight:700;color:var(--gold);text-align:right">$98.5M</div>
             </div>
             <div style="display:grid;grid-template-columns:200px 1fr 80px;align-items:center;gap:16px">
               <div style="font-family:var(--hf);font-size:20px;font-weight:700">Contingencia<small style="display:block;font-family:var(--bf);font-size:12.5px;font-weight:400;color:var(--dim)">Reserva para imprevistos</small></div>
-              <div style="height:21px;background:rgba(74,53,40,0.35);border-radius:11px;overflow:hidden"><div style="height:100%;border-radius:11px;background:linear-gradient(90deg,#8B6914,var(--gold));width:6.2%"></div></div>
-              <div style="font-family:var(--hf);font-size:22px;font-weight:700;color:var(--gold);text-align:right">$28M</div>
+              <div style="height:21px;background:rgba(74,53,40,0.35);border-radius:11px;overflow:hidden"><div style="height:100%;border-radius:11px;background:linear-gradient(90deg,#8B6914,var(--gold));width:13.8%"></div></div>
+              <div style="font-family:var(--hf);font-size:22px;font-weight:700;color:var(--gold);text-align:right">$58M</div>
             </div>
           </div>
         </div>
@@ -1427,6 +1436,11 @@ temáticas latinoamericanas</div></div>
     <div class="shead" style="margin-bottom:14px">
       
       <h1 class="t sm" data-a style="--i:1">El Viaje de tu <em>Inversión</em></h1>
+      <div style="display:flex;align-items:baseline;gap:26px;margin-top:12px;flex-wrap:wrap" data-a style="--i:2">
+        <span style="font-family:var(--hf);font-size:50px;font-weight:700;color:var(--gold);line-height:1">~$800M COP</span>
+        <span style="font-family:var(--hf);font-size:50px;font-weight:700;color:var(--gold);line-height:1">por el 10% de la compañía</span>
+        <span style="font-family:var(--hf);font-size:50px;font-weight:700;color:var(--gold);line-height:1">CAP de US$2.5M</span>
+      </div>
       <p class="lead" data-a style="--i:2; font-size:21px; margin-top:10px">Ejemplo ilustrativo: <b style="color:var(--tl)">$100M COP</b> (≈ US$27.8K) en un SAFE, escenario medio.</p>
     </div>
     <div class="sbody" style="justify-content:center;gap:11px">
@@ -1446,7 +1460,7 @@ temáticas latinoamericanas</div></div>
         <div class="vtable">
           <div class="vth">Escenario</div><div class="vth">Copias</div><div class="vth">Revenue<small>×$21 neto</small></div><div class="vth">Valoración<small>×2</small></div><div class="vth">Tu 0.68% vale</div><div class="vth">En COP</div><div class="vth">Retorno</div>
           <div class="vesc">Pesimista</div><div>150K</div><div>$3.15M USD</div><div>$6.3M</div><div>~$42,800 USD</div><div>~$154M COP</div><div class="vret">1.5×</div>
-          <div class="vesc">Realista</div><div>300K</div><div>$6.3M USD</div><div>$12.6M</div><div>~$85,700 USD</div><div>~$308M COP</div><div class="vret">3.1×</div>
+          <div class="vesc">Conservador</div><div>300K</div><div>$6.3M USD</div><div>$12.6M</div><div>~$85,700 USD</div><div>~$308M COP</div><div class="vret">3.1×</div>
           <div class="vesc hi">Optimista</div><div class="hi">500K + consola</div><div class="hi">$15.75M USD</div><div class="hi">$31.5M</div><div class="hi">~$214,200 USD</div><div class="hi">~$771M COP</div><div class="vret hi">7.7×</div>
         </div>
       </div>
@@ -1553,16 +1567,35 @@ temáticas latinoamericanas</div></div>
     if(!soundPlayers[id] && window.Vimeo){ try{ soundPlayers[id] = new window.Vimeo.Player(ifr); soundPlayers[id].setLoop(true); }catch(e){} }
     return soundPlayers[id];
   }
+  function vimeoPlayer(ifr){
+    if(!ifr.__vp && window.Vimeo){ try{ ifr.__vp = new window.Vimeo.Player(ifr); }catch(e){} }
+    return ifr.__vp;
+  }
   function loadMedia(pg){
     pg.querySelectorAll('[data-lsrc]').forEach(function(el){
       if(!el.getAttribute('src')) el.setAttribute('src', el.getAttribute('data-lsrc'));
     });
-    pg.querySelectorAll('video').forEach(function(v){ v.play && v.play().catch(function(){}); });
-    var sv = pg.querySelector('iframe[data-sound]');
-    if(sv && window.Vimeo){ try{ var p = getPlayer(sv); if(p) p.play().catch(function(){}); }catch(e){} }
+    /* reinicia cada video al principio al llegar (aunque se haya precargado) */
+    pg.querySelectorAll('video').forEach(function(v){ try{ v.currentTime = 0; }catch(e){} v.play && v.play().catch(function(){}); });
+    pg.querySelectorAll('iframe[data-lsrc]').forEach(function(ifr){
+      var isSound = ifr.hasAttribute('data-sound');
+      var p = isSound ? getPlayer(ifr) : vimeoPlayer(ifr);
+      if(!p) return;
+      p.ready().then(function(){
+        try{
+          if(!isSound) p.setMuted(true);
+          p.setCurrentTime(0).catch(function(){});
+          p.play().catch(function(){});
+        }catch(e){}
+      }).catch(function(){ try{ p.play().catch(function(){}); }catch(e){} });
+    });
   }
   function unloadMedia(pg){
     pg.querySelectorAll('video').forEach(function(v){ v.pause && v.pause(); });
+    pg.querySelectorAll('iframe[data-lsrc]').forEach(function(ifr){
+      if(ifr.hasAttribute('data-sound')) return;
+      if(ifr.__vp){ try{ ifr.__vp.pause(); }catch(e){} }
+    });
     var sv = pg.querySelector('iframe[data-sound]');
     if(sv){
       var p = soundPlayers[sv.getAttribute('data-sound')];
@@ -1815,25 +1848,44 @@ temáticas latinoamericanas</div></div>
   buildIntro();
 
   function playIntroVideo(){
-    try{
-      var el = document.documentElement;
-      if(el.requestFullscreen){ el.requestFullscreen().catch(function(){}); }
-    }catch(e){}
-    var center = document.getElementById('umbralCenter');
-    if(center) center.remove();
-    var wrap = document.getElementById('introVid');
-    if(wrap){ wrap.style.opacity = '1'; wrap.classList.add('live'); }
+    /* PRIMERO reproduce/desmutea mientras el botón aún existe (gesto válido) */
     if(introVP){
       try{
-        introVP.setVolume(1); introVP.setMuted(false); introVP.play().catch(function(){});
-        var unmute = function(){ try{ introVP.setVolume(1); introVP.setMuted(false); }catch(e){} };
-        introVP.ready().then(unmute).catch(function(){});
+        introVP.play().catch(function(){});
+        introVP.setMuted(false);
+        introVP.setVolume(1);
+        introVP.setCurrentTime(0).catch(function(){});
+        var unmute = function(){ try{ introVP.setMuted(false); introVP.setVolume(1); introVP.play().catch(function(){}); }catch(e){} };
         document.addEventListener('pointerdown', unmute, {once:true});
         document.addEventListener('keydown', unmute, {once:true});
       }catch(e){}
     }
+    /* DESPUÉS cambia el DOM (quitar el botón rompería el gesto si se hace antes) */
+    var center = document.getElementById('umbralCenter');
+    if(center) center.remove();
+    var wrap = document.getElementById('introVid');
+    if(wrap){ wrap.style.opacity = '1'; wrap.classList.add('live'); }
   }
   document.getElementById('startIntro').addEventListener('click', playIntroVideo);
+  var fsBtn = document.getElementById('umbralFs');
+  if(fsBtn) fsBtn.addEventListener('click', function(){
+    try{
+      var el = document.documentElement;
+      if(document.fullscreenElement){ document.exitFullscreen && document.exitFullscreen(); }
+      else if(el.requestFullscreen){ el.requestFullscreen().catch(function(){}); }
+    }catch(e){}
+  });
+  var sndBtn = document.getElementById('umbralSound');
+  if(sndBtn) sndBtn.addEventListener('click', function(){
+    var on = sndBtn.classList.toggle('on');
+    sndBtn.querySelector('span').textContent = on ? 'Silenciar' : 'Activar sonido';
+    if(introVP){
+      try{
+        introVP.setMuted(!on);
+        if(on){ introVP.setVolume(1); introVP.play().catch(function(){}); }
+      }catch(e){}
+    }
+  });
   var skipBtn = document.getElementById('skipToCover');
   if(skipBtn) skipBtn.addEventListener('click', closeUmbral);
 
