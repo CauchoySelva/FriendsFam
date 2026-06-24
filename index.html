@@ -192,7 +192,7 @@ img{max-width:100%}
   border-left:2px solid rgba(193,122,74,0);padding-left:0;
   transition:max-height 0.85s cubic-bezier(0.5,0,0.2,1) 0.1s, opacity 0.5s ease 0.2s, margin-top 0.6s ease, padding-left 0.6s ease 0.2s, border-color 0.5s ease 0.3s}
 .mercado.ph1 .tssgroup{max-height:760px;opacity:1;margin-top:22px;border-left-color:rgba(193,122,74,0.45);padding-left:26px}
-.mercado .ssublabel{font-family:var(--hf);font-style:italic;font-size:18px;color:var(--gold);margin-bottom:2px}
+.mercado .ssublabel{font-family:var(--hf);font-style:italic;font-size:26px;color:var(--gold);margin-bottom:6px}
 .mercado .tssgroup .tssrow{transform:translateY(-18px);opacity:0;transition:transform 0.6s cubic-bezier(0.22,0.61,0.36,1), opacity 0.6s ease}
 .mercado.ph1 .tssgroup .tssrow{transform:none;opacity:1}
 .mercado.ph1 .tssgroup .tssrow:nth-child(2){transition-delay:0.38s}
@@ -220,15 +220,16 @@ img{max-width:100%}
 /* el grupo TSS pierde la indentación y el rótulo en fase C */
 .mercado.ph2 .tssgroup{max-height:none;opacity:1;margin-top:18px;border-left-color:transparent;padding-left:0;max-width:58%}
 .mercado.ph2 .ssublabel{max-height:0;opacity:0;margin:0;overflow:hidden}
-.mercado .ssublabel{transition:max-height 0.5s ease,opacity 0.4s ease,margin 0.5s ease}
+.mercado .ssublabel{transition:max-height 0.9s ease,opacity 1s ease,margin 0.9s ease}
 /* TAM y SOM colapsan; SAM permanece */
 .mercado.ph2 .row-tam,.mercado.ph2 .row-som{max-height:0;opacity:0;margin:0;padding-top:0;padding-bottom:0;overflow:hidden}
-.mercado .row-tam,.mercado .row-som{max-height:400px;overflow:hidden;transition:max-height 0.6s cubic-bezier(0.5,0,0.2,1),opacity 0.45s ease,padding 0.5s ease,margin 0.5s ease}
+.mercado .row-tam,.mercado .row-som{max-height:400px;overflow:hidden;transition:max-height 1.9s cubic-bezier(0.5,0,0.2,1) 0.2s,opacity 1.7s ease,padding 1.8s ease 0.2s,margin 1.8s ease 0.2s}
 /* SAM se vuelve la barra puente: fila compacta en fase C */
 .mercado.ph2 .row-sam{padding:12px 22px;opacity:1;transform:none}
 .mercado.ph2 .row-sam .tssval{font-size:27px}
-.mercado.ph2 .row-sam .rowdetail{max-height:0;opacity:0;margin:0;overflow:hidden}
-.mercado .row-sam .rowdetail{max-height:300px;overflow:hidden;transition:max-height 0.5s ease,opacity 0.4s ease,margin 0.5s ease}
+.mercado .row-sam .rowdetail,.mercado .row-tam .rowdetail,.mercado .row-som .rowdetail{flex-wrap:nowrap}
+.mercado .rowdetail .minis{flex-wrap:nowrap;flex-shrink:0}
+.mercado .row-sam .rowdetail{max-height:300px;overflow:hidden;display:flex;transition:max-height 0.9s cubic-bezier(0.5,0,0.2,1),opacity 0.3s ease,padding 0.8s ease,margin 0.8s ease}
 .mercado.ph2 .row-sam{border:1px solid rgba(216,154,94,0.55);background:rgba(216,154,94,0.08)}
 /* bloque tendencia: oculto hasta fase C */
 .mercado .tendblock{max-height:0;opacity:0;margin-top:0;overflow:hidden;
@@ -244,13 +245,16 @@ img{max-width:100%}
 .proto3.instant *{transition:none !important;animation:none !important}
 /* títulos / eyebrows / contador por fase */
 .proto3 .title1,.proto3 .eb1{display:none}
-.proto3.ph1 .title0,.proto3.ph2 .title0,.proto3.ph1 .eb0,.proto3.ph2 .eb0{display:none}
-.proto3.ph1 .title1,.proto3.ph2 .title1{display:block}
-.proto3.ph1 .eb1,.proto3.ph2 .eb1{display:block}
-.proto3 .scn1,.proto3 .scn2{display:none}
-.proto3.ph1 .scn0,.proto3.ph2 .scn0{display:none}
+.proto3 .desc0{position:absolute;top:18px;left:600px;right:0;max-width:none;font-size:21px;line-height:1.5;color:var(--dim);text-align:left}
+.proto3.ph1 .desc0,.proto3.ph2 .desc0,.proto3.ph3 .desc0{display:none}
+.proto3.ph1 .title0,.proto3.ph2 .title0,.proto3.ph3 .title0,.proto3.ph1 .eb0,.proto3.ph2 .eb0,.proto3.ph3 .eb0{display:none}
+.proto3.ph1 .title1,.proto3.ph2 .title1,.proto3.ph3 .title1{display:block}
+.proto3.ph1 .eb1,.proto3.ph2 .eb1,.proto3.ph3 .eb1{display:block}
+.proto3 .scn1,.proto3 .scn2,.proto3 .scn3{display:none}
+.proto3.ph1 .scn0,.proto3.ph2 .scn0,.proto3.ph3 .scn0{display:none}
 .proto3.ph1 .scn1{display:inline}
 .proto3.ph2 .scn2{display:inline}
+.proto3.ph3 .scn3{display:inline}
 /* barras del subcapítulo */
 .proto3 .sbars .sb{background:rgba(193,122,74,0.25);transition:background 0.4s ease,box-shadow 0.4s ease}
 .proto3.ph0 .pb1{background:var(--gold);box-shadow:0 0 8px rgba(212,168,67,0.6)}
@@ -258,13 +262,15 @@ img{max-width:100%}
 .proto3.ph1 .pb2{background:var(--gold);box-shadow:0 0 8px rgba(212,168,67,0.6)}
 .proto3.ph2 .pb1,.proto3.ph2 .pb2{background:var(--terra)}
 .proto3.ph2 .pb3{background:var(--gold);box-shadow:0 0 8px rgba(212,168,67,0.6)}
+.proto3.ph3 .pb1,.proto3.ph3 .pb2,.proto3.ph3 .pb3{background:var(--terra)}
+.proto3.ph3 .pb4{background:var(--gold);box-shadow:0 0 8px rgba(212,168,67,0.6)}
 /* labels de línea de tiempo atenuados después de Prototipo */
 .nlabel.faded{opacity:0.4}
 /* ---- FASE 0 · capítulo jugable ---- */
 .proto3 .capphase{position:absolute;inset:0;z-index:2;pointer-events:none}
 .proto3 .cap-info,.proto3 .cap-river{transition:opacity 0.55s ease, transform 0.65s cubic-bezier(0.22,0.61,0.36,1)}
-.proto3.ph1 .cap-info,.proto3.ph2 .cap-info{opacity:0;transform:translateX(70px)}
-.proto3.ph1 .cap-river,.proto3.ph2 .cap-river{opacity:0;transform:translateY(40px)}
+.proto3.ph1 .cap-info,.proto3.ph2 .cap-info,.proto3.ph3 .cap-info{opacity:0;transform:translateX(70px)}
+.proto3.ph1 .cap-river,.proto3.ph2 .cap-river,.proto3.ph3 .cap-river{opacity:0;transform:translateY(40px)}
 
 /* ============ ANIMACIÓN DE SALIDA "EL PROBLEMA" → frase central ============ */
 .problema.instant *{transition:none !important;animation:none !important}
@@ -278,28 +284,39 @@ img{max-width:100%}
 .proto3 .cap-info img{width:100%;height:100%;object-fit:contain;object-position:right bottom;filter:drop-shadow(0 20px 50px rgba(0,0,0,0.55))}
 .proto3 .cap-river{position:absolute;left:430px;top:368px;width:360px;height:560px}
 .proto3 .cap-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.proto3 .cap-lbl{position:absolute;width:400px;text-align:right;transform:translateY(-50%)}
-.proto3 .cap-lbl b{display:block;font-family:var(--hf);font-size:25px;font-weight:700;color:var(--tl);line-height:1.05;text-shadow:0 2px 14px rgba(0,0,0,0.6)}
-.proto3 .cap-lbl small{display:block;margin-top:4px;font-size:18px;color:var(--dim);line-height:1.44}
+.proto3 .cap-lbl{position:absolute;width:480px;text-align:right;transform:translateY(-50%)}
+.proto3 .cap-lbl b{display:block;font-family:var(--hf);font-size:29px;font-weight:700;color:var(--tl);line-height:1.05;text-shadow:0 2px 14px rgba(0,0,0,0.6)}
+.proto3 .cap-lbl small{display:block;margin-top:5px;font-size:22px;color:var(--dim);line-height:1.4}
 /* ---- FASE 1·2 · ruta + break-even ---- */
 .proto3 .protowrap{display:none;flex-direction:column;gap:14px;flex:1;min-height:0;justify-content:center;
   width:100%;margin-left:0;transition:width 0.7s cubic-bezier(0.22,0.61,0.36,1), margin-left 0.7s cubic-bezier(0.22,0.61,0.36,1), margin-top 0.55s cubic-bezier(0.22,0.61,0.36,1) 0.5s}
-.proto3.ph1 .protowrap,.proto3.ph2 .protowrap{display:flex}
-.proto3 .pn1,.proto3 .pn2{max-height:200px;opacity:1;overflow:hidden;
+.proto3.ph1 .protowrap,.proto3.ph2 .protowrap,.proto3.ph3 .protowrap{display:flex}
+.proto3 .pn1,.proto3 .sosten{max-height:200px;opacity:1;overflow:hidden;
   transition:opacity 0.3s ease, max-height 0.5s cubic-bezier(0.5,0,0.2,1), margin 0.5s ease, padding 0.5s ease}
-.proto3.ph2 .pn1,.proto3.ph2 .pn2{max-height:0;opacity:0;margin:0;padding-top:0;padding-bottom:0;border-width:0}
-.proto3 .beblock{max-height:0;opacity:0;overflow:hidden;
+.proto3.ph3 .pn1{max-height:0;opacity:0;margin:0;padding-top:0;padding-bottom:0;border-width:0}
+.proto3.ph2 .sosten{max-height:0;opacity:0;margin:0;padding-top:0;padding-bottom:0;border-width:0}
+.proto3 .idblock,.proto3 .beblock{max-height:0;opacity:0;overflow:hidden;
   transition:max-height 0.6s cubic-bezier(0.5,0,0.2,1) 0.95s, opacity 0.5s ease 1.05s}
-.proto3.ph2 .beblock{max-height:760px;opacity:1}
-.proto3.ph2 .protowrap{width:740px;margin-left:0;margin-right:auto;justify-content:flex-start;margin-top:-30px}
+.proto3.ph2 .idblock{max-height:760px;opacity:1}
+.proto3.ph3 .beblock{max-height:760px;opacity:1}
+.proto3.ph2 .protowrap,.proto3.ph3 .protowrap{width:740px;margin-left:0;margin-right:auto;justify-content:flex-start;margin-top:-30px}
+.proto3.ph3 .protowrap{margin-top:-90px}
+.proto3 .beblock{flex-shrink:0}
 .proto3 .sosten{transition:border-color 0.4s ease,background 0.4s ease}
 /* fase II/VI: numerales comprimidos a la izquierda, imagen a la derecha */
 .proto3.ph1 .protowrap{width:740px;margin-right:auto}
 .proto3 .proto-img{position:absolute;right:0;top:50px;bottom:-60px;width:46%;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.4s ease;z-index:3}
-.proto3.ph1 .proto-img,.proto3.ph2 .proto-img{opacity:1}
+.proto3.ph1 .proto-img,.proto3.ph2 .proto-img,.proto3.ph3 .proto-img{opacity:1}
 .proto3 .proto-img img{max-width:100%;max-height:100%;object-fit:contain;display:block}
 .proto3 .proto-img2{display:none}
-.proto3.ph2 .proto-img2{opacity:1}
+.proto3.ph3 .proto-img2{display:none}
+.proto3 .becases{position:absolute;left:760px;width:330px;right:auto;top:430px;display:none;flex-direction:column;gap:12px;z-index:4}
+.proto3.ph3 .becases{display:flex;animation:up 0.7s ease 0.9s both}
+.proto3 .becases-h{font-size:16px;letter-spacing:0.18em;text-transform:uppercase;color:var(--terra);font-weight:700;margin-bottom:2px}
+.proto3 .becase{padding:14px 22px;border-radius:10px;border:1px solid rgba(193,122,74,0.6);background:rgba(60,34,18,0.85)}
+.proto3 .becase.gold{border-color:rgba(212,168,67,0.65)}
+.proto3 .becase b{display:block;font-family:var(--hf);font-size:26px;font-weight:700;color:var(--cream);line-height:1.1}
+.proto3 .becase span{display:block;font-size:17px;color:var(--cream);opacity:0.8;margin-top:3px}
 .proto3 .proto-img2 img{max-width:100%;max-height:100%;object-fit:contain;display:block}
 .proto3 .proto-img-ph{width:100%;height:100%;border:1px dashed rgba(193,122,74,0.5);border-radius:10px;background:repeating-linear-gradient(45deg, rgba(193,122,74,0.06) 0 12px, transparent 12px 24px);display:flex;align-items:center;justify-content:center}
 .proto3 .proto-img-ph span{font-family:monospace;font-size:14px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(184,168,144,0.7)}
@@ -309,10 +326,13 @@ img{max-width:100%}
 #p-problema .statrow .stat.gold{background:rgba(60,34,18,0.85);border-color:rgba(212,168,67,0.65)}
 #p-problema .statrow .stat.red{background:rgba(52,24,18,0.88);border-color:rgba(160,64,48,0.7)}
 #p-problema .statrow .stat .l{color:var(--cream)}
-.mercado .tend-left{display:flex;flex-direction:column;gap:9px;min-width:0}
-.mercado .tend-intro{font-size:16px;margin-bottom:2px}
+.mercado .tend-left{display:flex;flex-direction:column;gap:6px;min-width:0}
+.mercado .tend-intro{font-size:20px;margin-bottom:2px}
 .mercado .comps-col{display:flex;flex-direction:column;gap:7px}
-.mercado .tend-stats{margin-top:4px}
+.mercado .tend-stats{margin-top:2px}
+.mercado .tend-stats .stat{padding:9px 16px}
+.mercado .tend-stats .stat .v{font-size:42px !important}
+.mercado .tend-stats .stat .l{font-size:20px}
 /* imagen: ocupa todo el lado derecho, sin borde, sin recorte */
 .mercado .tend-img{position:absolute;top:0;right:0;bottom:0;width:40%;opacity:0;pointer-events:none;z-index:1;transition:opacity 0.7s ease 0.35s}
 .mercado.ph2 .tend-img{opacity:1}
@@ -358,7 +378,7 @@ h1.t.sm{font-size:64px}
 .lead{font-size:38px;line-height:1.4;color:var(--cream)}
 .lead b,.lead .hl{color:var(--tl);font-weight:600}
 .dimtext{color:var(--dim)}
-.note{font-size:18.5px;color:var(--dim);font-style:italic}
+.note{font-size:22px;color:var(--dim);font-style:italic}
 
 /* subcapítulos */
 .subcap{display:flex;align-items:center;gap:14px;margin-bottom:18px}
@@ -411,13 +431,13 @@ h1.t.sm{font-size:64px}
 /* TAM/SAM/SOM — formato fila etiqueta + barra + valor (estilo escenarios) */
 .tsshd{display:grid;grid-template-columns:380px 1fr 264px;align-items:center;gap:22px}
 .tsslbl .tag{display:block;font-size:24px;letter-spacing:0.26em;font-weight:700;margin-bottom:5px}
-.tsslbl small{font-size:23px;color:var(--dim);line-height:1.25;display:block}
+.tsslbl small{font-size:23px;color:var(--dim);line-height:1.25;display:block;font-weight:700}
 .tssbar{height:22px;background:rgba(74,53,40,0.35);border-radius:11px;overflow:hidden}
 .tssbar i{display:block;height:100%;border-radius:11px;width:0;transition:width 1.3s cubic-bezier(0.22,0.61,0.36,1);transition-delay:var(--d,0s)}
 .pg.act .tssbar i{width:var(--w)}
 .tssval{font-family:var(--hf);font-size:27px;font-weight:700;text-align:right;white-space:nowrap}
 .tssrow .rowdetail{margin-top:14px}
-.tssrow{border:1px solid var(--pbdr);background:linear-gradient(160deg, rgba(46,29,20,0.7), rgba(28,16,10,0.6));border-radius:10px;padding:16px 30px}
+.tssrow{border:1px solid var(--pbdr);background:linear-gradient(160deg, rgba(46,29,20,0.7), rgba(28,16,10,0.6));border-radius:10px;padding:16px 30px;transition:padding 0.7s ease,background 0.6s ease,border-color 0.6s ease}
 .tssrow .hd{display:flex;align-items:baseline;gap:18px;margin-bottom:10px}
 .tssrow .tag{font-size:17px;letter-spacing:0.3em;font-weight:700}
 .tssrow .val{font-family:var(--hf);font-size:42px;font-weight:700;color:var(--cream);line-height:1}
@@ -425,24 +445,27 @@ h1.t.sm{font-size:64px}
 .tssrow .tbar{height:10px;border-radius:3px;background:rgba(74,53,40,0.4);margin-bottom:12px;overflow:hidden}
 .tssrow .tbar i{display:block;height:100%;width:0;border-radius:3px;transition:width 1.4s cubic-bezier(0.22,0.61,0.36,1);transition-delay:var(--d,0s)}
 .pg.act .tssrow .tbar i{width:100%}
-.tssrow .det{font-size:19px;line-height:1.5;color:var(--dim)}
+.tssrow .det{font-size:24px;line-height:1.5;color:var(--dim)}
 .tssrow .det b{color:var(--cream)}
 .minis{display:flex;gap:40px;flex-wrap:wrap}
 .mini{text-align:center}
 .mini .v{font-family:var(--hf);font-size:30px;font-weight:700;color:var(--terra);line-height:1.05}
-.mini .l{font-size:18px;color:var(--dim);margin-top:3px;white-space:pre-line;line-height:1.35}
+.mini .l{font-size:20px;color:var(--dim);margin-top:3px;white-space:pre-line;line-height:1.35}
 /* viaje — timeline vertical + tabla */
-#p-viaje .vstep{border:1px solid var(--pbdr);background:linear-gradient(160deg, rgba(46,29,20,0.85), rgba(28,16,10,0.8));border-radius:12px;padding:13px 28px}
+#p-viaje .vstep{border:1px solid var(--pbdr);background:linear-gradient(160deg, rgba(46,29,20,0.85), rgba(28,16,10,0.8));border-radius:12px;padding:9px 28px}
 #p-viaje .vstep.green{border-color:rgba(74,122,82,0.5);background:rgba(74,122,82,0.1)}
 #p-viaje .vstage{font-size:18px;letter-spacing:0.16em;text-transform:uppercase;color:var(--terra);font-weight:700;margin-bottom:4px}
 #p-viaje .vrowflex{display:flex;align-items:baseline;gap:22px;flex-wrap:wrap}
-#p-viaje .vbig{font-family:var(--hf);font-size:40px;font-weight:700;color:var(--cream);line-height:1}
+#p-viaje .vbig{font-family:var(--hf);font-size:34px;font-weight:700;color:var(--cream);line-height:1}
 #p-viaje .vsub{font-size:19px;color:var(--dim)}
-#p-viaje .vmult{text-align:center;font-size:24px;color:var(--terra);line-height:0.9}
+#p-viaje .vmoic{margin-left:auto;font-family:var(--hf);font-size:24px;font-weight:700;color:var(--gold);background:rgba(212,168,67,0.14);border:1px solid rgba(212,168,67,0.4);border-radius:8px;padding:4px 16px;white-space:nowrap}
+#p-viaje .vmult{text-align:center;font-size:20px;color:var(--terra);line-height:0.7}
 #p-viaje .vmult b{font-family:var(--hf);color:var(--gold);font-size:24px}
-#p-viaje .vtable{display:grid;grid-template-columns:1fr 1.2fr 1.2fr 0.95fr 1.25fr 1.2fr 0.8fr;border-radius:10px;overflow:hidden;border:1px solid rgba(193,122,74,0.3)}
-#p-viaje .vtable > div{padding:11px 14px;border-bottom:1px solid rgba(193,122,74,0.16);font-size:24px;color:var(--cream);display:flex;align-items:center}
-#p-viaje .vth{font-size:17px;letter-spacing:0.05em;text-transform:uppercase;color:var(--terra);font-weight:700;flex-direction:column;align-items:flex-start;justify-content:center;line-height:1.15;background:rgba(193,122,74,0.16)}
+#p-viaje .vtable{display:grid;grid-template-columns:1fr 1.2fr 1.2fr 0.95fr 1.25fr 1.2fr 0.8fr;border-radius:8px;overflow:hidden;border:1px solid rgba(212,168,67,0.3)}
+#p-viaje .vtable > div{padding:11px 14px;border-top:1px solid rgba(193,122,74,0.18);border-left:1px solid rgba(193,122,74,0.18);font-size:23px;color:var(--cream);display:flex;align-items:center}
+#p-viaje .vtable > div:nth-child(7n+1){border-left:none}
+#p-viaje .vtable > div:nth-child(n+8):nth-child(-n+14){background:rgba(46,29,20,0.5)}
+#p-viaje .vth{font-size:16px;letter-spacing:0.05em;text-transform:uppercase;color:var(--gold);font-weight:700;flex-direction:column;align-items:flex-start;justify-content:center;line-height:1.15;background:rgba(212,168,67,0.14);border-top:none}
 #p-viaje .vth small{display:block;font-weight:400;color:var(--dim);font-size:14px;text-transform:none;letter-spacing:0;margin-top:2px}
 #p-viaje .vesc{font-family:var(--hf);font-weight:700;color:var(--cream);font-size:26px}
 #p-viaje .vret{font-family:var(--hf);font-weight:700;color:var(--gold);font-size:34px}
@@ -467,15 +490,15 @@ h1.t.sm{font-size:64px}
 .stat.green{border-color:rgba(74,122,82,0.4);background:rgba(74,122,82,0.09)}
 .stat .v{font-family:var(--hf);font-size:46px;font-weight:700;color:var(--terra);line-height:1}
 .stat.gold .v{color:var(--gold)}.stat.red .v{color:#C66B52}.stat.green .v{color:var(--green)}
-.stat .l{font-size:15px;color:var(--dim);margin-top:8px;white-space:pre-line;line-height:1.4}
+.stat .l{font-size:19px;color:var(--dim);margin-top:8px;white-space:pre-line;line-height:1.4}
 
 /* comps */
-.comp{display:flex;justify-content:space-between;align-items:center;gap:14px;border:1px solid var(--pbdr);background:linear-gradient(160deg, rgba(46,29,20,0.8), rgba(28,16,10,0.7));border-radius:10px;padding:10px 24px}
-.comp .n{font-family:var(--hf);font-size:21px;font-weight:700;color:var(--cream)}
-.comp .s{font-size:13.5px;color:var(--dim)}
+.comp{display:flex;justify-content:space-between;align-items:center;gap:14px;border:1px solid var(--pbdr);background:linear-gradient(160deg, rgba(46,29,20,0.8), rgba(28,16,10,0.7));border-radius:10px;padding:9px 24px}
+.comp .n{font-family:var(--hf);font-size:27px;font-weight:700;color:var(--cream)}
+.comp .s{font-size:21px;color:var(--dim)}
 .comp .r{text-align:right;flex-shrink:0}
-.comp .r .v{font-family:var(--hf);font-size:23px;font-weight:700;color:var(--gold);line-height:1.05}
-.comp .r .d{font-size:16px;color:var(--dim)}
+.comp .r .v{font-family:var(--hf);font-size:28px;font-weight:700;color:var(--gold);line-height:1.05}
+.comp .r .d{font-size:20px;color:var(--dim)}
 
 /* equipo */
 .team{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
@@ -484,8 +507,8 @@ h1.t.sm{font-size:64px}
 .member .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 12%}
 .member .in{padding:15px 18px}
 .member .nm{font-family:var(--hf);font-size:24px;font-weight:700;color:var(--cream);line-height:1.05}
-.member .rl{font-size:15px;color:var(--terra);letter-spacing:0.07em;font-weight:700;text-transform:uppercase;margin:6px 0 9px;line-height:1.35}
-.member p{font-size:17.5px;color:var(--dim);line-height:1.5}
+.member .rl{font-size:17px;color:var(--terra);letter-spacing:0.07em;font-weight:700;text-transform:uppercase;margin:6px 0 9px;line-height:1.35}
+.member p{font-size:20px;color:var(--dim);line-height:1.5}
 .allies{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
 .ally{display:flex;gap:16px;align-items:center;border:1px solid var(--pbdr);background:linear-gradient(160deg, rgba(46,29,20,0.85), rgba(28,16,10,0.8));border-radius:10px;padding:14px 18px}
 .ally img{width:108px;height:108px;border-radius:10px;object-fit:cover;object-position:50% 18%;flex-shrink:0}
@@ -517,7 +540,7 @@ h1.t.sm{font-size:64px}
 .pillars{display:flex;gap:16px;align-items:stretch;justify-content:center}
 .pillar{flex:0 1 340px;border:1px solid var(--pbdr);background:linear-gradient(160deg, rgba(46,29,20,0.85), rgba(28,16,10,0.8));border-radius:10px;padding:20px 24px;text-align:center}
 .pillar .t{font-family:var(--hf);font-size:24px;font-weight:700;color:var(--cream)}
-.pillar .d{font-size:15px;color:var(--dim);margin-top:4px;line-height:1.4}
+.pillar .d{font-size:19px;color:var(--dim);margin-top:4px;line-height:1.4}
 .plus{font-family:var(--hf);font-size:34px;font-weight:700;color:var(--terra);align-self:center}
 .chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
 .chip{font-size:16px;font-weight:600;color:var(--tl);padding:11px 24px;border-radius:32px;border:1px solid rgba(193,122,74,0.5);background:rgba(193,122,74,0.1)}
@@ -700,6 +723,7 @@ h1.t.sm{font-size:64px}
   <div class="paintcursor"></div>
   <button id="umbralFs" title="Pantalla completa" aria-label="Pantalla completa"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V5a1 1 0 0 1 1-1h4M20 9V5a1 1 0 0 0-1-1h-4M4 15v4a1 1 0 0 0 1 1h4M20 15v4a1 1 0 0 1-1 1h-4"></path></svg><span>Pantalla completa</span></button>
   <button id="umbralSound" title="Activar sonido" aria-label="Activar sonido"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"></path><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a9 9 0 0 1 0 14"></path></svg><span>Activar sonido</span></button>
+
   <div class="center" id="umbralCenter">
     <img class="studio-logo" src="https://images.squarespace-cdn.com/content/67a29672e45a656b8be53344/fc77b3e8-2781-4355-8dc1-55d4e40a1df9/LaSelva3.png?content-type=image%2Fpng" alt="La Selva Game Studio">
     <div class="doors">
@@ -792,38 +816,41 @@ h1.t.sm{font-size:64px}
         <div class="ssublabel">↳ Dentro del mercado de videojuegos:</div>
         <div class="tssrow row-tam">
           <div class="tsshd">
-            <div class="tsslbl"><span class="tag" style="color:var(--terra)">TAM</span><small>PC + Consola · 1.58B jugadores</small></div>
+            <div class="tsslbl"><span class="tag" style="color:var(--terra)">TAM</span><small style="color:var(--terra)">PC + Consola · 1.58B jugadores</small></div>
             <div class="tssbar"><i style="--w:100%;--d:0.5s;background:linear-gradient(90deg,#8B5A2B,var(--terra))"></i></div>
-            <div class="tssval" style="color:var(--terra)">US$88,3 mil M</div>
+            <div class="tssval" style="color:var(--terra);font-size:40px">US$88,3 mil M</div>
           </div>
-          <div class="rowdetail" style="display:flex;justify-content:center">
-            <div class="minis"><div class="mini"><div class="v">US$42,3 mil M</div><div class="l">Single-player premium</div></div><div class="mini"><div class="v">+5%</div><div class="l">Crecimiento anual</div></div></div>
+          <div class="rowdetail" style="display:flex;gap:36px;align-items:center;justify-content:space-between">
+            <p class="det" style="flex:1;min-width:0;text-align:left">En 2025, los juegos de PC y consola combinaron US$88,3 mil M en ingresos, con más de 1.580 M de jugadores.</p>
+            <div class="minis" style="flex-shrink:0"><div class="mini"><div class="v">US$42,3 mil M</div><div class="l">Single-player premium</div></div><div class="mini"><div class="v">+5%</div><div class="l">Crecimiento anual</div></div></div>
           </div>
         </div>
         <div class="tssrow row-sam">
           <div class="tsshd">
-            <div class="tsslbl"><span class="tag" style="color:var(--tl)">SAM</span><small>Acción-Aventura Narrativa Single-Player</small></div>
+            <div class="tsslbl"><span class="tag" style="color:var(--tl)">SAM</span><small style="color:var(--tl)">Acción-Aventura Narrativa</small></div>
             <div class="tssbar"><i style="--w:64%;--d:0.8s;background:linear-gradient(90deg,#9C6A3E,var(--tl))"></i></div>
-            <div class="tssval" style="color:var(--tl)">~US$5 mil M</div>
+            <div class="tssval" style="color:var(--tl);font-size:40px">~US$5 mil M</div>
           </div>
-          <div class="rowdetail" style="display:flex;justify-content:center">
-            <div class="minis"><div class="mini"><div class="v">5M+</div><div class="l">Expedition 33</div></div><div class="mini"><div class="v">4M+</div><div class="l">Sifu · 3 semanas</div></div><div class="mini"><div class="v">4M+</div><div class="l">Stray en Steam</div></div></div>
+          <div class="rowdetail samdetail" style="display:flex;gap:36px;align-items:center;justify-content:space-between">
+            <p class="det" style="flex:1;min-width:0;text-align:left">El género de Wa'uro es: acción-aventura narrativa single-player — el segmento que más crece en Steam, donde los indies compiten de tú a tú con los grandes.</p>
+            <div class="minis" style="flex-shrink:0"><div class="mini"><div class="v">5M+</div><div class="l">Expedition 33</div></div><div class="mini"><div class="v">4M+</div><div class="l">Sifu · 3 semanas</div></div><div class="mini"><div class="v">4M+</div><div class="l">Stray en Steam</div></div></div>
           </div>
         </div>
         <div class="tssrow row-som">
           <div class="tsshd">
-            <div class="tsslbl"><span class="tag" style="color:var(--gold)">SOM</span><small>Captura Esperada Año 1</small></div>
+            <div class="tsslbl"><span class="tag" style="color:var(--gold)">SOM</span><small style="color:var(--gold)">Captura Esperada Año 1</small></div>
             <div class="tssbar"><i style="--w:38%;--d:1.1s;background:linear-gradient(90deg,#8B6914,var(--gold))"></i></div>
-            <div class="tssval" style="color:var(--gold)">$12.000–60.000M COP</div>
+            <div class="tssval" style="color:var(--gold);font-size:40px">~$36.000M COP</div>
           </div>
-          <div class="rowdetail" style="display:flex;justify-content:center">
-            <div class="minis"><div class="mini"><div class="v">US$29.99</div><div class="l">Precio base</div></div><div class="mini"><div class="v">164K</div><div class="l">Break-even</div></div><div class="mini"><div class="v">70%</div><div class="l">Retención self-pub</div></div></div>
+          <div class="rowdetail" style="display:flex;gap:36px;align-items:center;justify-content:space-between">
+            <p class="det" style="flex:1;min-width:0;text-align:left">Captura esperada en el año 1, basada en debuts premium comparables. Break-even del juego completo: ~164K copias a US$29.99.</p>
+            <div class="minis" style="flex-shrink:0"><div class="mini"><div class="v">US$29.99</div><div class="l">Precio base</div></div><div class="mini"><div class="v">164K</div><div class="l">Break-even</div></div><div class="mini"><div class="v">70%</div><div class="l">Retención self-pub</div></div></div>
           </div>
         </div>
       </div>
       <div class="tendblock">
         <div class="tend-left">
-          <p class="lead tend-intro" style="font-size:19px">Los juegos narrativos con enfoque cultural atraviesan un auge nunca antes visto, incluso desde estudios independientes:</p>
+          <p class="lead tend-intro" style="font-size:23px">Los juegos narrativos con enfoque cultural atraviesan un auge nunca antes visto, incluso desde estudios independientes:</p>
           <div class="comps-col">
             <div class="comp"><div><div class="n">Black Myth: Wukong</div><div class="s">Mitología china · Game Science</div></div><div class="r"><div class="v">25M copias</div><div class="d">~US$1.600 M</div></div></div>
             <div class="comp"><div><div class="n">Clair Obscur: Expedition 33</div><div class="s">Folclor francés · Sandfall Interactive</div></div><div class="r"><div class="v">8M copias</div><div class="d">&lt;US$10M · 9 premios TGA</div></div></div>
@@ -897,7 +924,7 @@ temáticas latinoamericanas</div></div>
         <div class="member">
           <div class="ph"><img src="https://images.squarespace-cdn.com/content/67a29672e45a656b8be53344/3f1cc742-f6e5-46f0-a8df-9f9bd6a1a10a/Santiago.png?content-type=image%2Fpng" alt="Santiago Angulo"></div>
           <div class="in"><div class="nm">Santiago Angulo</div><div class="rl">Dir. Creativo y Técnico</div>
-          <p>10+ años creando videojuegos, XR y narrativas digitales. 2 empresas de entretenimiento internacionales fundadas y exitosamente vendidas.</p></div>
+          <p>10+ años creando videojuegos, XR y narrativas digitales. Ha trabajado con marcas como Disney, Manchester City y Diplo, y cofundó dos empresas de entretenimiento internacional, una de ellas vendida exitosamente.</p></div>
         </div>
         <div class="member">
           <div class="ph"><img src="https://images.squarespace-cdn.com/content/67a29672e45a656b8be53344/8e3053be-7952-49e2-a64d-7fc13cb24d2b/Daniel.png?content-type=image%2Fpng" alt="Daniel Kraus"></div>
@@ -907,7 +934,7 @@ temáticas latinoamericanas</div></div>
         <div class="member">
           <div class="ph"><img src="https://images.squarespace-cdn.com/content/67a29672e45a656b8be53344/a0b25169-37b4-4e2b-b8aa-10f1b5456194/Edward.png?content-type=image%2Fpng" alt="Edward Leal"></div>
           <div class="in"><div class="nm">Edward Leal</div><div class="rl">Director de Arte</div>
-          <p>6+ años haciendo arte 3D especializado en assets fotorrealistas. Ganador y finalista en varias competencias internacionales de arte digital.</p></div>
+          <p>6+ años haciendo arte 3D especializado en assets fotorrealistas. Dirigió proyectos artísticos subastados en Sotheby's y Christie's por valores multimillonarios, junto a artistas como José Delbo y Trevor Jones.</p></div>
         </div>
         <div class="member">
           <div class="ph"><img src="https://images.squarespace-cdn.com/content/67a29672e45a656b8be53344/04cb159d-8013-4ebb-9e8f-cdb96eb823b3/DSC_3457.jpg?content-type=image%2Fjpeg" alt="Familia Guerrero"></div>
@@ -928,8 +955,8 @@ temáticas latinoamericanas</div></div>
     
     <h1 class="t" style="font-size:72px">Wa'uro: Historia, Mito<br>y <em>Resistencia</em></h1>
   </div>
-  <div class="low panel" data-a style="--i:1; max-width:1100px">
-    <p style="font-family:var(--hf);font-size:46px;font-weight:600;color:var(--cream);line-height:1.15;text-wrap:balance">Wa'uro, el líder que <em style="font-style:italic;color:var(--tl)">cambió el Vaupés para siempre</em>.</p>
+  <div class="low panel" data-a style="--i: 1; max-width: 1640px; height: 158px; background-position: center center; border-width: 1px">
+    <p style="font-size: 24px; color: var(--cream); line-height: 1.45">Wa'uro cuenta la historia de un líder indígena Tukano que lucha por proteger a su pueblo durante la transformación de la Amazonía en la era del caucho. Mientras comerciantes, misioneros y fuerzas coloniales alteran el mundo que conoce, Wa'uro debe enfrentar conflictos, tomar decisiones difíciles y navegar una realidad donde la historia, los espíritus y los seres de la mitología amazónica se entrelazan — <b style="color:var(--tl)">transformando la tradición oral en una experiencia de realismo mágico</b>.</p>
   </div>
 </section>
 
@@ -941,8 +968,8 @@ temáticas latinoamericanas</div></div>
     
     <h1 class="t" style="font-size:72px">Creando Junto<br>a los <em>Tukano</em></h1>
   </div>
-  <div class="low panel" data-a style="--i:1; max-width:900px">
-    <p style="font-size:25px;color:var(--cream);line-height:1.45"><b style="color:var(--tl)">Nuestro proceso:</b> 7 años de trabajo colaborativo, hoy un proyecto de innovación cultural compartido.</p>
+  <div class="low panel" data-a style="--i:1; max-width:1080px">
+    <p style="font-size:24px;color:var(--cream);line-height:1.5"><b style="color:var(--tl)">Coautoría, no extracción.</b> Tras 7 años junto a los Tukano del Vaupés, Wa'uro se desarrolla con consulta previa, acuerdos formales y la guía de la familia Guerrero, custodios de la historia. La comunidad participa en la creación, revisión y aprobación de cada decisión, y actúa y graba en territorio.</p>
   </div>
 </section>
 
@@ -989,7 +1016,7 @@ temáticas latinoamericanas</div></div>
           
           <h1 class="t sm" data-a style="--i:1">Creación de <em>Personajes</em></h1>
         </div>
-        <p class="lead" data-a style="--i:2; font-size:21px; margin-bottom:22px">Un proceso iterativo de investigación, diseño y validación <b>con la comunidad</b> para crear personajes que <b style="color:var(--tl)">nunca han tenido representación visual</b>.</p>
+        <p class="lead" data-a style="--i:2; font-size:24px; margin-bottom:22px">Un proceso iterativo de investigación, diseño y validación <b>con la comunidad</b> para crear personajes que <b style="color:var(--tl)">nunca han tenido representación visual</b> — desde seres mitológicos como Tucú hasta figuras históricas de la fiebre del caucho. Un acervo que sirve al juego, a producciones audiovisuales y a una enciclopedia digital de personajes amazónicos.</p>
         <div data-a style="--i:3">
           <img src="https://images.squarespace-cdn.com/content/67a29672e45a656b8be53344/ad78b0c0-8b54-40f1-81ee-f344809c8eaa/Characters.png?content-type=image%2Fpng" alt="Personajes de Wa'uro" style="width:100%;border-radius:10px;border:1px solid var(--pbdr)">
         </div>
@@ -1009,11 +1036,8 @@ temáticas latinoamericanas</div></div>
     
     <h1 class="t" style="font-size:72px">Mecánicas de <em>Juego</em></h1>
   </div>
-  <div class="low panel" data-a style="--i:1; max-width:820px">
-    <p style="font-size:20px;color:var(--cream);line-height:1.5">Traducimos la cosmovisión Tukano en sistemas de juego: <b style="color:var(--tl)">la cultura no es un decorado, es la base de la experiencia jugable.</b></p>
-  </div>
-  <div class="lowr" data-a style="--i:2">
-    <img class="thumb" style="width:760px;border:none;border-radius:0" src="https://images.squarespace-cdn.com/content/67a29672e45a656b8be53344/f13b8bb2-aa38-4276-b3fa-f668ef655fef/skilltree2.png?content-type=image%2Fpng" alt="Árbol de habilidades">
+  <div class="low panel" data-a style="--i:1; max-width:900px">
+    <p style="font-size:23px;color:var(--cream);line-height:1.5">Traducimos la cosmovisión Tukano en sistemas de juego — el carayurú, la medicina tradicional, los viajes de yagé y las tensiones de la evangelización se vuelven mecánicas y decisiones. <b style="color:var(--tl)">La cultura no es un decorado: es la base de la experiencia jugable.</b></p>
   </div>
 </section>
 
@@ -1026,7 +1050,7 @@ temáticas latinoamericanas</div></div>
           
           <h1 class="t sm" data-a style="--i:1"><em>Mocap</em></h1>
         </div>
-        <p class="lead" data-a style="--i:2; font-size:21px; margin-bottom:22px"><b style="color:var(--tl)">IA + video simple</b> garantizan que las comunidades sean los actores de su propia historia y que sus expresiones culturales se preserven con fidelidad.</p>
+        <p class="lead" data-a style="--i:2; font-size:24px; margin-bottom:22px">Captura de movimiento basada en <b style="color:var(--tl)">video simple e IA</b>: las comunidades son los actores de su propia historia. Documentamos danzas, ceremonias y expresiones en lengua Tukano, construyendo una biblioteca digital que sirve al desarrollo del juego y a la <b>conservación cultural</b>.</p>
         <div data-a style="--i:3">
           <img src="https://images.squarespace-cdn.com/content/67a29672e45a656b8be53344/5e978a14-8dae-4c42-9546-68da12a8807c/MocapPipeline.png?content-type=image%2Fpng" alt="Pipeline de mocap" style="width:100%;border-radius:10px;border:1px solid var(--pbdr)">
         </div>
@@ -1058,7 +1082,7 @@ temáticas latinoamericanas</div></div>
           
           <h1 class="t sm" data-a style="--i:1">Fotogrametría y<br><em>Reconstrucción</em></h1>
         </div>
-        <p class="lead" data-a style="--i:2; font-size:21px; margin-bottom:22px">Combinamos fotogrametría, escaneo 3D y modelado digital para crear una <b style="color:var(--tl)">biblioteca de alta fidelidad del patrimonio material del Vaupés</b>.</p>
+        <p class="lead" data-a style="--i:2; font-size:24px; margin-bottom:22px">Fotogrametría, escaneo 3D y modelado digital para una <b style="color:var(--tl)">biblioteca de alta fidelidad del patrimonio material del Vaupés</b>. Documentamos lo que existe y reconstruimos junto a la comunidad lo que ha desaparecido o se ha transformado, preservándolo para futuras generaciones.</p>
         <div class="media" data-a style="--i:3; aspect-ratio:16/9">
           <video data-lsrc="https://static1.squarespace.com/static/67a29672e45a656b8be53344/t/69deddcdcb4a191c9c1e448e/1776213487690/Crown.mp4" muted loop playsinline></video>
         </div>
@@ -1092,8 +1116,8 @@ temáticas latinoamericanas</div></div>
     
     <h1 class="t" style="font-size:72px"><em>Música</em></h1>
   </div>
-  <div class="low panel" data-a style="--i:1; max-width:820px">
-    <p style="font-size:20px;color:var(--cream);line-height:1.5">Construir una <b style="color:var(--tl)">banda sonora original</b> basada 100% en el paisaje sonoro del Vaupés.</p>
+  <div class="low panel" data-a style="--i:1; max-width:900px">
+    <p style="font-size:23px;color:var(--cream);line-height:1.5">Cantos, instrumentos y prácticas musicales grabados junto a músicos Tukano para una <b style="color:var(--tl)">banda sonora original</b> basada en el paisaje sonoro del Vaupés — insumo creativo y, a la vez, conservación de expresiones en riesgo de desaparición.</p>
   </div>
 </section>
 
@@ -1110,7 +1134,6 @@ temáticas latinoamericanas</div></div>
       <div class="checks">
         <div class="check" data-a style="--i:2"><div class="ic">✓</div><div><div class="t">Becas — Trinity College + King's e-Lab (Cambridge) + MinCulturas</div><div class="i">Validación académica internacional y nacional</div></div></div>
         <div class="check" data-a style="--i:3"><div class="ic">✓</div><div><div class="t">+20.000 followers en redes</div><div class="i">Audiencia temprana y validación de mercado</div></div></div>
-        <div class="check" data-a style="--i:4"><div class="ic">✓</div><div><div class="t">Mentores: Kevin Lin (Twitch) + Dr. Simran Chana (Cambridge)</div><div class="i">Credibilidad y acceso a redes globales</div></div></div>
         <div class="check" data-a style="--i:5"><div class="ic">✓</div><div><div class="t">Prensa — cobertura editorial sin pauta</div><div class="i">Cambio Colombia (feb 2026), Revista Diners (sep 2025, entrevista a los 3 fundadores), Frecuencia Gamer, Tachalo Podcast, Coja Oficio y Liderarse Podcast — ganada orgánicamente por la fuerza de la propuesta cultural</div></div></div>
       </div>
       <div style="display:flex;align-items:center;gap:14px;margin-top:22px" data-a style="--i:6">
@@ -1141,14 +1164,15 @@ temáticas latinoamericanas</div></div>
 </section>
 
 <!-- ============ 18·19·20 EL PROTOTIPO (3 fases · timeline continua) ============ -->
-<section class="pg proto3" id="p-ruta" data-phases="3" data-screen-label="El Prototipo" data-label-0="El Prototipo — Capítulo Jugable" data-label-1="El Prototipo — La Ruta" data-label-2="El Prototipo — Break-even">
+<section class="pg proto3" id="p-ruta" data-phases="4" data-screen-label="El Prototipo" data-label-0="El Prototipo — Capítulo Jugable" data-label-1="El Prototipo — La Ruta" data-label-2="El Prototipo — Identidad" data-label-3="El Prototipo — Break-even">
   <div class="lay">
     <div class="shead" style="margin-bottom:10px;position:relative;z-index:6">
-      <div class="subcap" data-a style="--i:0"><span class="scn scn0"></span><span class="scn scn1"></span><span class="scn scn2"></span></div>
+      <div class="subcap" data-a style="--i:0"><span class="scn scn0"></span><span class="scn scn1"></span><span class="scn scn2"></span><span class="scn scn3"></span></div>
       <div class="eyebrow eb0" data-a style="--i:0">Qué estamos construyendo</div>
       <div class="eyebrow eb1" data-a style="--i:0">¿Por qué lo construimos?</div>
       <h1 class="t sm title0" data-a style="--i:1">Un Capítulo <em>Jugable</em></h1>
       <h1 class="t sm title1" data-a style="--i:1">Demostrando el <em>Mercado</em></h1>
+      <p class="desc0" data-a style="--i: 2; width: 639px; height: 154px; line-height: 1.35">El prototipo es una experiencia jugable del primer capítulo de nuestra historia que demuestra las capacidades <b style="color:var(--tl)">técnicas, culturales y narrativas</b> del juego. Muestra las reglas de juego y le da al jugador una idea clara de qué se trata Wa'uro.</p>
     </div>
     <div class="routewrap" data-a style="--i:2;position:relative;z-index:4">
       <svg viewBox="0 0 1330 200" fill="none">
@@ -1192,38 +1216,49 @@ temáticas latinoamericanas</div></div>
     <!-- FASE 1·2 · Ruta + Break-even -->
     <div class="protowrap">
       <div class="num3 pn1" data-a style="--i:3"><div class="n">01</div><div><div class="t">Identidad artística y técnica</div></div></div>
-      <div class="num3 pn2" data-a style="--i:4"><div class="n">02</div><div><div class="t">Vehículo de marketing</div></div></div>
-      <div class="num3 accent pn3 sosten" data-a style="--i:5"><div class="n">03</div><div><div class="t">Sostenibilidad financiera</div></div></div>
+      <div class="panel idblock">
+        <h3 style="font-size:28px">Por qué importa el prototipo</h3>
+        <div style="margin-top:14px;display:flex;flex-direction:column;gap:15px">
+          <div>
+            <div style="font-size:16px;letter-spacing:0.16em;text-transform:uppercase;color:var(--terra);font-weight:700">Hacia afuera · inversionista y publisher</div>
+            <p style="font-size:21px;color:var(--dim);line-height:1.45;margin-top:5px">Un prototipo jugable demuestra capacidad <b style="color:var(--cream)">técnica y artística</b> real: convierte la promesa en evidencia, reduce el riesgo percibido y nos posiciona para la siguiente ronda y acuerdos con publishers.</p>
+          </div>
+          <div>
+            <div style="font-size:16px;letter-spacing:0.16em;text-transform:uppercase;color:var(--terra);font-weight:700">Hacia adentro · el equipo</div>
+            <p style="font-size:21px;color:var(--dim);line-height:1.45;margin-top:5px">Fija las <b style="color:var(--cream)">reglas de juego</b> y la dirección visual — cómo se ve, se siente y se mueve Wa'uro — y alinea al equipo alrededor de una sola visión.</p>
+          </div>
+        </div>
+      </div>
+      <div class="num3 accent pn3 sosten" data-a style="--i:5"><div class="n">02</div><div><div class="t">Sostenibilidad financiera</div></div></div>
       <div class="panel gold beblock">
-        <h3 style="font-size:30px">La ruta al break-even</h3>
-        <div style="display:flex;gap:40px;margin:14px 0 4px">
-          <div><div style="font-family:var(--hf);font-size:40px;font-weight:700;color:var(--green);line-height:1">$13.800M COP</div><div style="font-size:17px;color:var(--dim);margin-top:2px">Costo desarrollo</div></div>
-          <div><div style="font-family:var(--hf);font-size:40px;font-weight:700;color:var(--green);line-height:1">US$29.99</div><div style="font-size:17px;color:var(--dim);margin-top:2px">Precio base</div></div>
+        <h3 style="font-size:28px">La ruta al break-even</h3>
+        <p style="font-size:19px;color:var(--dim);line-height:1.4;margin-top:7px">Un <b style="color:var(--cream)">wishlist</b> es cuando un jugador marca el juego en Steam para que le avisen al salir — una señal pública de intención de compra. Importa porque mide la demanda <b style="color:var(--cream)">antes de lanzar</b> y porque ~50% de los wishlisters terminan comprando en el primer año: con un costo de $13.800M COP y un precio de US$29.99, basta con la mitad de nuestra meta para recuperar la inversión.</p>
+        <div style="display:flex;gap:40px;margin:12px 0 2px">
+          <div><div style="font-family:var(--hf);font-size:32px;font-weight:700;color:var(--green);line-height:1">$13.800M COP</div><div style="font-size:16px;color:var(--dim);margin-top:2px">Costo desarrollo</div></div>
+          <div><div style="font-family:var(--hf);font-size:32px;font-weight:700;color:var(--green);line-height:1">US$29.99</div><div style="font-size:16px;color:var(--dim);margin-top:2px">Precio base</div></div>
         </div>
-        <p class="note" style="margin-top:10px">~50% de los wishlisters compran durante el primer año.</p>
-        <div style="margin-top:18px;display:flex;flex-direction:column;gap:16px">
+        <div style="margin-top:14px;display:flex;flex-direction:column;gap:11px">
           <div style="display:grid;grid-template-columns:280px 1fr 120px;align-items:center;gap:16px">
-            <div style="font-family:var(--hf);font-size:24px;font-weight:700">Wishlists objetivo<small style="display:block;font-family:var(--bf);font-size:15.5px;font-weight:400;color:var(--dim)">antes del lanzamiento</small></div>
-            <div style="height:24px;background:rgba(74,53,40,0.35);border-radius:12px;overflow:hidden"><div style="height:100%;border-radius:12px;background:linear-gradient(90deg,#8B5A2B,var(--terra));width:100%"></div></div>
-            <div style="font-family:var(--hf);font-size:29px;font-weight:700;color:var(--terra);text-align:right">328K</div>
+            <div style="font-family:var(--hf);font-size:22px;font-weight:700">Wishlists objetivo<small style="display:block;font-family:var(--bf);font-size:15px;font-weight:400;color:var(--dim)">antes del lanzamiento</small></div>
+            <div style="height:20px;background:rgba(74,53,40,0.35);border-radius:12px;overflow:hidden"><div style="height:100%;border-radius:12px;background:linear-gradient(90deg,#8B5A2B,var(--terra));width:100%"></div></div>
+            <div style="font-family:var(--hf);font-size:27px;font-weight:700;color:var(--terra);text-align:right">328K</div>
           </div>
           <div style="display:grid;grid-template-columns:280px 1fr 120px;align-items:center;gap:16px">
-            <div style="font-family:var(--hf);font-size:24px;font-weight:700">Copias para break-even<small style="display:block;font-family:var(--bf);font-size:15.5px;font-weight:400;color:var(--dim)">a US$29.99 cada una</small></div>
-            <div style="height:24px;background:rgba(74,53,40,0.35);border-radius:12px;overflow:hidden"><div style="height:100%;border-radius:12px;background:linear-gradient(90deg,#8B6914,var(--gold));width:50%"></div></div>
-            <div style="font-family:var(--hf);font-size:29px;font-weight:700;color:var(--gold);text-align:right">164K</div>
-          </div>
-        </div>
-        <div style="margin-top:16px;padding-top:14px;border-top:1px solid rgba(212,168,67,0.22)">
-          <div style="font-size:15px;letter-spacing:0.18em;text-transform:uppercase;color:var(--terra);font-weight:700;margin-bottom:10px">Casos de éxito · wishlists</div>
-          <div style="display:flex;gap:30px;flex-wrap:wrap">
-            <div><b style="font-family:var(--hf);font-size:23px;color:var(--cream)">Manor Lords</b><span style="display:block;font-size:15.5px;color:var(--dim)">~3M wishlists · un solo desarrollador</span></div>
-            <div><b style="font-family:var(--hf);font-size:23px;color:var(--cream)">Expedition 33</b><span style="display:block;font-size:15.5px;color:var(--dim)">1M+ wishlists · estudio desconocido</span></div>
+            <div style="font-family:var(--hf);font-size:22px;font-weight:700">Copias para break-even<small style="display:block;font-family:var(--bf);font-size:15px;font-weight:400;color:var(--dim)">a US$29.99 cada una</small></div>
+            <div style="height:20px;background:rgba(74,53,40,0.35);border-radius:12px;overflow:hidden"><div style="height:100%;border-radius:12px;background:linear-gradient(90deg,#8B6914,var(--gold));width:50%"></div></div>
+            <div style="font-family:var(--hf);font-size:27px;font-weight:700;color:var(--gold);text-align:right">164K</div>
           </div>
         </div>
       </div>
     </div>
     <div class="proto-img"><img src="https://images.squarespace-cdn.com/content/67a29672e45a656b8be53344/854561f9-214c-42f0-a668-c6993ae0d4a3/Three.png?content-type=image%2Fpng" alt="Concept art del prototipo"></div>
     <div class="proto-img2"><img src="https://images.squarespace-cdn.com/content/67a29672e45a656b8be53344/854561f9-214c-42f0-a668-c6993ae0d4a3/Three.png?content-type=image%2Fpng" alt="Concept art del prototipo"></div>
+    <div class="becases" style="height: 455px; padding: 24px 0px 0px">
+      <div class="becases-h">Casos de éxito</div>
+      <div class="becase"><b>Manor Lords</b><span>~3M wishlists · un solo desarrollador</span></div>
+      <div class="becase gold"><b>Expedition 33</b><span>1M+ wishlists · estudio desconocido</span></div>
+      <p style="font-size: 20px; color: var(--dim); line-height: 1.4; margin-top: 4px; margin: 0px">Llegar a 328K wishlists es modesto frente a otros títulos de estudios pequeños o desconocidos que superaron el millón en una etapa trempana. Con una propuesta cultural única y sin competencia regional, es una meta alcanzable.</p>
+    </div>
   </div>
 </section>
 
@@ -1234,7 +1269,7 @@ temáticas latinoamericanas</div></div>
   <div class="lay">
     <div class="shead" style="margin-bottom:8px">
       
-      <h1 class="t sm" data-a style="--i:1">Del Prototipo al <em>Lanzamiento</em></h1>
+      <h1 class="t sm" data-a style="--i:1">Del Prototipo al <em>Videojuego</em></h1>
       <div style="display:flex;align-items:baseline;gap:18px;margin-top:12px" data-a style="--i:2">
         <span style="font-size:21px;letter-spacing:0.3em;color:var(--gold);font-weight:700">SEED</span>
         <span style="font-family:var(--hf);font-size:44px;font-weight:700;color:var(--gold);line-height:1">$14.000M COP</span>
@@ -1252,43 +1287,17 @@ temáticas latinoamericanas</div></div>
       <div class="node" style="left:60%;top:78px"><div class="ndot hollow"></div><div class="nlabel seedlbl"><b>Seed Round / Publisher</b><span>14–16 meses</span><small>$14.000M COP producción completa</small></div></div>
       <div class="node" style="left:97%;top:112px"><div class="ndot hollow gold"></div><div class="nlabel goldc"><b>Lanzamiento</b><span>36–42 meses</span><small>Steam, Epic, consolas</small></div></div>
     </div>
-    <div style="display:flex;gap:26px;align-items:stretch;margin-top:48px">
-      <div class="panel" data-a style="--i:3; width:650px; flex-shrink:0">
-        <h3>Seed Round / Publisher</h3>
-        <p style="font-size:19px;line-height:1.5;color:var(--cream);margin-top:12px">Al completar el prototipo, levantamos una ronda seed o cerramos una alianza con un publisher — lo que más convenga — para financiar el juego completo.</p>
-        <div class="bullets" style="margin-top:14px">
-          <div class="b-row"><div class="b-dot"></div><div><b>Objetivo</b><p>Escalar el prototipo a una experiencia de 4–5 horas, con una estrategia sólida de lanzamiento.</p></div></div>
-          <div class="b-row"><div class="b-dot"></div><div><b>Lanzamiento</b><p>Primero PC; luego consolas, según el éxito de la ronda.</p></div></div>
-          <div class="b-row"><div class="b-dot"></div><div><b>Para inversionistas F&amp;F</b><p>Hito de valorización · posible liquidez anticipada vía publisher o nuevos inversionistas.</p></div></div>
-        </div>
+    <div style="margin-top:24px;max-width:1080px" data-a style="--i:3">
+      <p style="font-size: 24px; line-height: 1.5; color: var(--cream); font-weight: 600">Necesitamos aproximadamente <b style="color:var(--tl)">US$3.5M</b> para el desarrollo del producto final. Una vez el prototipo evidencie nuestras <b style="color:var(--tl)">capacidades técnicas</b> y la existencia de un <b style="color:var(--tl)">mercado real</b>, levantaremos una ronda seed o una alianza con un publisher que nos permita escalar el demo a un videojuego completo, listo para ser lanzado al mercado.</p>
+      <div style="display:flex;align-items:baseline;gap:16px;margin:18px 0 12px"><div style="width:30px;height:2px;background:var(--terra)"></div><h3 style="font-size:22px;margin:0">En qué se invierte el seed</h3></div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="panel" style="padding:15px 24px;display:flex;gap:18px;align-items:baseline"><div style="font-family:var(--hf);font-size:26px;font-weight:700;color:var(--gold);flex-shrink:0">01</div><div><h3 style="font-size: 25px; margin: 0 0 2px; display: inline">5–6 capítulos — </h3><span style="font-size: 22px; color: var(--dim); line-height: 1.4">escalamos el vertical slice a la campaña completa de 4–5 horas.</span></div></div>
+        <div class="panel" style="padding:15px 24px;display:flex;gap:18px;align-items:baseline"><div style="font-family:var(--hf);font-size:26px;font-weight:700;color:var(--gold);flex-shrink:0">02</div><div><h3 style="font-size: 25px; margin: 0 0 2px; display: inline">Más mundo y producción  </h3><span style="font-size: 22px; color: var(--dim); line-height: 1.4">nuevos ambientes, personajes, animación, cinemáticas, música y doblajes.</span></div></div>
+        <div class="panel" style="padding:15px 24px;display:flex;gap:18px;align-items:baseline"><div style="font-family:var(--hf);font-size:26px;font-weight:700;color:var(--gold);flex-shrink:0">03</div><div><h3 style="font-size: 25px; margin: 0 0 2px; display: inline">Pulido y lanzamiento — </h3><span style="font-size: 22px; color: var(--dim); line-height: 1.4">QA, optimización, port a consolas y campaña de marketing.</span></div></div>
       </div>
-      <div class="panel gold" data-a style="--i:4; width:720px; flex-shrink:0">
-        <h3>Lanzamiento · escenarios año 1</h3>
-        <div style="display:flex;align-items:baseline;gap:14px;margin-top:8px"><span style="font-family:var(--hf);font-size:50px;font-weight:700;color:var(--gold);line-height:1">US$21</span><span style="font-size:25px;color:var(--cream)">netos por copia</span></div>
-        <p class="note" style="margin-top:4px">US$29.99 bruto − 30% comisión Steam. Ingresos en COP (TC ~4.000).</p>
-        <div style="margin-top:18px;display:flex;flex-direction:column;gap:14px">
-          <div style="display:grid;grid-template-columns:130px 1fr 95px;align-items:center;gap:16px">
-            <div style="font-family:var(--hf);font-size:21px;font-weight:700">Pesimista<small style="display:block;font-family:var(--bf);font-size:16px;font-weight:400;color:var(--dim)">150K copias</small></div>
-            <div style="height:21px;background:rgba(74,53,40,0.35);border-radius:11px;overflow:hidden"><div style="height:100%;border-radius:11px;background:linear-gradient(90deg,#8B6914,var(--gold));width:20%"></div></div>
-            <div style="font-family:var(--hf);font-size:25px;font-weight:700;color:var(--gold);text-align:right">~$12.000M</div>
-          </div>
-          <div style="display:grid;grid-template-columns:130px 1fr 95px;align-items:center;gap:16px">
-            <div style="font-family:var(--hf);font-size:21px;font-weight:700">Conservador<small style="display:block;font-family:var(--bf);font-size:16px;font-weight:400;color:var(--dim)">300K copias</small></div>
-            <div style="height:21px;background:rgba(74,53,40,0.35);border-radius:11px;overflow:hidden"><div style="height:100%;border-radius:11px;background:linear-gradient(90deg,#8B6914,var(--gold));width:40%"></div></div>
-            <div style="font-family:var(--hf);font-size:25px;font-weight:700;color:var(--gold);text-align:right">~$25.000M</div>
-          </div>
-          <div style="display:grid;grid-template-columns:130px 1fr 95px;align-items:center;gap:16px">
-            <div style="font-family:var(--hf);font-size:21px;font-weight:700">Optimista<small style="display:block;font-family:var(--bf);font-size:16px;font-weight:400;color:var(--dim)">500K + consola</small></div>
-            <div style="height:21px;background:rgba(74,53,40,0.35);border-radius:11px;overflow:hidden"><div style="height:100%;border-radius:11px;background:linear-gradient(90deg,#8B6914,var(--gold));width:100%"></div></div>
-            <div style="font-family:var(--hf);font-size:25px;font-weight:700;color:var(--gold);text-align:right">~$60.000M</div>
-          </div>
-        </div>
-        <div style="margin-top:18px;padding-top:14px;border-top:1px solid rgba(212,168,67,0.22);display:flex;gap:26px;flex-wrap:wrap">
-          <div><b style="font-family:var(--hf);font-size:21px;color:var(--cream)">Sifu</b><span style="display:block;font-size:16px;color:var(--dim)">1M en 3 semanas</span></div>
-          <div><b style="font-family:var(--hf);font-size:21px;color:var(--cream)">Kena</b><span style="display:block;font-size:16px;color:var(--dim)">rentable mes 1</span></div>
-          <div><b style="font-family:var(--hf);font-size:21px;color:var(--cream)">Stray</b><span style="display:block;font-size:16px;color:var(--dim)">4M+ en Steam</span></div>
-          <div><b style="font-family:var(--hf);font-size:21px;color:var(--cream)">A Plague Tale</b><span style="display:block;font-size:16px;color:var(--dim)">~1M año 1 · 5×</span></div>
-        </div>
+      <div class="panel gold" style="margin-top:18px;padding:18px 26px;display:flex;align-items:center;gap:26px">
+        <div style="flex-shrink:0"><div style="font-family:var(--hf);font-size:46px;font-weight:700;color:var(--gold);line-height:1">36–42meses</div><div style="font-size: 20px; color: var(--cream); margin-top: 2px">de producción total</div></div>
+        <p style="font-size: 22px; color: var(--dim); line-height: 1.4; border-left: 1px solid rgba(212,168,67,0.3); padding-left: 26px">Un plazo normal para un indie premium: <b style="color:var(--cream)">Stray</b> ~7 años · <b style="color:var(--cream)">Sifu</b> ~3 · <b style="color:var(--cream)">Kena</b> ~4 · <b style="color:var(--cream)">Expedition 33</b> ~4. Nuestra metodología y el prototipo previo nos permiten acortarlo.</p>
       </div>
     </div>
   </div>
@@ -1314,12 +1323,13 @@ temáticas latinoamericanas</div></div>
   <div class="lay">
     <div class="shead" style="margin-bottom:14px">
       
-      <h1 class="t sm" data-a style="--i:1">Presupuesto</h1>
-      <div style="display:flex;align-items:baseline;gap:26px;margin-top:30px" data-a style="--i:2">
+      <h1 class="t sm" data-a style="--i:1">Lo que <em>Necesitamos</em></h1>
+      <div style="display:flex;align-items:baseline;gap:26px;margin-top:24px" data-a style="--i:2">
         <span style="font-size:25px;letter-spacing:0.3em;color:var(--gold);font-weight:700">TOTAL</span>
-        <span style="font-family:var(--hf);font-size:66px;font-weight:700;color:var(--gold);line-height:1">~$800M COP</span>
+        <span style="font-family:var(--hf);font-size:66px;font-weight:700;color:var(--gold);line-height:1">~$870M COP</span>
         <span style="font-size:27px;color:var(--dim)">11 personas pico · 12 meses</span>
       </div>
+      <p style="font-size:22px;line-height:1.5;color:var(--cream);margin-top:16px;max-width:1180px" data-a style="--i:2">Este capital financia el <b style="color:var(--tl)">prototipo jugable</b>, cuya función es demostrar nuestras capacidades técnicas y artísticas y comprobar que existe mercado para Wa'uro. Lo distribuimos así:</p>
     </div>
     <div class="sbody" style="justify-content:center">
       <div style="display:flex;gap:24px;align-items:stretch;max-width:1200px">
@@ -1330,26 +1340,26 @@ temáticas latinoamericanas</div></div>
             <div style="display:grid;grid-template-columns:200px 1fr 80px;align-items:center;gap:16px">
               <div style="font-family:var(--hf);font-size:20px;font-weight:700">Equipo<small style="display:block;font-family:var(--bf);font-size:12.5px;font-weight:400;color:var(--dim)">3 fundadores + 7 contratados</small></div>
               <div style="height:21px;background:rgba(74,53,40,0.35);border-radius:11px;overflow:hidden"><div style="height:100%;border-radius:11px;background:linear-gradient(90deg,#8B6914,var(--gold));width:100%"></div></div>
-              <div style="font-family:var(--hf);font-size:22px;font-weight:700;color:var(--gold);text-align:right">$420M</div>
+              <div style="font-family:var(--hf);font-size:22px;font-weight:700;color:var(--gold);text-align:right">$470M</div>
             </div>
             <div style="display:grid;grid-template-columns:200px 1fr 80px;align-items:center;gap:16px">
               <div style="font-family:var(--hf);font-size:20px;font-weight:700">Operativos<small style="display:block;font-family:var(--bf);font-size:12.5px;font-weight:400;color:var(--dim)">Hardware, software, 3 viajes</small></div>
-              <div style="height:21px;background:rgba(74,53,40,0.35);border-radius:11px;overflow:hidden"><div style="height:100%;border-radius:11px;background:linear-gradient(90deg,#8B6914,var(--gold));width:31.2%"></div></div>
+              <div style="height:21px;background:rgba(74,53,40,0.35);border-radius:11px;overflow:hidden"><div style="height:100%;border-radius:11px;background:linear-gradient(90deg,#8B6914,var(--gold));width:27.9%"></div></div>
               <div style="font-family:var(--hf);font-size:22px;font-weight:700;color:var(--gold);text-align:right">$131M</div>
             </div>
             <div style="display:grid;grid-template-columns:200px 1fr 80px;align-items:center;gap:16px">
               <div style="font-family:var(--hf);font-size:20px;font-weight:700">Cultural y VO<small style="display:block;font-family:var(--bf);font-size:12.5px;font-weight:400;color:var(--dim)">Consultor, actores y músicos Tukano</small></div>
-              <div style="height:21px;background:rgba(74,53,40,0.35);border-radius:11px;overflow:hidden"><div style="height:100%;border-radius:11px;background:linear-gradient(90deg,#8B6914,var(--gold));width:22%"></div></div>
+              <div style="height:21px;background:rgba(74,53,40,0.35);border-radius:11px;overflow:hidden"><div style="height:100%;border-radius:11px;background:linear-gradient(90deg,#8B6914,var(--gold));width:19.7%"></div></div>
               <div style="font-family:var(--hf);font-size:22px;font-weight:700;color:var(--gold);text-align:right">$92.5M</div>
             </div>
             <div style="display:grid;grid-template-columns:200px 1fr 80px;align-items:center;gap:16px">
               <div style="font-family:var(--hf);font-size:20px;font-weight:700">Marketing<small style="display:block;font-family:var(--bf);font-size:12.5px;font-weight:400;color:var(--dim)">Community manager, redes, eventos, Steam page, teaser</small></div>
-              <div style="height:21px;background:rgba(74,53,40,0.35);border-radius:11px;overflow:hidden"><div style="height:100%;border-radius:11px;background:linear-gradient(90deg,#8B6914,var(--gold));width:23.5%"></div></div>
-              <div style="font-family:var(--hf);font-size:22px;font-weight:700;color:var(--gold);text-align:right">$98.5M</div>
+              <div style="height:21px;background:rgba(74,53,40,0.35);border-radius:11px;overflow:hidden"><div style="height:100%;border-radius:11px;background:linear-gradient(90deg,#8B6914,var(--gold));width:25.2%"></div></div>
+              <div style="font-family:var(--hf);font-size:22px;font-weight:700;color:var(--gold);text-align:right">$118.5M</div>
             </div>
             <div style="display:grid;grid-template-columns:200px 1fr 80px;align-items:center;gap:16px">
               <div style="font-family:var(--hf);font-size:20px;font-weight:700">Contingencia<small style="display:block;font-family:var(--bf);font-size:12.5px;font-weight:400;color:var(--dim)">Reserva para imprevistos</small></div>
-              <div style="height:21px;background:rgba(74,53,40,0.35);border-radius:11px;overflow:hidden"><div style="height:100%;border-radius:11px;background:linear-gradient(90deg,#8B6914,var(--gold));width:13.8%"></div></div>
+              <div style="height:21px;background:rgba(74,53,40,0.35);border-radius:11px;overflow:hidden"><div style="height:100%;border-radius:11px;background:linear-gradient(90deg,#8B6914,var(--gold));width:12.3%"></div></div>
               <div style="font-family:var(--hf);font-size:22px;font-weight:700;color:var(--gold);text-align:right">$58M</div>
             </div>
           </div>
@@ -1387,7 +1397,7 @@ temáticas latinoamericanas</div></div>
     <div class="shead" style="margin-bottom:10px">
       
       <h1 class="t sm" data-a style="--i:1">El <em>SAFE</em></h1>
-      <div style="display:flex;align-items:baseline;gap:26px;margin-top:30px"><span style="font-size:25px;letter-spacing:0.3em;color:var(--gold);font-weight:700">TOTAL</span><span style="font-family:var(--hf);font-size:66px;font-weight:700;color:var(--gold);line-height:1">~$800M COP</span><span style="font-size:27px;color:var(--dim)">~10% de la compañía</span></div>
+      <div style="display:flex;align-items:baseline;gap:26px;margin-top:30px"><span style="font-size:25px;letter-spacing:0.3em;color:var(--gold);font-weight:700">TOTAL</span><span style="font-family:var(--hf);font-size:66px;font-weight:700;color:var(--gold);line-height:1">~$870M COP</span><span style="font-size:27px;color:var(--dim)">~10% de la compañía</span></div>
       <p class="lead" data-a style="--i:2; font-size:22px; max-width:1500px; margin-top:14px">Hoy cualquier valoración sería especulativa — Wa'uro es pionero y no hay referentes en la región. Por eso usamos un <b>SAFE</b>, el instrumento de Y&nbsp;Combinator que financió a miles de startups (incluida OpenAI): <b style="color:var(--tl)">inviertes ahora y conviertes en acciones después</b>, cuando ya haya información para valorar la empresa.</p>
     </div>
     <div class="sbody" style="justify-content:center;gap:11px">
@@ -1435,34 +1445,45 @@ temáticas latinoamericanas</div></div>
   <div class="lay">
     <div class="shead" style="margin-bottom:14px">
       
-      <h1 class="t sm" data-a style="--i:1">El Viaje de tu <em>Inversión</em></h1>
+      <h1 class="t sm" data-a style="--i:1">El Viaje de la <em>Inversión</em></h1>
       <div style="display:flex;align-items:baseline;gap:26px;margin-top:12px;flex-wrap:wrap" data-a style="--i:2">
-        <span style="font-family:var(--hf);font-size:50px;font-weight:700;color:var(--gold);line-height:1">~$800M COP</span>
+        <span style="font-family:var(--hf);font-size:50px;font-weight:700;color:var(--gold);line-height:1">~$870M COP</span>
         <span style="font-family:var(--hf);font-size:50px;font-weight:700;color:var(--gold);line-height:1">por el 10% de la compañía</span>
         <span style="font-family:var(--hf);font-size:50px;font-weight:700;color:var(--gold);line-height:1">CAP de US$2.5M</span>
       </div>
-      <p class="lead" data-a style="--i:2; font-size:21px; margin-top:10px">Ejemplo ilustrativo: <b style="color:var(--tl)">$100M COP</b> (≈ US$27.8K) en un SAFE, escenario medio.</p>
+      <p class="lead" data-a style="--i:2; font-size:21px; margin-top:10px">Qué pasa, paso a paso, con el capital de esta ronda.</p>
     </div>
-    <div class="sbody" style="justify-content:center;gap:11px">
+    <div class="sbody" style="justify-content:center;gap:8px">
       <!-- PASO 1 -->
       <div class="vstep" data-a style="--i:3">
-        <div class="vrowflex"><span class="vstage" style="margin:0">Hoy · Ronda F&amp;F</span><span class="vbig">$100M COP</span><span class="vsub">Inviertes · ≈ US$27.8K · vía SAFE</span></div>
+        <div class="vrowflex"><span class="vstage" style="margin:0">Hoy · Ronda F&amp;F</span><span class="vbig">~$870M COP</span><span class="vsub">Levantamos el capital · vía SAFE, cap US$2.5M, 20% de descuento</span><span class="vmoic">MOIC 1.0×</span></div>
       </div>
-      <div class="vmult" data-a style="--i:3">↓ &nbsp;<b>2.8×</b></div>
+      <div class="vmult" data-a style="--i:3">↓</div>
       <!-- PASO 2 -->
       <div class="vstep" data-a style="--i:4">
-        <div class="vrowflex"><span class="vstage" style="margin:0;color:var(--gold)">Mes 14–16 · Seed</span><span class="vbig" style="color:var(--gold)">~$280M COP</span><span class="vsub">Tu participación · el seed valora US$7M pre-money</span></div>
+        <div class="vrowflex"><span class="vstage" style="margin:0">Meses 0–12 · Producción</span><span class="vbig">Prototipo jugable</span><span class="vsub">Construimos el primer capítulo y generamos wishlists — demostramos el mercado</span></div>
       </div>
-      <div class="vmult" data-a style="--i:4">↓ &nbsp;<b>hasta 7.7×</b></div>
+      <div class="vmult" data-a style="--i:4">↓</div>
       <!-- PASO 3 -->
-      <div class="vstep green" data-a style="--i:5">
-        <div class="vstage" style="color:var(--green);margin-bottom:8px">Mes 36–42 · Lanzamiento</div>
+      <div class="vstep" data-a style="--i:4">
+        <div class="vrowflex"><span class="vstage" style="margin:0;color:var(--gold)">Mes 14–16 · Seed / Publisher</span><span class="vbig" style="color:var(--gold)">~US$7M pre-money</span><span class="vsub">Con tracción comprobada levantamos a ~3× del cap F&amp;F · el SAFE convierte en acciones</span><span class="vmoic">MOIC 2.8×</span></div>
+      </div>
+      <div class="vmult" data-a style="--i:5">↓</div>
+      <!-- PASO 4 -->
+      <div class="vstep" data-a style="--i:5">
+        <div class="vrowflex"><span class="vstage" style="margin:0">Meses 16–36 · Producción total</span><span class="vbig">Juego completo</span><span class="vsub">El seed financia el desarrollo de los demás capítulos hasta el lanzamiento</span></div>
+      </div>
+      <div class="vmult" data-a style="--i:5">↓</div>
+      <!-- PASO 5 -->
+      <div class="vstep green" data-a style="--i: 5; background-color: rgba(11, 29, 14, 0.85)">
+        <div class="vstage" style="color:var(--green);margin-bottom:6px">MES 36–42 · LANZAMIENTO (VENTAS AÑO 1)</div>
         <div class="vtable">
-          <div class="vth">Escenario</div><div class="vth">Copias</div><div class="vth">Revenue<small>×$21 neto</small></div><div class="vth">Valoración<small>×2</small></div><div class="vth">Tu 0.68% vale</div><div class="vth">En COP</div><div class="vth">Retorno</div>
-          <div class="vesc">Pesimista</div><div>150K</div><div>$3.15M USD</div><div>$6.3M</div><div>~$42,800 USD</div><div>~$154M COP</div><div class="vret">1.5×</div>
-          <div class="vesc">Conservador</div><div>300K</div><div>$6.3M USD</div><div>$12.6M</div><div>~$85,700 USD</div><div>~$308M COP</div><div class="vret">3.1×</div>
-          <div class="vesc hi">Optimista</div><div class="hi">500K + consola</div><div class="hi">$15.75M USD</div><div class="hi">$31.5M</div><div class="hi">~$214,200 USD</div><div class="hi">~$771M COP</div><div class="vret hi">7.7×</div>
+          <div class="vth">Escenario</div><div class="vth">Copias</div><div class="vth">Revenue<small>×$21 neto</small></div><div class="vth">Valoración<small>×2</small></div><div class="vth">El 10% F&amp;F vale</div><div class="vth">En COP</div><div class="vth">MOIC</div>
+          <div class="vesc">Pesimista</div><div>150K</div><div>$3.15M USD</div><div>$6.3M</div><div>~$630K USD</div><div>~$2.270M COP</div><div class="vret">2.6×</div>
+          <div class="vesc">Conservador</div><div>300K</div><div>$6.3M USD</div><div>$12.6M</div><div>~$1.26M USD</div><div>~$4.540M COP</div><div class="vret">5.2×</div>
+          <div class="vesc hi">Optimista</div><div class="hi">500K + consola</div><div class="hi">$15.75M USD</div><div class="hi">$31.5M</div><div class="hi">~$3.15M USD</div><div class="hi">~$11.340M COP</div><div class="vret hi">13×</div>
         </div>
+        <p style="font-size:22px;color:var(--cream);line-height:1.5;margin-top:14px">Este es solo el <b style="color:var(--tl)">primer año de ventas</b> — el juego sigue generando ingresos después. Y estas cifras no son descabelladas para un indie premium con identidad propia: <b style="color:var(--cream)">Stray</b> superó 4M de copias, <b style="color:var(--cream)">Expedition 33</b> +3.3M en un mes, <b style="color:var(--cream)">Sifu</b> +1M en 3 semanas y <b style="color:var(--cream)">Kena</b> fue rentable el primer mes.</p>
       </div>
     </div>
   </div>
@@ -1475,8 +1496,8 @@ temáticas latinoamericanas</div></div>
       
       <h1 class="t sm" data-a style="--i:1">Ronda <em>Friends &amp; Family</em></h1>
       <div style="display:flex;align-items:baseline;gap:22px;margin-top:14px" data-a style="--i:2">
-        <span style="font-family:var(--hf);font-size:58px;font-weight:700;color:var(--gold);line-height:1">Hasta $800M COP</span>
-        <span style="font-size:24px;color:var(--dim)">≈ US$222K · prototipo jugable en 12 meses</span>
+        <span style="font-family:var(--hf);font-size:58px;font-weight:700;color:var(--gold);line-height:1">Hasta $870M COP</span>
+        <span style="font-size:24px;color:var(--dim)">≈ US$250K · prototipo jugable en 12 meses</span>
       </div>
     </div>
     <div class="sbody" style="justify-content:center;gap:13px">
@@ -1512,9 +1533,6 @@ temáticas latinoamericanas</div></div>
           <div style="margin-top:auto;padding-top:12px"><div style="padding:12px 16px;border-radius:8px;background:rgba(212,168,67,0.12);border:1px solid rgba(212,168,67,0.4);text-align:center"><span style="font-size:22px;color:var(--cream)">Los fondos del seed quieren <b style="color:var(--gold)">pocos nombres</b> → proceso más rápido y atractivo.</span></div></div>
         </div>
       </div>
-      <div class="panel" data-a style="--i:5; border-color:rgba(212,168,67,0.4); display:flex; align-items:center; gap:18px; padding:13px 22px">
-        <span style="font-family:var(--hf);font-size:20px;font-weight:700;color:var(--gold);white-space:nowrap">La ronda ya está en marcha</span>
-        <p style="font-size:17px;color:var(--cream);line-height:1.4;border-left:1px solid var(--pbdr);padding-left:18px">No todo se espera levantar en F&amp;F: ya tenemos agendadas reuniones con <b style="color:var(--tl)">empresas, universidades y entidades culturales</b> para continuar la ronda.</p>
       </div>
     </div>
   </div>
@@ -1644,6 +1662,18 @@ temáticas latinoamericanas</div></div>
     if(!pg.hasAttribute('data-phases')) return;
     pg.classList.remove('ph0','ph1','ph2','ph3');
     pg.classList.add('ph'+ph);
+    /* SAM permanece como barra puente en la fase tendencia: colapsa su detalle vía inline */
+    var samrd = pg.querySelector('.row-sam .rowdetail');
+    if(samrd){
+      if(ph === 2){
+        samrd.style.opacity = '0';
+        setTimeout(function(){ if(pg.classList.contains('ph2')) samrd.style.display = 'none'; }, 320);
+      } else {
+        samrd.style.display = 'flex';
+        samrd.style.opacity = '0';
+        requestAnimationFrame(function(){ samrd.style.opacity = '1'; });
+      }
+    }
   }
 
   function go(si){
@@ -1848,23 +1878,25 @@ temáticas latinoamericanas</div></div>
   buildIntro();
 
   function playIntroVideo(){
-    /* PRIMERO reproduce/desmutea mientras el botón aún existe (gesto válido) */
+    /* PRIMERO hace visible el video (un video oculto no arranca bien) */
+    var wrap = document.getElementById('introVid');
+    if(wrap){ wrap.style.opacity = '1'; wrap.classList.add('live'); }
+    var center = document.getElementById('umbralCenter');
+    if(center) center.style.display = 'none';
+    /* LUEGO reproduce y desmutea dentro del mismo gesto del clic */
     if(introVP){
       try{
-        introVP.play().catch(function(){});
-        introVP.setMuted(false);
-        introVP.setVolume(1);
         introVP.setCurrentTime(0).catch(function(){});
+        introVP.setVolume(1);
+        introVP.setMuted(false);
+        introVP.play().catch(function(){
+          try{ introVP.setMuted(false); introVP.setVolume(1); introVP.play().catch(function(){}); }catch(e){}
+        });
         var unmute = function(){ try{ introVP.setMuted(false); introVP.setVolume(1); introVP.play().catch(function(){}); }catch(e){} };
         document.addEventListener('pointerdown', unmute, {once:true});
         document.addEventListener('keydown', unmute, {once:true});
       }catch(e){}
     }
-    /* DESPUÉS cambia el DOM (quitar el botón rompería el gesto si se hace antes) */
-    var center = document.getElementById('umbralCenter');
-    if(center) center.remove();
-    var wrap = document.getElementById('introVid');
-    if(wrap){ wrap.style.opacity = '1'; wrap.classList.add('live'); }
   }
   document.getElementById('startIntro').addEventListener('click', playIntroVideo);
   var fsBtn = document.getElementById('umbralFs');
