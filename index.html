@@ -700,6 +700,27 @@ h1.t.sm{font-size:64px}
   background:linear-gradient(168deg,#F2E8D0 30%,#D4945E 78%,#B5713C 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 #p-gracias p{color:var(--dim);font-size:21px;line-height:1.7;max-width:680px}
 #p-gracias .web{font-size:17px;color:var(--terra);margin-top:30px;letter-spacing:0.05em}
+.contact-btn{align-self:center;font-family:var(--hf);font-size:28px;font-weight:600;letter-spacing:0.02em;color:var(--cream);background:var(--terra);border:1px solid var(--terra);border-radius:4px;padding:16px 52px;cursor:pointer;transition:background 0.3s,transform 0.3s}
+.contact-btn:hover{background:transparent;color:var(--terra);transform:translateY(-2px)}
+.cmodal{position:fixed;inset:0;z-index:200;display:none}
+.cmodal.open{display:block}
+.cmodal-backdrop{position:absolute;inset:0;background:rgba(12,8,5,0.78);backdrop-filter:blur(4px)}
+.cmodal-card{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:680px;max-width:92%;background:linear-gradient(165deg,#241710,#180f09);border:1px solid var(--pbdr);border-radius:14px;padding:48px 56px;box-shadow:0 30px 80px rgba(0,0,0,0.6)}
+.cmodal-x{position:absolute;top:18px;right:22px;background:none;border:none;color:var(--dim);font-size:38px;line-height:1;cursor:pointer;transition:color 0.2s}
+.cmodal-x:hover{color:var(--cream)}
+.cmodal h2{font-family:var(--hf);font-size:46px;font-weight:700;color:var(--cream);margin:6px 0 8px}
+.cmodal-sub{font-size:20px;color:var(--dim);line-height:1.5;margin-bottom:26px}
+.cmodal form{display:flex;flex-direction:column;gap:16px}
+.cmodal label{display:flex;flex-direction:column;gap:7px;font-family:var(--hf);font-size:18px;color:var(--cream);letter-spacing:0.04em}
+.cmodal .opt{color:var(--dim);font-size:15px}
+.cmodal input{font-family:var(--bf);font-size:19px;color:var(--cream);background:rgba(60,34,18,0.5);border:1px solid var(--pbdr);border-radius:7px;padding:13px 16px;outline:none;transition:border-color 0.25s}
+.cmodal input:focus{border-color:var(--terra)}
+#contactSubmit{margin-top:10px;font-family:var(--hf);font-size:24px;font-weight:600;color:var(--cream);background:var(--terra);border:1px solid var(--terra);border-radius:6px;padding:15px;cursor:pointer;transition:background 0.3s,opacity 0.3s}
+#contactSubmit:hover{background:#a8480f}
+#contactSubmit:disabled{opacity:0.5;cursor:default}
+.cmodal-msg{font-size:18px;line-height:1.5;text-align:center;min-height:4px}
+.cmodal-msg.ok{color:var(--green)}
+.cmodal-msg.err{color:#d98a6a}
 
 @media (prefers-reduced-motion:reduce){
   .fogv{animation:none}
@@ -1510,9 +1531,31 @@ temáticas latinoamericanas</div></div>
   <div class="lay">
     <img class="icon" data-a style="--i:0; align-self:center" src="https://images.squarespace-cdn.com/content/67a29672e45a656b8be53344/e752eb5c-38f0-486d-b74b-7c8f05d643c3/Icon.png?content-type=image%2Fpng" alt="La Selva Game Studio">
     <h1 class="t" data-a style="--i:2; text-align:center; font-size:64px; max-width:1180px; margin:18px auto 0; text-wrap:balance">Construyamos el primer videojuego <em>premium</em> de América Latina</h1>
-    <div class="web" data-a style="--i:4; margin-top:26px">estudiolaselva.com</div>
+    <button id="contactBtn" class="contact-btn" data-a style="--i:4; margin-top:34px">Contáctanos</button>
+    <div class="web" data-a style="--i:5; margin-top:18px">estudiolaselva.com</div>
   </div>
 </section>
+
+<!-- ============ MODAL CONTACTO ============ -->
+<div id="contactModal" class="cmodal" aria-hidden="true">
+  <div class="cmodal-backdrop"></div>
+  <div class="cmodal-card" role="dialog" aria-modal="true" aria-labelledby="cmodal-title">
+    <button id="contactClose" class="cmodal-x" aria-label="Cerrar">×</button>
+    <div class="cmodal-body">
+      <div class="eyebrow" style="color:var(--terra)">Hablemos</div>
+      <h2 id="cmodal-title">Déjanos tus datos</h2>
+      <p class="cmodal-sub">Te contactamos para continuar la conversación sobre Wa'uro.</p>
+      <form id="contactForm" novalidate>
+        <label>Nombre completo<input type="text" name="nombre" required autocomplete="name"></label>
+        <label>Correo electrónico<input type="email" name="correo" required autocomplete="email"></label>
+        <label>Teléfono <span class="opt">(opcional)</span><input type="tel" name="telefono" autocomplete="tel"></label>
+        <label>¿Cuándo te contactamos? <span class="opt">(opcional)</span><input type="text" name="horario" placeholder="Ej: entre semana, en la tarde"></label>
+        <button type="submit" id="contactSubmit">Enviar</button>
+        <div id="contactMsg" class="cmodal-msg" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+</div>
 
 <div class="vig"></div>
 </div>
@@ -2115,6 +2158,62 @@ temáticas latinoamericanas</div></div>
   if(!isNaN(h) && h>=1 && h<=totalSteps) startAt = h-1;
   go(startAt);
   if(startAt > 0){ closeUmbral(); }
+
+  /* ---------- CONTACTO ---------- */
+  var CONTACT_ENDPOINT = 'PEGA_AQUI_LA_URL_EXEC';
+  (function(){
+    var modal = document.getElementById('contactModal');
+    var openBtn = document.getElementById('contactBtn');
+    var closeBtn = document.getElementById('contactClose');
+    var form = document.getElementById('contactForm');
+    var msg = document.getElementById('contactMsg');
+    var submit = document.getElementById('contactSubmit');
+    if(!modal || !openBtn || !form) return;
+    function open(){ modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); setTimeout(function(){ var f=form.querySelector('input'); if(f) f.focus(); },80); }
+    function close(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); }
+    openBtn.addEventListener('click', open);
+    closeBtn.addEventListener('click', close);
+    modal.querySelector('.cmodal-backdrop').addEventListener('click', close);
+    modal.querySelector('.cmodal-card').addEventListener('click', function(e){ e.stopPropagation(); });
+    modal.querySelector('.cmodal-card').addEventListener('pointerdown', function(e){ e.stopPropagation(); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape' && modal.classList.contains('open')) close(); });
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var nombre = form.nombre.value.trim();
+      var correo = form.correo.value.trim();
+      if(!nombre || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)){
+        msg.className = 'cmodal-msg err'; msg.textContent = 'Escribe tu nombre y un correo válido.'; return;
+      }
+      var payload = {
+        tipo: 'hablar',
+        nombre_1: nombre,
+        correo_1: correo,
+        telefono_1: form.telefono.value.trim(),
+        mejor_horario: form.horario.value.trim(),
+        modalidad: '',
+        num_asistentes: 1,
+        timestamp_local: new Date().toISOString()
+      };
+      submit.disabled = true; submit.textContent = 'Enviando…';
+      msg.className = 'cmodal-msg'; msg.textContent = '';
+      fetch(CONTACT_ENDPOINT, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload)
+      }).then(function(){
+        msg.className = 'cmodal-msg ok';
+        msg.textContent = '¡Gracias! Te contactaremos pronto.';
+        form.reset();
+        submit.textContent = 'Enviado ✓';
+        setTimeout(function(){ close(); submit.disabled=false; submit.textContent='Enviar'; msg.textContent=''; msg.className='cmodal-msg'; }, 2600);
+      }).catch(function(){
+        msg.className = 'cmodal-msg err';
+        msg.textContent = 'No se pudo enviar. Revisa tu conexión e intenta de nuevo.';
+        submit.disabled = false; submit.textContent = 'Enviar';
+      });
+    });
+  })();
 })();
 
 </script>
